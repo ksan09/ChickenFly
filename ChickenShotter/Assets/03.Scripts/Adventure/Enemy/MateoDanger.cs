@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Danger : PoolableMono
+public class MateoDanger : PoolableMono
 {
     [SerializeField] private string dangerPrefab;
     private SpriteRenderer danger;
@@ -14,11 +14,11 @@ public class Danger : PoolableMono
     private void Start()
     {
         danger = GetComponent<SpriteRenderer>();
-        
+
     }
     private void Update()
     {
-        if(doCoroutine == false)
+        if (doCoroutine == false)
         {
             StartCoroutine("TwinkleLoop");
             doCoroutine = true;
@@ -29,11 +29,11 @@ public class Danger : PoolableMono
             crtTime = 0;
             StopCoroutine("TwinkleLoop");
             doCoroutine = false;
-            Enemy mFast = PoolManager.Instance.Pop(dangerPrefab) as Enemy;
-            mFast.transform.position = new Vector3(6f, transform.position.y, 0);
-            
+            mateo mFast = PoolManager.Instance.Pop(dangerPrefab) as mateo;
+            mFast.transform.position = new Vector3(transform.position.x, 5.3f, 0);
+
             PoolManager.Instance.Push(this);
-            
+
         }
     }
 

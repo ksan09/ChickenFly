@@ -9,7 +9,7 @@ public class EggDestroy : PoolableMono
         //
     }
 
-    private void Awake()
+    private void Update()
     {
         StartCoroutine("Delay");
     }
