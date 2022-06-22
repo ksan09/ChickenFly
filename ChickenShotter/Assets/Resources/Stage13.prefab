@@ -44,12 +44,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef8b41d82b884b84c87c990df5bbc5f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnMaxTime: 3
+  spawnMaxTime: 2
   spawnMinTime: 1
   spawnSpeed: 0
   PosX: 10
   mPrefab: Enemy3
-  mFastPrefab: DangerFast2
+  mFastPrefab: DangerFast3
   mHeavyPrefab: HeavyEnemy3
 --- !u!1 &1487216951176833431
 GameObject:
@@ -64,7 +64,7 @@ GameObject:
   - component: {fileID: 5069108470387835137}
   - component: {fileID: 1657816174986523436}
   m_Layer: 0
-  m_Name: Stage9
+  m_Name: Stage13
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -83,7 +83,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1487216949817276614}
-  - {fileID: 332089778226646188}
+  - {fileID: 3638887128197202348}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -209,7 +209,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _pitchRandomness: 0.2
   _bgm: {fileID: 8300000, guid: 18059ae7d071dfd4cb73cb1ddbdbf183, type: 3}
---- !u!1001 &8933826988633208769
+--- !u!1001 &5557276072348023489
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -266,8 +266,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 81798af8d28b5ca4a804c15a9fe55695, type: 3}
---- !u!4 &332089778226646188 stripped
+--- !u!4 &3638887128197202348 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9178483052462701421, guid: 81798af8d28b5ca4a804c15a9fe55695, type: 3}
-  m_PrefabInstance: {fileID: 8933826988633208769}
+  m_PrefabInstance: {fileID: 5557276072348023489}
   m_PrefabAsset: {fileID: 0}

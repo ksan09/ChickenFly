@@ -35,7 +35,6 @@ public class Boss : PoolableMono
         stM.ClearTime = 999999999;
         StartCoroutine(SpawnMateo());
         StartCoroutine(BossPatern());
-
     }
 
 
@@ -49,8 +48,6 @@ public class Boss : PoolableMono
         {
             m_Hp -= PlayerManager.Instance.PlayerStrength;
             StartCoroutine(M_OnDamage());
-            
-
         }
     }
     public void DamagedLaser(float damage)
@@ -94,6 +91,7 @@ public class Boss : PoolableMono
     }
     IEnumerator BossPatern()
     {
+        yield return new WaitForSeconds(1.5f);
         while (true)
         {
             for(int j=0; j<3; j++)
@@ -113,13 +111,13 @@ public class Boss : PoolableMono
                     if (transform.position.x <= 0)
                     {
                         StartCoroutine(DashRight());
-                        yield return new WaitForSeconds(1.5f);
+                        yield return new WaitForSeconds(2f);
                         StartCoroutine(DashLeft());
                     }
                     else
                     {
                         StartCoroutine(DashLeft());
-                        yield return new WaitForSeconds(1.5f);
+                        yield return new WaitForSeconds(2f);
                         StartCoroutine(DashRight());
                     }
                     yield return new WaitForSeconds(3f + dashCoolTime);

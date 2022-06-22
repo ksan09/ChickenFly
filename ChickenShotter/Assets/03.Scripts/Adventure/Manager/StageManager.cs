@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class StageManager : MonoBehaviour
 {
     [SerializeField] private float _clearTime; // 클리어 시간
     [SerializeField] private float _crtTime; // 현재 시간
     [SerializeField] private int _currentStage;
+    [SerializeField] private TextMeshProUGUI _coinTxt;
+    [SerializeField] private TextMeshProUGUI _stageTxt;
     public int CurrentStage { get { return _currentStage; } set { _currentStage = value; } }
     private Stage _currentStageObject = null;
 
@@ -25,6 +28,8 @@ public class StageManager : MonoBehaviour
         }
         Stage stagePrefab = Resources.Load<Stage>($"Stage{idx}");
         _currentStageObject = Instantiate(stagePrefab, Vector3.zero, Quaternion.identity);
+        _stageTxt.text = $"{_currentStage}";
+        _coinTxt.text = $"{PlayerManager.Instance.Money}";
 
     }
     public float ClearTime

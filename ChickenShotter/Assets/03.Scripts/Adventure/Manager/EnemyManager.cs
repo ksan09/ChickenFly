@@ -27,7 +27,7 @@ public class EnemyManager : MonoBehaviour
     {
         while(true)
         {
-            randomPosY = Random.Range(-5f, 5f);
+            randomPosY = Random.Range(-4f, 4.5f);
             Danger mFast = PoolManager.Instance.Pop(mFastPrefab) as Danger;
             mFast.transform.position = new Vector3(PosX - 2f, randomPosY, 0);
             fastSpawnSpeed = Random.Range(spawnMinTime, spawnMaxTime);
@@ -42,7 +42,7 @@ public class EnemyManager : MonoBehaviour
             currentTime += Time.deltaTime;
             if (spawnSpeed <= currentTime)
             {
-                randomPosY = Random.Range(-5f, 5f);
+                randomPosY = Random.Range(-4f, 4.5f);
                 randomPattern = Random.Range(0, 100);
                 if (randomPattern <= 20)
                 {
