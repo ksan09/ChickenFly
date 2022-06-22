@@ -19,10 +19,12 @@ public class SceneTest : MonoBehaviour
     }
     private void SceneChange()
     {
-        if (Input.GetKeyUp(KeyCode.X))
+        if (Input.GetKeyUp(KeyCode.R))
             SceneManager.LoadScene("Play");
         if (Input.GetKeyUp(KeyCode.E))
-            stM.CrtTime += stM.ClearTime;
+            stM.CrtTime = stM.ClearTime;
+        if (Input.GetKeyUp(KeyCode.T))
+            SceneManager.LoadScene("Start");
             
     }
 }
