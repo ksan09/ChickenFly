@@ -300,6 +300,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillKey: 115
+  laser: {fileID: 1911409968}
   firePos: {fileID: 564610620}
   laserCool: 18
   machinegunCool: 15
@@ -339,7 +340,7 @@ RectTransform:
   - {fileID: 694449856}
   - {fileID: 1619755093}
   m_Father: {fileID: 686633150}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -475,7 +476,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94c1598f6b48fcf44a0e7bb8048c2fb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <State>k__BackingField: 3
+  <State>k__BackingField: 0
   <Money>k__BackingField: 0
   <PlayerSpeed>k__BackingField: 5
   <PlayerStrength>k__BackingField: 8
@@ -719,9 +720,9 @@ RectTransform:
   - {fileID: 1349736205}
   - {fileID: 866387767}
   - {fileID: 919601884}
-  - {fileID: 690389652}
-  - {fileID: 1436498166}
   - {fileID: 216327808}
+  - {fileID: 1436498166}
+  - {fileID: 690389652}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -762,7 +763,7 @@ RectTransform:
   m_Children:
   - {fileID: 974700879}
   m_Father: {fileID: 686633150}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -2166,7 +2167,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1911409969
 Transform:
   m_ObjectHideFlags: 0

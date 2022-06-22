@@ -29,7 +29,7 @@ public class PlayerControl : MonoBehaviour
     }
     private void Start()
     {
-        //StartCoroutine("BulletFire");
+        StartCoroutine("BulletFire");
     }
     void Update()
     {

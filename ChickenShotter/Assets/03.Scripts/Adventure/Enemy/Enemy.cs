@@ -33,9 +33,11 @@ public class Enemy : PoolableMono
     {
         if(obj.CompareTag("Player"))
         {
-            m_Hp = 0;
             pc.Player_OnDamage(m_St);
-            StartCoroutine(M_OnDamage());
+            transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
+            m_Mv.Speed = saveSpeed;
+            m_Sr.color = Color.white;
+            PoolManager.Instance.Push(this);
         }
         else if(obj.CompareTag("Bullet"))
         {
@@ -50,13 +52,7 @@ public class Enemy : PoolableMono
     public void BulletDamage(float damage)
     {
         m_Hp -= damage;
-        if (m_Hp <= 0)
-        {
-            m_Sr.color = Color.white;
-            PlayerManager.Instance.Money += m_DropMoney;
-            MoneyTxt.text = $"{PlayerManager.Instance.Money}";
-            StartCoroutine(M_OnDamage());
-        }
+        StartCoroutine(M_OnDamage());
     }
     IEnumerator M_OnDamage()
     {
@@ -116,6 +112,9 @@ public class Enemy : PoolableMono
     }
     private void Die()
     {
+        m_Sr.color = Color.white;
+        PlayerManager.Instance.Money += m_DropMoney;
+        MoneyTxt.text = $"{PlayerManager.Instance.Money}";
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
         m_Mv.Speed = saveSpeed;
         m_Sr.color = Color.white;

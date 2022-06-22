@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Skill : MonoBehaviour
 {
     [SerializeField] KeyCode skillKey;
-    
+    [SerializeField] GameObject laser;
 
     PlayerSkillState skillState;
     [SerializeField] private GameObject firePos; //발사위치
@@ -75,7 +75,17 @@ public class Skill : MonoBehaviour
     }
     private void Laser()
     {
-
+        if (Input.GetKeyDown(skillKey))
+        {
+            laser.SetActive(true);
+            CoolSet(laserCool);
+            StartCoroutine(LaserEnd());
+        }
+    }
+    IEnumerator LaserEnd()
+    {
+        yield return new WaitForSeconds(3f);
+        laser.SetActive(false);
     }
     private void Machinegun()
     {

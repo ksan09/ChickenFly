@@ -7,10 +7,7 @@ public class Laser : MonoBehaviour
     private float time;
     private bool bigOrSmall;
     private Collider2D hit;
-    private void Awake()
-    {
-        //gameObject.SetActive(false);
-    }
+    
 
     private void Update()
     {
@@ -21,21 +18,25 @@ public class Laser : MonoBehaviour
         transform.localScale = new Vector3(30, Mathf.Lerp(0.1f, 0.3f, time / 0.2f), 1);
 
         #region °¨Áö
-        hit = Physics2D.OverlapBox(new Vector2(transform.localPosition.x + 15, transform.localPosition.y), new Vector2(30, Mathf.Lerp(0.1f, 0.3f, time / 0.2f)), 0);
-        if (hit.CompareTag("Enemy") && time > 0.1f && hit.name == "BossDragon")
+        hit = Physics2D.OverlapBox(new Vector2(transform.position.x, transform.position.y), new Vector2(30, 0.3f), 0);
+        if (hit != null)
         {
-            Debug.Log("check1");
-            Boss enemy = hit.GetComponent<Boss>();
-            float cnt = PlayerManager.Instance.PlayerStrength;
-            enemy.DamagedLaser(cnt / 5);
+            if (hit.CompareTag("Enemy") && hit.name == "BossDragon")
+            {
+                Debug.Log("check1");
+                Boss enemy = hit.GetComponent<Boss>();
+                float cnt = PlayerManager.Instance.PlayerStrength;
+                enemy.DamagedLaser(cnt / 5);
+            }
+            else if (hit.CompareTag("Enemy"))
+            {
+                Debug.Log("check2");
+                Enemy enemy = hit.GetComponent<Enemy>();
+                float cnt = PlayerManager.Instance.PlayerStrength;
+                enemy.BulletDamage(cnt / 5);
+            }
         }
-        else if (hit.CompareTag("Enemy") && time > 0.1f)
-        {
-            Debug.Log("check2");
-            Enemy enemy = hit.GetComponent<Enemy>();
-            float cnt = PlayerManager.Instance.PlayerStrength;
-            enemy.BulletDamage(cnt / 5);
-        }
+        
         #endregion
         
         if (time > 0.1f)
