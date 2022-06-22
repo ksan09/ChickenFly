@@ -5,10 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class SceneTest : MonoBehaviour
 {
+    private StageManager stM;
     // Start is called before the first frame update
     void Start()
     {
-        
+        stM = GameObject.Find("StageManager").GetComponent<StageManager>();
     }
 
     // Update is called once per frame
@@ -20,5 +21,8 @@ public class SceneTest : MonoBehaviour
     {
         if (Input.GetKeyUp(KeyCode.X))
             SceneManager.LoadScene("Play");
+        if (Input.GetKeyUp(KeyCode.E))
+            stM.CrtTime += stM.ClearTime;
+            
     }
 }

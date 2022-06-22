@@ -16,7 +16,7 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] private Vector3 juumpForce = new Vector3(0, 0, 0); // 롱 점프 주어지는 힘
     [SerializeField] private float maxJuumpTime = 0.15f;
     private bool isJump;
-    private float angle = 10;
+    private float angle = 2;
     private float juumpTime = 0;
     private float p_Speed = 0;
 
@@ -29,14 +29,14 @@ public class PlayerControl : MonoBehaviour
     }
     private void Start()
     {
-        StartCoroutine("BulletFire");
+        //StartCoroutine("BulletFire");
     }
     void Update()
     {
         
-        if (Input.GetKeyDown(KeyCode.Space) && isJump == false)
+        if (Input.GetKeyDown(KeyCode.W) && isJump == false  || Input.GetKeyDown(KeyCode.Space) && isJump == false)
             Jump();
-        else if (Input.GetKey(KeyCode.Space) && juumpTime <= maxJuumpTime && isJump == true)
+        else if (Input.GetKey(KeyCode.W) && juumpTime <= maxJuumpTime && isJump == true || Input.GetKey(KeyCode.Space) && juumpTime <= maxJuumpTime && isJump == true)
             Juump();
 
         
@@ -103,14 +103,14 @@ public class PlayerControl : MonoBehaviour
             for (float i = 0; i < PlayerManager.Instance.PlayerBulletNum; i++)
             {
                 // y = PosY에서 +1하고 -0.5-0.5-0.5-0.5순으로 소환되는 느낌으로 되야한다. 그럴 때 a는 5 그러면 a/2-1에서 - a/(2*a)?
-                if (PlayerManager.Instance.PlayerBulletNum % 2 == 0)
+                if (PlayerManager.Instance.PlayerBulletNum % 2 == 0) //짝수
                 {
                     BulletDestroy egg = PoolManager.Instance.Pop("Bullet") as BulletDestroy;
                     egg.transform.position = firePos.transform.position;
-                    egg.transform.rotation = Quaternion.Euler(tr.rotation.x, tr.rotation.y * 180, tr.rotation.z + PlayerManager.Instance.PlayerBulletNum / 2 * angle - i * angle - 5f);
+                    egg.transform.rotation = Quaternion.Euler(tr.rotation.x, tr.rotation.y * 180, tr.rotation.z + PlayerManager.Instance.PlayerBulletNum / 2 * angle - i * angle - angle/2);
                 }
                     
-                else
+                else //홀수
                 {
                     BulletDestroy egg = PoolManager.Instance.Pop("Bullet") as BulletDestroy;
                     egg.transform.position = firePos.transform.position;

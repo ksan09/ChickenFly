@@ -7,7 +7,7 @@ public class StageManager : MonoBehaviour
 {
     [SerializeField] private float _clearTime; // 클리어 시간
     [SerializeField] private float _crtTime; // 현재 시간
-    [SerializeField] private int _currentStage = 1;
+    [SerializeField] private int _currentStage;
     public int CurrentStage { get { return _currentStage; } set { _currentStage = value; } }
     private Stage _currentStageObject = null;
 

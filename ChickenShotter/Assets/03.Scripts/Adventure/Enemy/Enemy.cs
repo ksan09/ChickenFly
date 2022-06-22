@@ -6,7 +6,7 @@ using TMPro;
 
 public class Enemy : PoolableMono
 {
-    [SerializeField] private int m_Hp = 1; // 체력
+    [SerializeField] private float m_Hp = 1; // 체력
     [SerializeField] private int m_St = 1; // 공격력
     [SerializeField] private int m_DropMoney = 2; // 떨어트리는 돈
     [SerializeField] private TextMeshProUGUI MoneyTxt;
@@ -15,6 +15,8 @@ public class Enemy : PoolableMono
     private SpriteRenderer p_Sr;
     private SpriteRenderer m_Sr;
     PlayerControl pc;
+    float saveSpeed;
+
     private void Awake()
     {
         MoneyTxt = GameObject.Find("Canvas/Money").GetComponent<TextMeshProUGUI>();
@@ -23,6 +25,7 @@ public class Enemy : PoolableMono
         m_Mv = GetComponent<Movement>();
         pc = GameObject.Find("PlayerControl").GetComponent<PlayerControl>();
         es = GetComponent<EnemySound>();
+        saveSpeed = m_Mv.Speed;
     }
     
 
@@ -36,19 +39,23 @@ public class Enemy : PoolableMono
         }
         else if(obj.CompareTag("Bullet"))
         {
-            m_Hp -= PlayerManager.Instance.PlayerStrength;
-            if (m_Hp <= 0)
-            {
-                PlayerManager.Instance.Money += m_DropMoney;
-                MoneyTxt.text = $"{PlayerManager.Instance.Money}";
-            }
-            StartCoroutine(M_OnDamage());
-            StartCoroutine(OnEffect(m_Sr));
-
+            BulletDamage(PlayerManager.Instance.PlayerStrength);
+            
         }
         else
         {
-            PoolManager.Instance.Push(this);
+            Die();
+        }
+    }
+    public void BulletDamage(float damage)
+    {
+        m_Hp -= damage;
+        if (m_Hp <= 0)
+        {
+            m_Sr.color = Color.white;
+            PlayerManager.Instance.Money += m_DropMoney;
+            MoneyTxt.text = $"{PlayerManager.Instance.Money}";
+            StartCoroutine(M_OnDamage());
         }
     }
     IEnumerator M_OnDamage()
@@ -57,13 +64,18 @@ public class Enemy : PoolableMono
         es.OnDamagedSound();
         yield return new WaitForSeconds(0.1f);
         m_Sr.color = Color.white;
+        StartCoroutine(OnEffect(m_Sr));
+        
         if (m_Hp <= 0)
-            PoolManager.Instance.Push(this);
+        {
+            Die();
+        }
+            
     }
     
     IEnumerator OnEffect(SpriteRenderer sr)
     {
-        float saveSpeed = m_Mv.Speed;
+        
         if (PlayerManager.Instance.Electric > 0)
         {
             float rd = Random.Range(0f, 100f);
@@ -75,26 +87,39 @@ public class Enemy : PoolableMono
         }
         if (PlayerManager.Instance.Ice > 0)
         {
-            m_Mv.Speed -= PlayerManager.Instance.Ice * 0.1f;
+            m_Mv.Speed -= PlayerManager.Instance.Ice * 0.2f;
             m_Sr.color = new Color(0.25f, 0.8f, 0.9f);
         }
         Color saveColor = sr.color;
         if (PlayerManager.Instance.Fire > 0)
         {
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 4; i++)
             {
                 m_Hp -= PlayerManager.Instance.Fire;
                 sr.color = Color.red;
                 yield return new WaitForSeconds(0.1f);
+                if(m_Hp <= 0)
+                {
+                    Die();
+                }
                 sr.color = saveColor;
-                yield return new WaitForSeconds(0.1f);
+                yield return new WaitForSeconds(0.15f);
+                
             }
         }
         else
-            yield return new WaitForSeconds(1f);
+        {
+            yield return new WaitForSeconds(0.5f);
+        }
         m_Mv.Speed = saveSpeed;
-        m_Mv.Speed += PlayerManager.Instance.Ice * 0.1f;
         m_Sr.color = Color.white;
+    }
+    private void Die()
+    {
+        transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
+        m_Mv.Speed = saveSpeed;
+        m_Sr.color = Color.white;
+        PoolManager.Instance.Push(this);
     }
 
     public override void Reset()

@@ -73,7 +73,7 @@ public class EnemyManager : MonoBehaviour
                     }
 
                 }
-                else if (randomPattern <= 70)
+                else if (randomPattern <= 60)
                 {
                     for (int i = 0; i < 5; i++)
                     {
@@ -81,6 +81,18 @@ public class EnemyManager : MonoBehaviour
                         m.transform.position = new Vector3(PosX + i, randomPosY, 0);
                     }
 
+                }
+                else if ( randomPattern <= 70)
+                {
+                    Enemy m = PoolManager.Instance.Pop(mPrefab) as Enemy;
+                    m.transform.position = new Vector3(PosX, randomPosY, 0);
+                    m.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 5));
+                }
+                else if (randomPattern <= 80)
+                {
+                    Enemy m = PoolManager.Instance.Pop(mPrefab) as Enemy;
+                    m.transform.position = new Vector3(PosX, randomPosY, 0);
+                    m.transform.rotation = Quaternion.Euler(new Vector3(0, 0, -5));
                 }
                 else
                 {

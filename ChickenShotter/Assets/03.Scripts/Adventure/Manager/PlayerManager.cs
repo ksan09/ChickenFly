@@ -2,6 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum PlayerSkillState {
+    Laser = 0,
+    Machinegun,
+    EnergeBall,
+    Shotgun,
+    guidedMissile
+}
 public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager Instance = null;
@@ -19,6 +26,8 @@ public class PlayerManager : MonoBehaviour
 
         
     }
+    [field: SerializeField]
+    public PlayerSkillState State { get; set; }
 
     [field: SerializeField]
     public int Money { get; set; } = 0;
