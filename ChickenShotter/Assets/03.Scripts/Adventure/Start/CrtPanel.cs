@@ -5,7 +5,8 @@ public enum PanelState
 {
     start,
     shop,
-    setting
+    setting,
+    sounds
 }
 public class CrtPanel : MonoBehaviour
 {

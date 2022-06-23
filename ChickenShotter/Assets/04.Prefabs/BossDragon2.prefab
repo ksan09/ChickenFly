@@ -14,10 +14,10 @@ GameObject:
   - component: {fileID: 602887356257329806}
   - component: {fileID: 602887356257329800}
   - component: {fileID: 602887356257329801}
+  - component: {fileID: 602887356257329803}
   - component: {fileID: -3191104819408585623}
-  - component: {fileID: 8875968740718368695}
   m_Layer: 0
-  m_Name: BossDragon
+  m_Name: BossDragon2
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -240,6 +240,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _pitchRandomness: 0.2
   _dmged: {fileID: 8300000, guid: 4b65b8adf1a5d436785169345c0264fd, type: 3}
+--- !u!95 &602887356257329803
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 602887356257329794}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e6b73624f38f40f4ca488a77c0b65d55, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!50 &-3191104819408585623
 Rigidbody2D:
   serializedVersion: 4
@@ -261,26 +281,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!95 &8875968740718368695
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 602887356257329794}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 27226aee298faaa41b0cc170c9e3b539, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3130269831450944658
 GameObject:
   m_ObjectHideFlags: 0

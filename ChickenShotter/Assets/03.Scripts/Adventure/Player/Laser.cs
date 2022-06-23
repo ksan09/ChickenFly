@@ -21,7 +21,7 @@ public class Laser : MonoBehaviour
         hit = Physics2D.OverlapBox(new Vector2(transform.position.x, transform.position.y), new Vector2(30, 0.3f), 0);
         if (hit != null)
         {
-            if (hit.CompareTag("Enemy") && hit.name == "BossDragon")
+            if (hit.CompareTag("Enemy") && hit.name == "BossDragon" || hit.CompareTag("Enemy") && hit.name == "BossDragon2" || hit.CompareTag("Enemy") && hit.name == "BossDragon3")
             {
                 Debug.Log("check1");
                 Boss enemy = hit.GetComponent<Boss>();

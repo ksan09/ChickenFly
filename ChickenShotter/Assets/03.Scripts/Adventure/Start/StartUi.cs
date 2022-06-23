@@ -20,7 +20,7 @@ public class StartUi : UiMove
     }
     private void EnterKey()
     {
-        if (Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
         {
             if (_currentBtnNum == 0)
             {

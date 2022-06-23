@@ -1,24 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using DG.Tweening;
+using TMPro;
 using UnityEngine.SceneManagement;
+using DG.Tweening;
 
-public class ShopUi : UiMove
+public class SettingPanel : UiMove
 {
     [SerializeField]
     private RectTransform mainPanel;
     [SerializeField]
     private CrtPanel crtPanel;
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        if (crtPanel.State == PanelState.shop)
+        if (crtPanel.State == PanelState.setting)
         {
-            EnterKey();
             BtnMove();
+            EnterKey();
         }
-            
     }
     private void EnterKey()
     {
@@ -29,20 +28,13 @@ public class ShopUi : UiMove
         }
         if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
         {
-            
+
             if (_currentBtnNum == 1)
             {
-                Debug.Log("샷건 선택");
+                mainPanel.transform.DOMoveY(4000f, 1f); // 2540
+                crtPanel.State = PanelState.sounds;
+                Debug.Log("사운드 설정으로 이동");
 
-            }
-            else if (_currentBtnNum == 2)
-            {
-                
-                Debug.Log("레이저 구매나 선택");
-            }
-            else if (_currentBtnNum == 3)
-            {
-                Debug.Log("유도탄 구매나 선택");
             }
         }
     }
