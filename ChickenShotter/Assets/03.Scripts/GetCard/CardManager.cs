@@ -57,6 +57,7 @@ public class CardManager : MonoBehaviour
                 break;
             case State.Obesity:
                 PlayerManager.Instance.PlayerCurrentHealth += 3;
+                PlayerManager.Instance.PlayerStrength -= 3;
                 PlayerManager.Instance.PlayerCurrentHealth = Mathf.Clamp(PlayerManager.Instance.PlayerCurrentHealth, 0, PlayerManager.Instance.PlayerMaxHealth);
                 break;
             case State.EggBox:
@@ -149,6 +150,7 @@ public class CardManager : MonoBehaviour
                 break;
             case State.Obesity:
                 PlayerManager.Instance.PlayerCurrentHealth += 3;
+                PlayerManager.Instance.PlayerStrength -= 3;
                 PlayerManager.Instance.PlayerCurrentHealth = Mathf.Clamp(PlayerManager.Instance.PlayerCurrentHealth, 0, PlayerManager.Instance.PlayerMaxHealth);
                 break;
             case State.EggBox:
@@ -241,6 +243,7 @@ public class CardManager : MonoBehaviour
                 break;
             case State.Obesity:
                 PlayerManager.Instance.PlayerCurrentHealth += 3;
+                PlayerManager.Instance.PlayerStrength -= 3;
                 PlayerManager.Instance.PlayerCurrentHealth = Mathf.Clamp(PlayerManager.Instance.PlayerCurrentHealth, 0, PlayerManager.Instance.PlayerMaxHealth);
                 break;
             case State.EggBox:

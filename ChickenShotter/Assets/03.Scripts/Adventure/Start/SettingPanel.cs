@@ -24,7 +24,7 @@ public class SettingPanel : UiMove
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             mainPanel.transform.DOMoveY(540, 1f); // 0
-            crtPanel.State = PanelState.start;
+            crtPanel.PanelChanging(PanelState.start);
         }
         if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
         {
@@ -32,8 +32,15 @@ public class SettingPanel : UiMove
             if (_currentBtnNum == 1)
             {
                 mainPanel.transform.DOMoveY(4000f, 1f); // 2540
-                crtPanel.State = PanelState.sounds;
+                crtPanel.PanelChanging(PanelState.sounds);
                 Debug.Log("사운드 설정으로 이동");
+
+            }
+            if (_currentBtnNum == 2)
+            {
+                mainPanel.transform.DOMoveY(6000f, 1f); // 5460
+                crtPanel.PanelChanging(PanelState.skill);
+                Debug.Log("스킬 설정으로 이동");
 
             }
         }

@@ -96,16 +96,17 @@ GameObject:
   - component: {fileID: 3800237368449033961}
   - component: {fileID: 3800237368449033962}
   - component: {fileID: 3800237368449033964}
-  - component: {fileID: 3800237368449033965}
   - component: {fileID: 8022650403802200077}
   - component: {fileID: 3800237368449033966}
+  - component: {fileID: 8747114599093071428}
+  - component: {fileID: 8482844361446224060}
   m_Layer: 0
   m_Name: HiddenBoss
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3800237368449033960
 Transform:
   m_ObjectHideFlags: 0
@@ -292,20 +293,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &3800237368449033965
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3800237368449033958}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23e0e23f245874a4e9046761b7d384ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _pitchRandomness: 0.2
-  _dmged: {fileID: 8300000, guid: 4b65b8adf1a5d436785169345c0264fd, type: 3}
 --- !u!50 &8022650403802200077
 Rigidbody2D:
   serializedVersion: 4
@@ -347,6 +334,46 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &8747114599093071428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3800237368449033958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c9fa25832f5768408ca75ef22cfb784, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pitchRandomness: 0.2
+  _dmged: {fileID: 8300000, guid: 4b65b8adf1a5d436785169345c0264fd, type: 3}
+  _dieSound: {fileID: 8300000, guid: e34e5de4fb6f0405987dc922e27778b9, type: 3}
+--- !u!114 &8482844361446224060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3800237368449033958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da5297395510aca4eb2d7a5fe9d7ec9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Hp: 10000
+  m_MaxHp: 15000
+  m_St: 1
+  hp_Tr: {fileID: 3887463264265730004}
+  danger: {fileID: 0}
+  dangerLeft: {fileID: 0}
+  dangerRight: {fileID: 0}
+  PatternSpawnTime: 1
+  spawnPosX: 10
+  maxPosY: 4.5
+  minPosY: -5
+  eBullet: HiddenBossRightHand
+  eBullet2: HiddenBossLeftHand
 --- !u!1 &6578526048016415498
 GameObject:
   m_ObjectHideFlags: 0

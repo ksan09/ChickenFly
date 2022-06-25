@@ -13,16 +13,16 @@ GameObject:
   - component: {fileID: -6630793856753581922}
   - component: {fileID: 602887356257329806}
   - component: {fileID: 602887356257329800}
-  - component: {fileID: 602887356257329801}
   - component: {fileID: 602887356257329803}
   - component: {fileID: -3191104819408585623}
+  - component: {fileID: 2129564545425210768}
   m_Layer: 0
   m_Name: BossDragon2
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &602887356257329804
 Transform:
   m_ObjectHideFlags: 0
@@ -104,16 +104,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24a31a3eaa66f4947a39a2dce54290fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Hp: 1
-  m_MaxHp: 800
-  m_St: 3
-  m_DropMoney: 500
+  m_Hp: 3500
+  m_MaxHp: 3500
+  m_St: 4
+  m_DropMoney: 1000
   MoneyTxt: {fileID: 0}
   hp_Tr: {fileID: 654093034613076912}
   danger: {fileID: 7089280820390090117}
-  dashCoolTime: 5
-  bulletCoolTime: 5
-  mateoSpawnTime: 2
+  dashCoolTime: 2
+  bulletCoolTime: 1
+  mateoSpawnTime: 1
+  dangerMateo: DangerMateo
 --- !u!70 &602887356257329806
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -226,20 +227,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &602887356257329801
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 602887356257329794}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23e0e23f245874a4e9046761b7d384ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _pitchRandomness: 0.2
-  _dmged: {fileID: 8300000, guid: 4b65b8adf1a5d436785169345c0264fd, type: 3}
 --- !u!95 &602887356257329803
 Animator:
   serializedVersion: 4
@@ -281,6 +268,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &2129564545425210768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 602887356257329794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c9fa25832f5768408ca75ef22cfb784, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pitchRandomness: 0.2
+  _dmged: {fileID: 8300000, guid: 4b65b8adf1a5d436785169345c0264fd, type: 3}
+  _dieSound: {fileID: 8300000, guid: e34e5de4fb6f0405987dc922e27778b9, type: 3}
 --- !u!1 &3130269831450944658
 GameObject:
   m_ObjectHideFlags: 0

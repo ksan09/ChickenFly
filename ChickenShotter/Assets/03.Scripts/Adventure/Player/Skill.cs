@@ -113,14 +113,25 @@ public class Skill : MonoBehaviour
                 float angle = Random.Range(-25f, 25f);
                 BulletDestroy egg = PoolManager.Instance.Pop("Bullet") as BulletDestroy;
                 egg.transform.position = firePos.transform.position;
-                egg.transform.rotation = Quaternion.Euler(tr.rotation.x, tr.rotation.y * 180, tr.rotation.z + angle);
+                egg.transform.rotation = Quaternion.Euler(tr.rotation.x, tr.rotation.y, tr.rotation.z + angle);
             }
             yield return new WaitForSeconds(0.1f);
         }
     }
     private void GuidedMissile()
     {
+        if (Input.GetKeyDown(skillKey))
+        {
+            CoolSet(guidedMissileCool);
+            skillSound.HomingBulletSound();
 
+            for (int i = 0; i < 5; i++)
+            {
+                HomingBullet egg = PoolManager.Instance.Pop("HomingBullet") as HomingBullet;
+                egg.transform.position = firePos.transform.position;
+                egg.transform.rotation = Quaternion.Euler(tr.rotation.x, tr.rotation.y, tr.rotation.z + i * 15 - 30);
+            }
+        }
     }
     private void NullSkill()
     {

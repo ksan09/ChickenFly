@@ -6,7 +6,7 @@ public class Laser : MonoBehaviour
 {
     private float time;
     private bool bigOrSmall;
-    private Collider2D hit;
+    private Collider2D[] hit;
     [SerializeField]
     private SkillSound laserSound;
 
@@ -19,23 +19,31 @@ public class Laser : MonoBehaviour
         transform.localScale = new Vector3(30, Mathf.Lerp(0.1f, 0.3f, time / 0.2f), 1);
 
         #region °¨Áö
-        hit = Physics2D.OverlapBox(new Vector2(transform.position.x, transform.position.y), new Vector2(30, 0.3f), 0);
-        if (hit != null)
+        hit = Physics2D.OverlapBoxAll(transform.position, new Vector2(30, 0.3f), 0);
+
+       
+        if (hit != null && time > 0.1f || hit != null && time < 0)
         {
-            if (hit.CompareTag("Enemy") && hit.name == "BossDragon" || hit.CompareTag("Enemy") && hit.name == "BossDragon2" || hit.CompareTag("Enemy") && hit.name == "BossDragon3")
+            foreach(Collider2D c in hit)
             {
-                Debug.Log("check1");
-                Boss enemy = hit.GetComponent<Boss>();
-                float cnt = PlayerManager.Instance.PlayerStrength;
-                enemy.DamagedLaser(cnt / 5);
+                if (c.CompareTag("Enemy") && c.name == "BossDragon" || c.CompareTag("Enemy") && c.name == "BossDragon2" || c.CompareTag("Enemy") && c.name == "BossDragon3")
+                {
+                    Boss enemy = c.GetComponent<Boss>();
+                    enemy.DamagedLaser((float)(PlayerManager.Instance.PlayerStrength * 1.25f));
+                }
+                else if (c.CompareTag("Enemy") && c.name == "HiddenBoss")
+                {
+                    HiddenBoss enemy = c.GetComponent<HiddenBoss>();
+                    enemy.DamagedLaser((float)(PlayerManager.Instance.PlayerStrength) * 3f);
+                }
+                else if (c.CompareTag("Enemy"))
+                {
+                    Enemy enemy = c.GetComponent<Enemy>();
+                    float cnt = PlayerManager.Instance.PlayerStrength;
+                    enemy.BulletDamage(cnt / 5);
+                }
             }
-            else if (hit.CompareTag("Enemy"))
-            {
-                Debug.Log("check2");
-                Enemy enemy = hit.GetComponent<Enemy>();
-                float cnt = PlayerManager.Instance.PlayerStrength;
-                enemy.BulletDamage(cnt / 5);
-            }
+            
         }
         
         #endregion

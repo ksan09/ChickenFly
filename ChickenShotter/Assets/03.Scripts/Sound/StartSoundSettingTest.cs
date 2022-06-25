@@ -22,8 +22,21 @@ public class StartSoundSettingTest : SoundPlayer
         for(int i = 0; i < 3; i++)
         {
             PlayClip(_effect);
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.4f);
         }
+        _audioSource.volume = PlayerPrefs.GetFloat("bgm", 0);
+        PlayClip(_bgm);
+    }
+    public void SettingSkill()
+    {
+        StartCoroutine(SetSkill());
+        
+    }
+    IEnumerator SetSkill()
+    {
+        _audioSource.volume = PlayerPrefs.GetFloat("effect", 0);
+        PlayClip(_effect);
+        yield return new WaitForSeconds(0.4f);
         _audioSource.volume = PlayerPrefs.GetFloat("bgm", 0);
         PlayClip(_bgm);
     }

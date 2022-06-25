@@ -217,7 +217,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -681,25 +681,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1487216951176833430}
     m_Modifications:
-    - target: {fileID: -6630793856753581922, guid: 32b7a33950580ca469056e218c88585f, type: 3}
-      propertyPath: dangerMateo
-      value: DangerMateoBomb
-      objectReference: {fileID: 0}
-    - target: {fileID: -6630793856753581922, guid: 32b7a33950580ca469056e218c88585f, type: 3}
-      propertyPath: bulletCoolTime
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: -6630793856753581922, guid: 32b7a33950580ca469056e218c88585f, type: 3}
-      propertyPath: mateoSpawnTime
-      value: 2.5
-      objectReference: {fileID: 0}
+    - target: {fileID: 157361639511212969, guid: 32b7a33950580ca469056e218c88585f, type: 3}
+      propertyPath: _dieSound
+      value: 
+      objectReference: {fileID: 8300000, guid: c1298d3994d304a15be6a3a759c09fea, type: 3}
     - target: {fileID: 602887356257329794, guid: 32b7a33950580ca469056e218c88585f, type: 3}
       propertyPath: m_Name
       value: BossDragon3
-      objectReference: {fileID: 0}
-    - target: {fileID: 602887356257329794, guid: 32b7a33950580ca469056e218c88585f, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 602887356257329804, guid: 32b7a33950580ca469056e218c88585f, type: 3}
       propertyPath: m_RootOrder

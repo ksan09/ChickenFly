@@ -217,7 +217,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -681,41 +681,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1487216951176833430}
     m_Modifications:
-    - target: {fileID: -6630793856753581922, guid: 2cd2a8dbb2b12434b8528cfffffe120f, type: 3}
-      propertyPath: m_St
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: -6630793856753581922, guid: 2cd2a8dbb2b12434b8528cfffffe120f, type: 3}
-      propertyPath: m_MaxHp
-      value: 3500
-      objectReference: {fileID: 0}
-    - target: {fileID: -6630793856753581922, guid: 2cd2a8dbb2b12434b8528cfffffe120f, type: 3}
-      propertyPath: dangerMateo
-      value: DangerMateo
-      objectReference: {fileID: 0}
-    - target: {fileID: -6630793856753581922, guid: 2cd2a8dbb2b12434b8528cfffffe120f, type: 3}
-      propertyPath: m_DropMoney
-      value: 1000
-      objectReference: {fileID: 0}
-    - target: {fileID: -6630793856753581922, guid: 2cd2a8dbb2b12434b8528cfffffe120f, type: 3}
-      propertyPath: dashCoolTime
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: -6630793856753581922, guid: 2cd2a8dbb2b12434b8528cfffffe120f, type: 3}
-      propertyPath: bulletCoolTime
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -6630793856753581922, guid: 2cd2a8dbb2b12434b8528cfffffe120f, type: 3}
-      propertyPath: mateoSpawnTime
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 602887356257329794, guid: 2cd2a8dbb2b12434b8528cfffffe120f, type: 3}
       propertyPath: m_Name
       value: BossDragon2
-      objectReference: {fileID: 0}
-    - target: {fileID: 602887356257329794, guid: 2cd2a8dbb2b12434b8528cfffffe120f, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 602887356257329804, guid: 2cd2a8dbb2b12434b8528cfffffe120f, type: 3}
       propertyPath: m_RootOrder
@@ -761,6 +729,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2129564545425210768, guid: 2cd2a8dbb2b12434b8528cfffffe120f, type: 3}
+      propertyPath: _dieSound
+      value: 
+      objectReference: {fileID: 8300000, guid: c1298d3994d304a15be6a3a759c09fea, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2cd2a8dbb2b12434b8528cfffffe120f, type: 3}
 --- !u!4 &1472516610893208096 stripped

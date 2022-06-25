@@ -27,8 +27,6 @@ public class Enemy : PoolableMono
         es = GetComponent<EnemySound>();
         saveSpeed = m_Mv.Speed;
     }
-    
-
     private void OnTriggerEnter2D(Collider2D obj)
     {
         if(obj.CompareTag("Player"))
@@ -42,7 +40,6 @@ public class Enemy : PoolableMono
         else if(obj.CompareTag("Bullet"))
         {
             BulletDamage(PlayerManager.Instance.PlayerStrength);
-            
         }
         else
         {
@@ -52,23 +49,22 @@ public class Enemy : PoolableMono
     public void BulletDamage(float damage)
     {
         m_Hp -= damage;
-        StartCoroutine(M_OnDamage());
+        StopCoroutine("M_OnDamage");
+        StartCoroutine("M_OnDamage");
     }
     IEnumerator M_OnDamage()
     {
         m_Sr.color = Color.red;
         es.OnDamagedSound();
-        yield return new WaitForSeconds(0.1f);
-        m_Sr.color = Color.white;
-        StartCoroutine(OnEffect(m_Sr));
-        
+        yield return new WaitForSeconds(0.05f);
         if (m_Hp <= 0)
         {
             Die();
         }
-            
+        yield return new WaitForSeconds(0.05f);
+        m_Sr.color = Color.white;
+        StartCoroutine(OnEffect(m_Sr));
     }
-    
     IEnumerator OnEffect(SpriteRenderer sr)
     {
         

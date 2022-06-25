@@ -6,13 +6,13 @@ using TMPro;
 
 public class Boss : PoolableMono
 {
-    [SerializeField] private float m_Hp = 1; // 체력
+    [SerializeField] private float m_Hp; // 체력
     [SerializeField] private float m_MaxHp; // 최대 체력
     [SerializeField] private int m_St = 1; // 공격력
     [SerializeField] private int m_DropMoney = 2; // 떨어트리는 돈
     [SerializeField] private TextMeshProUGUI MoneyTxt;
     [SerializeField] private Transform hp_Tr;
-    private EnemySound es; // 에너미 사운드 스크립트
+    private BossSound es; // 에너미 사운드 스크립트
     private SpriteRenderer bossSr;
     [SerializeField] private SpriteRenderer danger;
     [SerializeField] private float dashCoolTime;
@@ -31,9 +31,9 @@ public class Boss : PoolableMono
         bossSr = GetComponent<SpriteRenderer>();
         rb= GetComponent<Rigidbody2D>();
         pc = GameObject.Find("PlayerControl").GetComponent<PlayerControl>();
-        es = GetComponent<EnemySound>();
+        es = GetComponent<BossSound>();
         stM = GameObject.Find("StageManager").GetComponent<StageManager>();
-        stM.ClearTime = 999999999;
+        stM.ClearTime = 9999999;
         StartCoroutine(SpawnMateo());
         StartCoroutine(BossPatern());
     }
@@ -72,12 +72,13 @@ public class Boss : PoolableMono
             PlayerManager.Instance.Money += m_DropMoney;
             MoneyTxt.text = $"{PlayerManager.Instance.Money}";
             bossSr.color = new Color(0, 0, 0, 0);
-            yield return new WaitForSeconds(0.5f);
-            stM.CurrentStage++;
+            for(int i = 0; i < 3; i++)
+            {
+                es.OnDieSound();
+                yield return new WaitForSeconds(0.16f);
+            }
             PlayerManager.Instance.PlayerCurrentHealth = PlayerManager.Instance.PlayerMaxHealth;
-            PlayerPrefs.SetInt("crtStage", stM.CurrentStage);
             stM.CrtTime = stM.ClearTime;
-
         } 
     }
     IEnumerator SpawnMateo()

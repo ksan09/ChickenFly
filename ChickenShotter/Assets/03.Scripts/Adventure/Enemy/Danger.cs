@@ -30,7 +30,7 @@ public class Danger : PoolableMono
             StopCoroutine("TwinkleLoop");
             doCoroutine = false;
             Enemy mFast = PoolManager.Instance.Pop(dangerPrefab) as Enemy;
-            mFast.transform.position = new Vector3(6f, transform.position.y, 0);
+            mFast.transform.position = new Vector3(9f, transform.position.y, 0);
             
             PoolManager.Instance.Push(this);
             

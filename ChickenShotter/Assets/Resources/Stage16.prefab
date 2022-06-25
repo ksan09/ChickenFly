@@ -24,13 +24,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 360135519797269676}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 6, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8448051541604368827}
-  m_RootOrder: 7
+  m_Father: {fileID: 1179048886477176289}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &360135519797269678
 SpriteRenderer:
@@ -118,6 +118,7 @@ Transform:
   - {fileID: 1687722871102839995}
   - {fileID: 1418455486403396259}
   - {fileID: 1418455485500281151}
+  - {fileID: 360135519797269677}
   - {fileID: 8448051541604368827}
   - {fileID: 7491986857796281471}
   - {fileID: 6124993520200292172}
@@ -150,7 +151,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -735,7 +736,7 @@ RectTransform:
   m_Children:
   - {fileID: 8156831141591744573}
   m_Father: {fileID: 1179048886477176289}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -937,7 +938,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 9178483052462701421, guid: 81798af8d28b5ca4a804c15a9fe55695, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 9178483052462701421, guid: 81798af8d28b5ca4a804c15a9fe55695, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1005,13 +1006,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: HiddenBoss
       objectReference: {fileID: 0}
-    - target: {fileID: 3800237368449033958, guid: f32f4090a6192dd47a0ad8a944ac8fe4, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3800237368449033960, guid: f32f4090a6192dd47a0ad8a944ac8fe4, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3800237368449033960, guid: f32f4090a6192dd47a0ad8a944ac8fe4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1053,43 +1050,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8482844361446224060, guid: f32f4090a6192dd47a0ad8a944ac8fe4, type: 3}
+      propertyPath: danger
+      value: 
+      objectReference: {fileID: 360135519797269676}
+    - target: {fileID: 8482844361446224060, guid: f32f4090a6192dd47a0ad8a944ac8fe4, type: 3}
+      propertyPath: dangerLeft
+      value: 
+      objectReference: {fileID: 1418455486403396261}
+    - target: {fileID: 8482844361446224060, guid: f32f4090a6192dd47a0ad8a944ac8fe4, type: 3}
+      propertyPath: dangerRight
+      value: 
+      objectReference: {fileID: 1418455485500281089}
+    - target: {fileID: 8747114599093071428, guid: f32f4090a6192dd47a0ad8a944ac8fe4, type: 3}
+      propertyPath: _dieSound
+      value: 
+      objectReference: {fileID: 8300000, guid: c1298d3994d304a15be6a3a759c09fea, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f32f4090a6192dd47a0ad8a944ac8fe4, type: 3}
---- !u!4 &8391242822763974791 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3887463264265730004, guid: f32f4090a6192dd47a0ad8a944ac8fe4, type: 3}
-  m_PrefabInstance: {fileID: 4719954784618342227}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8448051541604368821 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3800237368449033958, guid: f32f4090a6192dd47a0ad8a944ac8fe4, type: 3}
   m_PrefabInstance: {fileID: 4719954784618342227}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8482844361446224060
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8448051541604368821}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da5297395510aca4eb2d7a5fe9d7ec9d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Hp: 1
-  m_MaxHp: 10000
-  m_St: 1
-  hp_Tr: {fileID: 8391242822763974791}
-  danger: {fileID: 360135519797269676}
-  dangerLeft: {fileID: 1418455486403396261}
-  dangerRight: {fileID: 1418455485500281089}
-  PatternSpawnTime: 1
-  spawnPosX: 10
-  maxPosY: 4.5
-  minPosY: -5
-  eBullet: HiddenBossRightHand
-  eBullet2: HiddenBossLeftHand
 --- !u!4 &8448051541604368827 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3800237368449033960, guid: f32f4090a6192dd47a0ad8a944ac8fe4, type: 3}

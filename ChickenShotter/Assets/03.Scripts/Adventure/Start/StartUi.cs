@@ -30,14 +30,14 @@ public class StartUi : UiMove
             else if (_currentBtnNum == 1)
             {
                 mainPanel.transform.DOMoveY(-2000f, 1f); // 1560
-                crtPanel.State = PanelState.shop;
+                crtPanel.PanelChanging(PanelState.shop);
                 Debug.Log("상점으로 이동");
 
             }
             else if (_currentBtnNum == 2)
             {
                 mainPanel.transform.DOMoveY(2000f, 1f); // 2540
-                crtPanel.State= PanelState.setting;
+                crtPanel.PanelChanging(PanelState.setting);
                 Debug.Log("설정으로 이동");
             }
             else if (_currentBtnNum == 3)

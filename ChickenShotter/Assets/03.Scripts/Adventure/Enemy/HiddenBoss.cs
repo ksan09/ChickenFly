@@ -15,7 +15,7 @@ public class HiddenBoss : PoolableMono
     [SerializeField] private GameObject dangerLeft;
     [SerializeField] private GameObject dangerRight;
 
-    private EnemySound es; // 에너미 사운드 스크립트
+    private BossSound es; // 에너미 사운드 스크립트
     private SpriteRenderer bossSr;
     [SerializeField] private float PatternSpawnTime;
 
@@ -33,7 +33,7 @@ public class HiddenBoss : PoolableMono
         bossSr = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
         pc = GameObject.Find("PlayerControl").GetComponent<PlayerControl>();
-        es = GetComponent<EnemySound>();
+        es = GetComponent<BossSound>();
         stM = GameObject.Find("StageManager").GetComponent<StageManager>();
         stM.ClearTime = 999999999;
         StartCoroutine(BossPatern());
@@ -66,7 +66,6 @@ public class HiddenBoss : PoolableMono
         m_Hp -= damage;
         StartCoroutine(M_OnDamage());
     }
-    
     IEnumerator M_OnDamage()
     {
 
@@ -81,11 +80,12 @@ public class HiddenBoss : PoolableMono
         {
             m_Hp += 100000;
             bossSr.color = new Color(0, 0, 0, 0);
-            yield return new WaitForSeconds(0.5f);
-            stM.CurrentStage++;
-            PlayerManager.Instance.PlayerCurrentHealth = PlayerManager.Instance.PlayerMaxHealth;
-            PlayerPrefs.SetInt("crtStage", stM.CurrentStage);
-            stM.CrtTime = stM.ClearTime;
+            for (int i = 0; i < 3; i++)
+            {
+                es.OnDieSound();
+                yield return new WaitForSeconds(0.16f);
+            }
+            SceneManager.LoadScene("End");
 
         }
     }
@@ -98,42 +98,36 @@ public class HiddenBoss : PoolableMono
             //SansH2
             if(rd <= 1.5)
             {
-                Debug.Log("SansH2");
                 StartCoroutine(SansH2());
                 yield return new WaitForSeconds(6.5f);
             }
             //SansH
             else if (rd <= 3)
             {
-                Debug.Log("SansH");
                 StartCoroutine(SansH());
                 yield return new WaitForSeconds(6.5f);
             }
             //낙석1
-            else if(rd <= 5)
+            else if(rd <= 4.5)
             {
-                Debug.Log("낙석");
                 StartCoroutine(FallingHand());
                 yield return new WaitForSeconds(3.5f);
             }
             //낙석2
-            else if(rd <= 7)
+            else if(rd <= 6)
             {
-                Debug.Log("낙석2");
                 StartCoroutine(FallingHand2());
                 yield return new WaitForSeconds(4.6f);
             }
             //돌진
-            else if(rd <= 9)
+            else if(rd <= 8.5)
             {
-                Debug.Log("Dash");
                 StartCoroutine(Dash());
                 yield return new WaitForSeconds(2.5f);
             }
             //BulletFire
             else
             {
-                Debug.Log("BulletFire");
                 StartCoroutine(BulletFire());
                 yield return new WaitForSeconds(6.2f);
             }
@@ -409,7 +403,6 @@ public class HiddenBoss : PoolableMono
     {
         for(int i =0; i<2; i++)
         {
-            Debug.Log(i);
             danger.SetActive(true);
             danger.transform.position = GameObject.Find("PlayerControl/PlayerSprite").transform.position;
             yield return new WaitForSeconds(1f);

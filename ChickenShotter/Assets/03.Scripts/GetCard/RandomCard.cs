@@ -68,176 +68,176 @@ public class RandomCard : MonoBehaviour
             {
                 //두꺼운 탄환 ( 공격력 + 3 )
                 _state = State.ThickEgg;
-                _cardTxt.text = "Thick Egg";
-                _cardExplain.text = "power 3";
+                _cardTxt.text = "두꺼운 달걀";
+                _cardExplain.text = "공격력 3";
                 repeat = false;
             }
             else if (per <= 14)
             {
                 //위험한 탄환 상자 ( 탄환 + 1, 체력 - 1 ) 현재체력 2이상
                 _state = State.DangerEggBox;
-                _cardTxt.text = "Danger Egg Box";
-                _cardExplain.text = "egg 1, hp -1";
+                _cardTxt.text = "가시달린 달걀 상자";
+                _cardExplain.text = "탄알 수 1, 체력감소 1";
                 repeat = false;
             }
             else if (per <= 21)
             {
                 //돈 상자 ( 돈 + 300 )
                 _state = State.MoneyBox;
-                _cardTxt.text = "Money Box";
-                _cardExplain.text = "money 300";
+                _cardTxt.text = "돈 상자";
+                _cardExplain.text = "돈 300";
                 repeat = false;
             }
             else if (per <= 28)
             {
                 //심장 ( 최대체력 + 1 )
                 _state = State.MaxHpUp;
-                _cardTxt.text = "MAX HP UP";
-                _cardExplain.text = "max hp 1";
+                _cardTxt.text = "MAX HP UP!";
+                _cardExplain.text = "최대 체력 1";
                 repeat = false;
             }
             else if (per <= 35)
             {
                 //무거운 심장 ( 이속 감소 - 0.5, 최대체력 + 1 ) 이속 1이상
                 _state = State.HeavyHeart;
-                _cardTxt.text = "Heavy Heart";
-                _cardExplain.text = "speed -0.5 max hp 1";
+                _cardTxt.text = "무거운 심장";
+                _cardExplain.text = "속도 -0.5 최대체력 1";
                 repeat = false;
             }
             else if (per <= 42)
             {
                 //무거운 날개 ( 이속 감소 - 0.5, 체력 + 2 ) 이속 1이상
                 _state = State.HeavyWings;
-                _cardTxt.text = "Heavy Wings";
-                _cardExplain.text = "speed -0.5 hp 2";
+                _cardTxt.text = "무거운 날개";
+                _cardExplain.text = "속도 -0.5 체력 회복 2";
                 repeat = false;
             }
             else if (per <= 49)
             {
                 //질보단 양 ( 탄환 + 1, 데미지 - 3 ) 조건 데미지 5이상
                 _state = State.QuantityOverQuality;
-                _cardTxt.text = "Quantity Over Quality!";
-                _cardExplain.text = "egg 1 power - 3";
+                _cardTxt.text = "질보다 양!";
+                _cardExplain.text = "탄환 수 1 공격력 - 3";
                 repeat = false;
             }
             else if (per <= 56)
             {
                 //화염 카드 ( 화염 + 1 )
                 _state = State.Fire;
-                _cardTxt.text = "Fire";
-                _cardExplain.text = "fire 1";
+                _cardTxt.text = "화염";
+                _cardExplain.text = "불 속성 1";
                 repeat = false;
             }
             else if (per <= 63)
             {
                 //얼음 카드 ( 얼음 + 1 )
                 _state = State.Ice;
-                _cardTxt.text = "Ice";
-                _cardExplain.text = "ice 1";
+                _cardTxt.text = "얼음";
+                _cardExplain.text = "얼음 속성 1";
                 repeat = false;
             }
             else if (per <= 70)
             {
                 //전기 카드 ( 전기 + 1 )
                 _state = State.Electric;
-                _cardTxt.text = "Electric";
-                _cardExplain.text = "electric 1";
+                _cardTxt.text = "전기";
+                _cardExplain.text = "전기 속성 1";
                 repeat = false;
             }
             else if (per <= 73)
             {
                 //거대한 돈 상자 ( 돈 + 500 )
                 _state = State.BigMoneyCrate;
-                _cardTxt.text = "Big Money Crate";
-                _cardExplain.text = "money 500";
+                _cardTxt.text = "거대한 돈 상자";
+                _cardExplain.text = "돈 500";
                 repeat = false;
             }
             else if (per <= 76)
             {
                 //비만 ( 체력 +3, 데미지 ?5 ) 조건 데미지 10이상
                 _state = State.Obesity;
-                _cardTxt.text = "Obesity";
-                _cardExplain.text = "hp 3 power -5";
+                _cardTxt.text = "비만";
+                _cardExplain.text = "체력 회복 3 공격력 -3";
                 repeat = false;
             }
             else if (per <= 79)
             {
                 //탄환 상자 ( 탄환 + 1 )
                 _state = State.EggBox;
-                _cardTxt.text = "Egg Box";
-                _cardExplain.text = "egg 1";
+                _cardTxt.text = "달걀 상자";
+                _cardExplain.text = "탄환 수 1";
                 repeat = false;
             }
             else if (per <= 82)
             {
                 //강력한 힘 ( 공격력 + 8 최대체력 - 1 ) 최대체력 2이상 체력 2이상
                 _state = State.StrongPower;
-                _cardTxt.text = "Strong Power!!!";
-                _cardExplain.text = "power 8 max hp -1";
+                _cardTxt.text = "강력한 힘!!";
+                _cardExplain.text = "공격력 8 최대체력감소 1";
                 repeat = false;
             }
             else if (per <= 85)
             {
                 //재빠르고 날카롭게 ( 이속 증가 + 0.5, 관통 + 1 )
                 _state = State.QuickAndSharp;
-                _cardTxt.text = "Quick And Sharp!";
-                _cardExplain.text = "speed 0.5 penetration 1";
+                _cardTxt.text = "재빠르고 날카롭게!";
+                _cardExplain.text = "속도 0.5 관통 1";
                 repeat = false;
             }
             else if (per <= 88)
             {
                 //빠른 날개 ( 이속 증가 + 0.5 )
                 _state = State.FastWings;
-                _cardTxt.text = "Fast Wings";
-                _cardExplain.text = "speed 0.5";
+                _cardTxt.text = "빠른 날개";
+                _cardExplain.text = "속도 0.5";
                 repeat = false;
             }
             else if (per <= 90)
             {
                 //무거운 탄환 ( 공격력 + 8, 이속 감소 - 0,5 ) 이속 1이상
                 _state = State.HeavyEgg;
-                _cardTxt.text = "Heavy Egg";
-                _cardExplain.text = "power 8 speed -0.5";
+                _cardTxt.text = "무거운 탄환";
+                _cardExplain.text = "공격력 8 속도 -0.5";
                 repeat = false;
             }
             else if (per <= 92)
             {
                 //날카로운 탄환 ( 관통 + 1, 데미지 + 2 )
                 _state = State.SharpEgg;
-                _cardTxt.text = "Sharp Egg";
-                _cardExplain.text = "penetration 1 power 2";
+                _cardTxt.text = "날카로운 탄환";
+                _cardExplain.text = "관통 1 공격력 2";
                 repeat = false;
             }
             else if (per <= 94)
             {
                 //위험한 돈 상자 ( 체력 - 1, 돈 + 1500 ) 조건 : 현재체력 2이상
                 _state = State.DangerMoneyCrate;
-                _cardTxt.text = "Danger Money Crate";
-                _cardExplain.text = "hp -1 money 1500";
+                _cardTxt.text = "가시달린 돈 상자";
+                _cardExplain.text = "체력감소 1 돈 1500";
                 repeat = false;
             }
             else if (per <= 96)
             {
                 //위험한 탄알 상자 ( 탄알 갯수 증가 +2, 체력 - 2 ) 조건 : 현재체력 3이상
                 _state = State.SuperDangerEggBox;
-                _cardTxt.text = "Super Danger Egg Box";
-                _cardExplain.text = "egg 2 hp -2";
+                _cardTxt.text = "가시달린 큰 달걀 상자";
+                _cardExplain.text = "탄환 수 2 체력감소 2";
                 repeat = false;
             }
             else if (per <= 98)
             {
                 //재빠른 날개 ( 이속 증가 + 1 )
                 _state = State.QuickWings;
-                _cardTxt.text = "Quick Wings";
-                _cardExplain.text = "speed 1";
+                _cardTxt.text = "재빠른 날개";
+                _cardExplain.text = "속도 1";
                 repeat = false;
             }
             else
             {
                 //가시 탄환 ( 체력 - 1, 탄환 + 1, 데미지 + 2 ) 조건 현재체력 2이상
                 _state = State.ThornEgg;
-                _cardTxt.text = "Thorn Egg";
-                _cardExplain.text = "hp -1 egg 1 power 2";
+                _cardTxt.text = "가시달린 달걀";
+                _cardExplain.text = "체력감소 1 탄환 수 1 공격력 2";
                 repeat = false;
             }
         }
