@@ -100,6 +100,7 @@ public class Skill : MonoBehaviour
         if(Input.GetKeyDown(skillKey))
         {
             CoolSet(shotgunCool);
+            skillSound.ShotGunSound();
             StartCoroutine(cShotgun());
         }
     }

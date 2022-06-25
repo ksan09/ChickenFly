@@ -7,7 +7,8 @@ public class Laser : MonoBehaviour
     private float time;
     private bool bigOrSmall;
     private Collider2D hit;
-    
+    [SerializeField]
+    private SkillSound laserSound;
 
     private void Update()
     {
@@ -42,7 +43,10 @@ public class Laser : MonoBehaviour
         if (time > 0.1f)
         {
             time = 0.1f;
+            if (bigOrSmall)
+                laserSound.LaserSound();
             bigOrSmall = false;
+            
         }
         if (time < 0)
         {

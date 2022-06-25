@@ -9,6 +9,7 @@ public class UiManager : MonoBehaviour
     private Image _fillAmount;
     private Image _miniChicken;
     private StageManager _sm;
+    [SerializeField] private FadeIn _FadeIn;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -27,12 +28,15 @@ public class UiManager : MonoBehaviour
         //Å¬¸®¾î
         if (_sm.CrtTime >= _sm.ClearTime)
         {
-            _sm.CurrentStage++;
-            PlayerPrefs.SetInt("crtStage", _sm.CurrentStage);
-            SceneManager.LoadScene("GetCard");
+            StartCoroutine(StageClear());
         }
-            
-
-        
+    }
+    IEnumerator StageClear()
+    {
+        _FadeIn.FadeingIn();
+        yield return new WaitForSeconds(0.5f);
+        _sm.CurrentStage++;
+        PlayerPrefs.SetInt("crtStage", _sm.CurrentStage);
+        SceneManager.LoadScene("GetCard");
     }
 }

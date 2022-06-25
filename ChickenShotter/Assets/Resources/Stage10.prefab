@@ -184,7 +184,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 3055708830390034570}
+  - {fileID: 1472516610893208096}
   - {fileID: 1410904705629685964}
   - {fileID: 7135838171673702408}
   - {fileID: 5908490162027135803}
@@ -348,7 +348,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 5}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -396, y: -6}
+  m_AnchoredPosition: {x: -323.81296, y: 16.284142}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4225491639537978716
@@ -406,8 +406,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 130
-  m_fontSizeBase: 130
+  m_fontSize: 140
+  m_fontSizeBase: 140
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -610,7 +610,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.509434, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 0.5686275, b: 0.050980397, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -671,10 +671,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7994a358e7d96334a9425174ad9ebd8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boss: {fileID: 3055708830390034564}
+  boss: {fileID: 1472516610893208110}
   panel: {fileID: 1439669167468854996}
   background: {fileID: 5223512212862824973}
---- !u!1001 &2465136023188193798
+--- !u!1001 &2031841230424127660
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -690,16 +690,20 @@ PrefabInstance:
       value: 3500
       objectReference: {fileID: 0}
     - target: {fileID: -6630793856753581922, guid: 2cd2a8dbb2b12434b8528cfffffe120f, type: 3}
+      propertyPath: dangerMateo
+      value: DangerMateo
+      objectReference: {fileID: 0}
+    - target: {fileID: -6630793856753581922, guid: 2cd2a8dbb2b12434b8528cfffffe120f, type: 3}
       propertyPath: m_DropMoney
       value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: -6630793856753581922, guid: 2cd2a8dbb2b12434b8528cfffffe120f, type: 3}
       propertyPath: dashCoolTime
-      value: 0.5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -6630793856753581922, guid: 2cd2a8dbb2b12434b8528cfffffe120f, type: 3}
       propertyPath: bulletCoolTime
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -6630793856753581922, guid: 2cd2a8dbb2b12434b8528cfffffe120f, type: 3}
       propertyPath: mateoSpawnTime
@@ -759,15 +763,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2cd2a8dbb2b12434b8528cfffffe120f, type: 3}
---- !u!1 &3055708830390034564 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 602887356257329794, guid: 2cd2a8dbb2b12434b8528cfffffe120f, type: 3}
-  m_PrefabInstance: {fileID: 2465136023188193798}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &3055708830390034570 stripped
+--- !u!4 &1472516610893208096 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 602887356257329804, guid: 2cd2a8dbb2b12434b8528cfffffe120f, type: 3}
-  m_PrefabInstance: {fileID: 2465136023188193798}
+  m_PrefabInstance: {fileID: 2031841230424127660}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1472516610893208110 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 602887356257329794, guid: 2cd2a8dbb2b12434b8528cfffffe120f, type: 3}
+  m_PrefabInstance: {fileID: 2031841230424127660}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3359590539279202390
 PrefabInstance:

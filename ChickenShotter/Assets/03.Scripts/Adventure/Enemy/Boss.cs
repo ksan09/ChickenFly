@@ -18,6 +18,7 @@ public class Boss : PoolableMono
     [SerializeField] private float dashCoolTime;
     [SerializeField] private float bulletCoolTime;
     [SerializeField] private float mateoSpawnTime;
+    [SerializeField] private string dangerMateo;
 
     Rigidbody2D rb;
     StageManager stM;
@@ -75,7 +76,7 @@ public class Boss : PoolableMono
             stM.CurrentStage++;
             PlayerManager.Instance.PlayerCurrentHealth = PlayerManager.Instance.PlayerMaxHealth;
             PlayerPrefs.SetInt("crtStage", stM.CurrentStage);
-            SceneManager.LoadScene("GetCard");
+            stM.CrtTime = stM.ClearTime;
 
         } 
     }
@@ -85,7 +86,7 @@ public class Boss : PoolableMono
         {
             float mateoX = Random.Range(-8.5f, 8.5f);
             yield return new WaitForSeconds(mateoSpawnTime);
-            MateoDanger mateoDanger = PoolManager.Instance.Pop("DangerMateo") as MateoDanger;
+            MateoDanger mateoDanger = PoolManager.Instance.Pop(dangerMateo) as MateoDanger;
             mateoDanger.transform.position = new Vector3(mateoX, -4.1f, 0);
         }
     }
@@ -189,6 +190,7 @@ public class Boss : PoolableMono
     {
         for(int i = 0; i < 360; i += 30)
         {
+            es.OnDamagedSound();
             EnemyBullet enemyBullet = PoolManager.Instance.Pop("EnemyBullet") as EnemyBullet;
             enemyBullet.transform.position = transform.position;
             enemyBullet.transform.rotation = Quaternion.Euler(new Vector3(0, 0, i));

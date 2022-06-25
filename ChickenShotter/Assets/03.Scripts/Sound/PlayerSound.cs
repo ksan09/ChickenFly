@@ -9,6 +9,7 @@ public class PlayerSound : SoundPlayer
     private void Start()
     {
         _audioSource.volume = PlayerPrefs.GetFloat("effect", 0);
+        _audioSource.volume -= 0.1f;
     }
     // Start is called before the first frame update
     public void JumpSound()

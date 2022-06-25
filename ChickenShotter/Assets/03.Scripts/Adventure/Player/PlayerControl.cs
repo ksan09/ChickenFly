@@ -19,6 +19,7 @@ public class PlayerControl : MonoBehaviour
     private float angle = 2;
     private float juumpTime = 0;
     private float p_Speed = 0;
+    private bool damagedCool = true;
 
     private void Awake()
     {
@@ -123,14 +124,17 @@ public class PlayerControl : MonoBehaviour
     }
     public void Player_OnDamage(int dmg)
     {
-        StartCoroutine(P_OnDamage(dmg));
+        if(damagedCool)
+            StartCoroutine(P_OnDamage(dmg));
     }
     IEnumerator P_OnDamage(int dmg)
     {
+        damagedCool = false;
         PlayerManager.Instance.PlayerCurrentHealth -= dmg;
         ps.DamagedSound();
         sr.color = Color.red;
         yield return new WaitForSeconds(0.1f);
         sr.color = Color.white;
+        damagedCool = true;
     }
 }

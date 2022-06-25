@@ -312,7 +312,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pitchRandomness: 0.2
-  _bgm: {fileID: 8300000, guid: e7d188e5b1c094f40967ceea8023b73b, type: 3}
+  _bgm: {fileID: 8300000, guid: 42a6e4e230cce4646953a0dd33a9d75a, type: 3}
 --- !u!1 &2453269965761195716
 GameObject:
   m_ObjectHideFlags: 0
@@ -750,6 +750,10 @@ PrefabInstance:
     - target: {fileID: -6630793856753581922, guid: 9636f02905a63d740b4dfc3561dde63b, type: 3}
       propertyPath: m_MaxHp
       value: 1200
+      objectReference: {fileID: 0}
+    - target: {fileID: -6630793856753581922, guid: 9636f02905a63d740b4dfc3561dde63b, type: 3}
+      propertyPath: dangerMateo
+      value: DangerMateo
       objectReference: {fileID: 0}
     - target: {fileID: -6630793856753581922, guid: 9636f02905a63d740b4dfc3561dde63b, type: 3}
       propertyPath: dashCoolTime

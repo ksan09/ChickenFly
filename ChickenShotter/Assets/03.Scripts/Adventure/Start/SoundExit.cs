@@ -15,6 +15,8 @@ public class SoundExit : UiMove
     private Slider bgm;
     [SerializeField]
     private Slider effect;
+    [SerializeField]
+    StartSoundSettingTest sSST;
     // Update is called once per frame
     void Update()
     {
@@ -46,6 +48,7 @@ public class SoundExit : UiMove
             {
                 PlayerPrefs.SetFloat("bgm", bgm.value);
                 PlayerPrefs.SetFloat("effect", effect.value);
+                sSST.BgmStart();
                 Debug.Log("음량 세팅");
 
             }

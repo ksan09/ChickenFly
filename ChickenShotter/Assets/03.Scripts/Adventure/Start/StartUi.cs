@@ -25,7 +25,7 @@ public class StartUi : UiMove
             if (_currentBtnNum == 0)
             {
                 PlayerPrefs.SetInt("crtStage", 1);
-                SceneManager.LoadScene("Play");
+                SceneManager.LoadScene("Story");
             }
             else if (_currentBtnNum == 1)
             {

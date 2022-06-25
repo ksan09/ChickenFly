@@ -17,4 +17,8 @@ public class FadeIn : MonoBehaviour
     {
         image.DOFade(0, 2f);
     }
+    public void FadeingIn()
+    {
+        image.DOFade(1, 0.5f);
+    }
 }

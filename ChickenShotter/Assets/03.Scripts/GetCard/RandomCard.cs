@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using DG.Tweening;
 
 public enum State
 {
@@ -39,6 +40,7 @@ public class RandomCard : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _cardExplain;
     [SerializeField] private TextMeshProUGUI _cardExplain2;
     [SerializeField] private TextMeshProUGUI _cardExplain3;
+    [SerializeField] private GameObject panel;
     private State _cardState;
     private State _cardState2;
     private State _cardState3;
@@ -50,6 +52,7 @@ public class RandomCard : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        panel.transform.DOMoveY(540, 2f);
         SetCard(_cardTxt, _cardState, _cardExplain, 1);
         SetCard(_cardTxt2, _cardState2, _cardExplain2, 2);
         SetCard(_cardTxt3, _cardState3, _cardExplain3, 3);
