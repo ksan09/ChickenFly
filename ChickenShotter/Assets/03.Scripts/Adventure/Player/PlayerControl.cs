@@ -15,11 +15,13 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] private Vector3 jumpForce = new Vector3(0, 0, 0); // Á¡ÇÁÈû
     [SerializeField] private Vector3 juumpForce = new Vector3(0, 0, 0); // ·Õ Á¡ÇÁ ÁÖ¾îÁö´Â Èû
     [SerializeField] private float maxJuumpTime = 0.15f;
+    [SerializeField] private float addForceJump = 4;
     private bool isJump;
     private float angle = 2;
     private float juumpTime = 0;
     private float p_Speed = 0;
     private bool damagedCool = true;
+    int i;
 
     private void Awake()
     {
@@ -32,22 +34,23 @@ public class PlayerControl : MonoBehaviour
     {
         StartCoroutine("BulletFire");
     }
+
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.Space))
         {
             if (isJump == false)
                 Jump();
+            i = 0;
         }
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.Space))
+        else if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.Space))
         {
-            if (juumpTime <= maxJuumpTime && isJump == true)
-                Juump();
+
+            Juump();
         }
 
         Move();
         CheckPlayer();
-
 
     }
     private void Jump()
@@ -60,9 +63,12 @@ public class PlayerControl : MonoBehaviour
     }
     private void Juump()
     {
-        juumpTime += Time.deltaTime;
-        rb.AddForce(juumpForce, ForceMode2D.Force);
-        
+        if (juumpTime <= maxJuumpTime && isJump == true)
+        {
+            juumpTime += Time.deltaTime;
+            rb.AddForce(juumpForce* addForceJump*Time.deltaTime, ForceMode2D.Force);
+            Debug.LogError(juumpTime + " " + i);
+        }
     }
     private void Move()
     {

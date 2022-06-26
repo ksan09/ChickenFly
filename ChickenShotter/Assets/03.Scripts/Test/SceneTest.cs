@@ -19,7 +19,7 @@ public class SceneTest : MonoBehaviour
     }
     private void SceneChange()
     {
-        if(Input.GetKey(KeyCode.RightControl))
+        if(Input.GetKey(KeyCode.LeftControl))
         {
             if (Input.GetKeyDown(KeyCode.R))
                 SceneManager.LoadScene("Play");

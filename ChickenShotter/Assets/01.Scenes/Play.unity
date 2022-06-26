@@ -176,7 +176,8 @@ MonoBehaviour:
   firePos: {fileID: 564610620}
   jumpForce: {x: 0, y: 3, z: 0}
   juumpForce: {x: 0, y: 2.5, z: 0}
-  maxJuumpTime: 0.15
+  maxJuumpTime: 0.2
+  addForceJump: 400
 --- !u!114 &138590742
 MonoBehaviour:
   m_ObjectHideFlags: 0
