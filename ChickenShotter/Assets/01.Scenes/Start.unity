@@ -384,7 +384,7 @@ GameObject:
   - component: {fileID: 170893140}
   - component: {fileID: 170893139}
   m_Layer: 5
-  m_Name: 6stage
+  m_Name: 7stage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -431,7 +431,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 6 Stage
+  m_text: 7 Stage
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d2154c9c5ae581d4389dbec1b491e4e6, type: 2}
   m_sharedMaterial: {fileID: 3321409370904927084, guid: d2154c9c5ae581d4389dbec1b491e4e6, type: 2}
@@ -4337,7 +4337,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC870\uC791\uD0A4\nAD \uC774\uB3D9\nS \uC2A4\uD0AC\nSpace \uC810\uD504"
+  m_text: "\uC870\uC791\uD0A4\nAD, \uC88C\uC6B0\uD654\uC0B4\uD45C : \uC774\uB3D9\nS,
+    \uC544\uB798\uD654\uC0B4\uD45C : \uC2A4\uD0AC\nSpace, W, \uC704\uD654\uC0B4\uD45C
+    : \uC810\uD504"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d2154c9c5ae581d4389dbec1b491e4e6, type: 2}
   m_sharedMaterial: {fileID: 3321409370904927084, guid: d2154c9c5ae581d4389dbec1b491e4e6, type: 2}

@@ -34,13 +34,17 @@ public class PlayerControl : MonoBehaviour
     }
     void Update()
     {
-        
-        if (Input.GetKeyDown(KeyCode.W) && isJump == false  || Input.GetKeyDown(KeyCode.Space) && isJump == false)
-            Jump();
-        else if (Input.GetKey(KeyCode.W) && juumpTime <= maxJuumpTime && isJump == true || Input.GetKey(KeyCode.Space) && juumpTime <= maxJuumpTime && isJump == true)
-            Juump();
+        if(Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.Space))
+        {
+            if (isJump == false)
+                Jump();
+        }
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.Space))
+        {
+            if (juumpTime <= maxJuumpTime && isJump == true)
+                Juump();
+        }
 
-        
         Move();
         CheckPlayer();
 

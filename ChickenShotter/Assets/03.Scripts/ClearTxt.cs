@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
 
 public class ClearTxt : SoundPlayer
 {
@@ -24,5 +25,14 @@ public class ClearTxt : SoundPlayer
     {
         yield return new WaitForSeconds(1f);
         transform.DOMoveY(1500, 20);
+    }
+    private void Update()
+    {
+        Skip();
+    }
+    private void Skip()
+    {
+        if(Input.GetKeyDown(KeyCode.Escape))
+            SceneManager.LoadScene("Start");
     }
 }

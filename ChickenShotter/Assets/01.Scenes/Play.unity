@@ -301,6 +301,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillKey: 115
+  skillKey2: 274
   laser: {fileID: 1911409968}
   firePos: {fileID: 564610620}
   laserCool: 18

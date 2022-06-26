@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Skill : MonoBehaviour
 {
     [SerializeField] KeyCode skillKey;
+    [SerializeField] KeyCode skillKey2;
     [SerializeField] GameObject laser;
 
     PlayerSkillState skillState;
@@ -75,7 +76,7 @@ public class Skill : MonoBehaviour
     }
     private void Laser()
     {
-        if (Input.GetKeyDown(skillKey))
+        if (Input.GetKeyDown(skillKey) || Input.GetKeyDown(skillKey2))
         {
             laser.SetActive(true);
             CoolSet(laserCool);
@@ -97,7 +98,7 @@ public class Skill : MonoBehaviour
     }
     private void Shotgun()
     {
-        if(Input.GetKeyDown(skillKey))
+        if(Input.GetKeyDown(skillKey) || Input.GetKeyDown(skillKey2))
         {
             CoolSet(shotgunCool);
             skillSound.ShotGunSound();
@@ -113,14 +114,14 @@ public class Skill : MonoBehaviour
                 float angle = Random.Range(-25f, 25f);
                 BulletDestroy egg = PoolManager.Instance.Pop("Bullet") as BulletDestroy;
                 egg.transform.position = firePos.transform.position;
-                egg.transform.rotation = Quaternion.Euler(tr.rotation.x, tr.rotation.y, tr.rotation.z + angle);
+                egg.transform.rotation = Quaternion.Euler(tr.rotation.x, tr.rotation.y * 180, tr.rotation.z + angle);
             }
             yield return new WaitForSeconds(0.1f);
         }
     }
     private void GuidedMissile()
     {
-        if (Input.GetKeyDown(skillKey))
+        if (Input.GetKeyDown(skillKey) || Input.GetKeyDown(skillKey2))
         {
             CoolSet(guidedMissileCool);
             skillSound.HomingBulletSound();

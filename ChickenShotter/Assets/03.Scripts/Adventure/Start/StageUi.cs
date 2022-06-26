@@ -33,6 +33,7 @@ public class StageUi : UiMove
             if (_currentBtnNum == 1)
             {
                 PlayerPrefs.SetInt("crtStage", 5);
+                PlayerManager.Instance.ResetPlayer();
                 PlayerManager.Instance.PlayerBulletNum += 1;
                 PlayerManager.Instance.PlayerStrength += 8;
                 SceneManager.LoadScene("Play");
@@ -40,14 +41,16 @@ public class StageUi : UiMove
             }
             else if (_currentBtnNum == 2)
             {
-                PlayerPrefs.SetInt("crtStage", 4);
-                PlayerManager.Instance.PlayerBulletNum += 2;
-                PlayerManager.Instance.PlayerStrength += 8;
+                PlayerPrefs.SetInt("crtStage", 7);
+                PlayerManager.Instance.ResetPlayer();
+                PlayerManager.Instance.PlayerBulletNum += 1;
+                PlayerManager.Instance.PlayerStrength += 11;
                 SceneManager.LoadScene("Play");
             }
             else if (_currentBtnNum == 3)
             {
                 PlayerPrefs.SetInt("crtStage", 10);
+                PlayerManager.Instance.ResetPlayer();
                 PlayerManager.Instance.PlayerBulletNum += 3;
                 PlayerManager.Instance.PlayerStrength += 11;
                 SceneManager.LoadScene("Play");
@@ -55,6 +58,7 @@ public class StageUi : UiMove
             else if (_currentBtnNum == 4)
             {
                 PlayerPrefs.SetInt("crtStage", 15);
+                PlayerManager.Instance.ResetPlayer();
                 PlayerManager.Instance.PlayerBulletNum += 4;
                 PlayerManager.Instance.PlayerStrength += 16;
                 SceneManager.LoadScene("Play");
@@ -62,6 +66,7 @@ public class StageUi : UiMove
             else if (_currentBtnNum == 5)
             {
                 PlayerPrefs.SetInt("crtStage", 16);
+                PlayerManager.Instance.ResetPlayer();
                 PlayerManager.Instance.PlayerBulletNum += 5;
                 PlayerManager.Instance.PlayerStrength += 14;
                 SceneManager.LoadScene("Play");
