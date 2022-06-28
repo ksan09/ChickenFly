@@ -26,7 +26,7 @@ public class Boss : PoolableMono
     private void Awake()
     {
         m_Hp = m_MaxHp;
-        MoneyTxt = GameObject.Find("Canvas/Money").GetComponent<TextMeshProUGUI>();
+        MoneyTxt = GameObject.Find("Canvas/CrtPanel/Money").GetComponent<TextMeshProUGUI>();
         
         bossSr = GetComponent<SpriteRenderer>();
         rb= GetComponent<Rigidbody2D>();

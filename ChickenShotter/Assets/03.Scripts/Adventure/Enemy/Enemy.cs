@@ -19,7 +19,7 @@ public class Enemy : PoolableMono
 
     private void Awake()
     {
-        MoneyTxt = GameObject.Find("Canvas/Money").GetComponent<TextMeshProUGUI>();
+        MoneyTxt = GameObject.Find("Canvas/CrtPanel/Money").GetComponent<TextMeshProUGUI>();
         p_Sr = GameObject.Find("PlayerControl/PlayerSprite").GetComponent<SpriteRenderer>();
         m_Sr = GetComponent<SpriteRenderer>();
         m_Mv = GetComponent<Movement>();

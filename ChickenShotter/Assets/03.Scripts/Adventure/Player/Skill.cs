@@ -29,7 +29,7 @@ public class Skill : MonoBehaviour
 
     void Start()
     {
-        skillCoolUi = GameObject.Find("Canvas/SkillCool/FillAmount/Filling").GetComponent<Image>();
+        skillCoolUi = GameObject.Find("Canvas/CrtPanel/SkillCool/FillAmount/Filling").GetComponent<Image>();
         tr = transform.GetChild(0).GetComponent<Transform>();
         skillSound = GetComponent<SkillSound>();
         skillState = PlayerManager.Instance.State;

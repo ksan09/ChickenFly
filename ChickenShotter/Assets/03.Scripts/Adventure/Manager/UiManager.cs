@@ -13,8 +13,8 @@ public class UiManager : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
-        _fillAmount = GameObject.Find("Canvas/HpGageMask/ImageFill").GetComponent<Image>();
-        _miniChicken = GameObject.Find("Canvas/ClearLine/miniIChicken").GetComponent<Image>();
+        _fillAmount = GameObject.Find("Canvas/CrtPanel/HpGageMask/ImageFill").GetComponent<Image>();
+        _miniChicken = GameObject.Find("Canvas/CrtPanel/ClearLine/miniIChicken").GetComponent<Image>();
         _sm = GameObject.Find("StageManager").GetComponent<StageManager>();
     }
     private void Update()
@@ -28,6 +28,7 @@ public class UiManager : MonoBehaviour
         //Å¬¸®¾î
         if (_sm.CrtTime >= _sm.ClearTime)
         {
+            _sm.CrtTime = 0;
             StartCoroutine(StageClear());
         }
     }

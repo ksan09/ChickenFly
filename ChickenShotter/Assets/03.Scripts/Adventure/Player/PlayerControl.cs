@@ -67,7 +67,6 @@ public class PlayerControl : MonoBehaviour
         {
             juumpTime += Time.deltaTime;
             rb.AddForce(juumpForce* addForceJump*Time.deltaTime, ForceMode2D.Force);
-            Debug.LogError(juumpTime + " " + i);
         }
     }
     private void Move()

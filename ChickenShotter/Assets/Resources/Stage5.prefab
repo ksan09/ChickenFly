@@ -751,6 +751,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BossDragon
       objectReference: {fileID: 0}
+    - target: {fileID: 602887356257329794, guid: 9636f02905a63d740b4dfc3561dde63b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 602887356257329804, guid: 9636f02905a63d740b4dfc3561dde63b, type: 3}
       propertyPath: m_RootOrder
       value: 0

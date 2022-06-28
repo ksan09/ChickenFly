@@ -17,7 +17,7 @@ public class ClearTxt : SoundPlayer
             _audioSource.volume += 0.2f;
 
         PlayClip(endingBgm);
-        endTxt.text = $"Score : {PlayerManager.Instance.Money}\n\nProgramming : KangSan\nArt : KangSan\nSound :\n8 - bit 8Pack\n8BIT MUSIC ALBUM - 051321\nGame Sound Solutions - 8 bits Elements\n\nThanks For Playing!";
+        endTxt.text = $"Score : {PlayerManager.Instance.Money}\nRevive : {PlayerPrefs.GetInt("Revive", 0)}\n\nProgramming : KangSan\nArt : KangSan\nSound :\n8 - bit 8Pack\n8BIT MUSIC ALBUM - 051321\nGame Sound Solutions - 8 bits Elements\n\nThanks For Playing!";
         StartCoroutine(StartScene());
     }
 

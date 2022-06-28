@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class SceneTest : MonoBehaviour
 {
     private StageManager stM;
+    [SerializeField] private GameObject exitPanel;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,9 +27,39 @@ public class SceneTest : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E))
                 stM.CrtTime = stM.ClearTime;
         }
-        if (Input.GetKeyDown(KeyCode.Escape))
-            SceneManager.LoadScene("Start");
+        bool isActive = false;
+        if (Input.GetKeyDown(KeyCode.Escape) && isActive == false)
+        {
+            exitPanel.SetActive(true);
+            Time.timeScale = 0;
+            isActive = true;
+        }
+        if (Input.GetKeyDown(KeyCode.Escape) && isActive == true)
+        {
+            exitPanel.SetActive(false);
+            Time.timeScale = 1;
+            isActive = false;
+        }
 
 
+
+    }
+    public void Retry()
+    {
+        PlayerPrefs.SetInt("Revive", 0);
+        PlayerManager.Instance.ResetPlayer();
+        Time.timeScale = 1;
+        exitPanel.SetActive(false);
+        SceneManager.LoadScene("Start");
+    }
+    public void Exit()
+    {
+        PlayerPrefs.SetInt("Revive", 0);
+        Application.Quit();
+    }
+    public void Return()
+    {
+        Time.timeScale = 1;
+        exitPanel.SetActive(false);
     }
 }

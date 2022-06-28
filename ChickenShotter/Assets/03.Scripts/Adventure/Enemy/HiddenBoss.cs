@@ -111,19 +111,19 @@ public class HiddenBoss : PoolableMono
             else if(rd <= 4.5)
             {
                 StartCoroutine(FallingHand());
-                yield return new WaitForSeconds(3.5f);
+                yield return new WaitForSeconds(5f);
             }
             //³«¼®2
             else if(rd <= 6)
             {
                 StartCoroutine(FallingHand2());
-                yield return new WaitForSeconds(4.6f);
+                yield return new WaitForSeconds(5f);
             }
             //µ¹Áø
             else if(rd <= 8.5)
             {
                 StartCoroutine(Dash());
-                yield return new WaitForSeconds(2.5f);
+                yield return new WaitForSeconds(4f);
             }
             //BulletFire
             else
@@ -172,6 +172,11 @@ public class HiddenBoss : PoolableMono
             {
                 EnemyBullet enemyBullet = PoolManager.Instance.Pop(eBullet) as EnemyBullet;
                 enemyBullet.transform.position = new Vector3(spawnPosX, maxPosY - i);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                EnemyBullet enemyBullet = PoolManager.Instance.Pop(eBullet) as EnemyBullet;
+                enemyBullet.transform.position = new Vector3(spawnPosX, minPosY + i);
             }
         }
         else if (rd <= 3)
@@ -263,6 +268,11 @@ public class HiddenBoss : PoolableMono
                 EnemyBullet enemyBullet = PoolManager.Instance.Pop(eBullet2) as EnemyBullet;
                 enemyBullet.transform.position = new Vector3(-spawnPosX, maxPosY - i);
             }
+            for (int i = 0; i < 2; i++)
+            {
+                EnemyBullet enemyBullet = PoolManager.Instance.Pop(eBullet2) as EnemyBullet;
+                enemyBullet.transform.position = new Vector3(-spawnPosX, minPosY + i);
+            }
         }
         else if (rd <= 3)
         {
@@ -343,14 +353,8 @@ public class HiddenBoss : PoolableMono
     #endregion
     IEnumerator BulletFire()
     {
-        rdX = Random.Range(-6f, 6f);
-        rdY = Random.Range(-3f, 3f);
-        danger.SetActive(true);
-        danger.transform.position = new Vector2(rdX, rdY);
-        yield return new WaitForSeconds(2f);
-        danger.SetActive(false);
-        transform.DOMove(new Vector2(rdX, rdY), 1f);
-        yield return new WaitForSeconds(1f);
+        StartCoroutine(Move());
+        yield return new WaitForSeconds(3f);
         for (int i = 0; i < 64; i++)
         {
             
@@ -367,22 +371,26 @@ public class HiddenBoss : PoolableMono
     }
     IEnumerator FallingHand()
     {
-        rdX = Random.Range(-6f, 6f);
-        rdY = Random.Range(-3f, 3f);
-        danger.SetActive(true);
-        danger.transform.position = new Vector2(rdX, rdY);
-        yield return new WaitForSeconds(2f);
-        danger.SetActive(false);
-        transform.DOMove(new Vector2(rdX, rdY), 1f);
-        yield return new WaitForSeconds(0.5f);
+        StartCoroutine(Move());
+        yield return new WaitForSeconds(2.5f);
+        FallHand();
+        yield return new WaitForSeconds(0.8f);
+        FallHand2();
+        yield return new WaitForSeconds(0.8f);
+        FallHand();
 
-        for (int i = 0; i < 6; i++)
-        {
-            MateoDanger spawnHand = PoolManager.Instance.Pop("downHandDanger") as MateoDanger;
-            spawnHand.transform.position = new Vector3(i * 3.16f - 8, -4.5f, 0);
-        }
     }
     IEnumerator FallingHand2()
+    {
+        StartCoroutine(Move());
+        yield return new WaitForSeconds(2.5f);
+        FallHand2();
+        yield return new WaitForSeconds(0.8f);
+        FallHand();
+        yield return new WaitForSeconds(0.8f);
+        FallHand2();
+    }
+    IEnumerator Move()
     {
         rdX = Random.Range(-6f, 6f);
         rdY = Random.Range(-3f, 3f);
@@ -392,12 +400,6 @@ public class HiddenBoss : PoolableMono
         danger.SetActive(false);
         transform.DOMove(new Vector2(rdX, rdY), 1f);
         yield return new WaitForSeconds(0.5f);
-
-        for (int i = 0; i < 5; i++)
-        {
-            MateoDanger spawnHand = PoolManager.Instance.Pop("downHandDanger") as MateoDanger;
-            spawnHand.transform.position = new Vector3(i * 3.16f - 6.9f, -4.5f, 0);
-        }
     }
     IEnumerator Dash()
     {
@@ -411,25 +413,65 @@ public class HiddenBoss : PoolableMono
             yield return new WaitForSeconds(0.8f);
             if (i == 0)
             {
-                for(int j=0; j <4; j++)
+                for(int j=0; j <16; j++)
                 {
                     EnemyBullet enemyBullet = PoolManager.Instance.Pop("EnemyBullet") as EnemyBullet;
                     enemyBullet.transform.position = transform.position;
-                    enemyBullet.transform.rotation = Quaternion.Euler(new Vector3(0, 0, j * 90f));
+                    enemyBullet.transform.rotation = Quaternion.Euler(new Vector3(0, 0, j * 22.5f));
                 }
             }
             else
             {
-                for (int j = 0; j < 4; j++)
+                float rd = Random.Range(0f, 2f);
+                if(rd < 1)
                 {
-                    EnemyBullet enemyBullet = PoolManager.Instance.Pop("EnemyBullet") as EnemyBullet;
-                    enemyBullet.transform.position = transform.position;
-                    enemyBullet.transform.rotation = Quaternion.Euler(new Vector3(0, 0, j * 90f + 45));
+                    for (int j = 0; j < 16; j++)
+                    {
+                        EnemyBullet enemyBullet = PoolManager.Instance.Pop("EnemyBullet") as EnemyBullet;
+                        enemyBullet.transform.position = transform.position;
+                        enemyBullet.transform.rotation = Quaternion.Euler(new Vector3(0, 0, j * 22.5f));
+
+                        EnemyBullet enemyBullet2 = PoolManager.Instance.Pop("EnemyBullet") as EnemyBullet;
+                        enemyBullet2.transform.position = transform.position;
+                        enemyBullet2.transform.rotation = Quaternion.Euler(new Vector3(0, 0, j * 22.5f + 180f));
+                        yield return new WaitForSeconds(0.0625f);
+                    }
                 }
+                else
+                {
+                    for (int j = 0; j < 16; j++)
+                    {
+                        EnemyBullet enemyBullet = PoolManager.Instance.Pop("EnemyBullet") as EnemyBullet;
+                        enemyBullet.transform.position = transform.position;
+                        enemyBullet.transform.rotation = Quaternion.Euler(new Vector3(0, 0, j * -22.5f));
+
+                        EnemyBullet enemyBullet2 = PoolManager.Instance.Pop("EnemyBullet") as EnemyBullet;
+                        enemyBullet2.transform.position = transform.position;
+                        enemyBullet2.transform.rotation = Quaternion.Euler(new Vector3(0, 0, j * -22.5f + 180f));
+                        yield return new WaitForSeconds(0.0625f);
+                    }
+                }
+                
             }
         }
         yield return new WaitForSeconds(1f);
 
+    }
+    private void FallHand()
+    {
+        for (int i = 0; i < 6; i++)
+        {
+            MateoDanger spawnHand = PoolManager.Instance.Pop("downHandDanger") as MateoDanger;
+            spawnHand.transform.position = new Vector3(i * 3.16f - 8, -4.5f, 0);
+        }
+    }
+    private void FallHand2()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            MateoDanger spawnHand = PoolManager.Instance.Pop("downHandDanger") as MateoDanger;
+            spawnHand.transform.position = new Vector3(i * 3.16f - 8 + 1.58f, -4.5f, 0);
+        }
     }
 
     public override void Reset()
