@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-public abstract class FSM_Condition
+public abstract class FSM_Condition : FSM_NameIsType
 {
     protected FSM_Controller _owner;
+
 
     public abstract void ResetCondition();
     public abstract bool Check_FSMCondition();
