@@ -5,18 +5,26 @@ using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public abstract class FSM_State : FSM_NameIsType
+public class FSM_State<T> where T : Enum
 {
     // Owner
-    private FSM_Controller _owner;
+    private FSM_Controller<T> _owner;
 
-    private List<FSM_Transition> _transitions;
-    public List<FSM_Transition> Transitions => _transitions;
+    private List<FSM_Transition<T>> _transitions;
+    public List<FSM_Transition<T>> Transitions => _transitions;
+
+    public FSM_State(FSM_Controller<T> owner)
+    {
+        _owner = owner;
+        _transitions = new List<FSM_Transition<T>>();
+
+
+    }
 
     public bool CheckTransition()
     {
 
-        foreach (FSM_Transition transition in _transitions)
+        foreach (FSM_Transition<T> transition in _transitions)
         {
 
             if(transition.Check_TransitionConditions())
@@ -36,7 +44,7 @@ public abstract class FSM_State : FSM_NameIsType
     public void EnterFSMState()
     {
         //
-        foreach(FSM_Transition transition in _transitions)
+        foreach(FSM_Transition<T> transition in _transitions)
         {
             transition.ResetCondition();
         }
@@ -58,20 +66,27 @@ public abstract class FSM_State : FSM_NameIsType
         ExitState();
     }
 
-    public void SetOwner(FSM_Controller owner)
+    public void AddTransition(FSM_Transition<T> transition)
     {
-        _owner = owner;
 
-        _transitions = transform.GetComponentsInChildren<FSM_Transition>().ToList<FSM_Transition>();
-        foreach (FSM_Transition transition in _transitions)
-        {
-            transition.SetOwner(owner);
-        }
+        _transitions.Add(transition);
+
     }
 
-    protected abstract void EnterState();
-    protected abstract void UpdateState();
-    protected abstract void ExitState();
+    protected virtual void EnterState()
+    {
+
+    }
+
+    protected virtual void UpdateState()
+    {
+
+    }
+
+    protected virtual void ExitState()
+    {
+
+    }
 
     
 }

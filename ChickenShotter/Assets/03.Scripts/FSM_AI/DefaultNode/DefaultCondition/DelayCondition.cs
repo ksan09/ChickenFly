@@ -5,10 +5,12 @@ using UnityEngine;
 public class DelayCondition : FSM_Condition
 {
     private float _currentTime;
-
-    [SerializeField]
     private float _delayTime;
 
+    public DelayCondition(float delayTime)
+    {
+        _delayTime = delayTime;
+    }
 
     public override bool Check_FSMCondition()
     {
