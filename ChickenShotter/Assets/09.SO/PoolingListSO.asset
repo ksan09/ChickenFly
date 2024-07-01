@@ -17,8 +17,12 @@ MonoBehaviour:
     Count: 20
   - PoolObject: {fileID: 0}
     Count: 10
+  PoolingSoundList:
   - PoolObject: {fileID: 0}
     Count: 0
+  - PoolObject: {fileID: 0}
+    Count: 0
+  PoolingEffectList:
   - PoolObject: {fileID: 0}
     Count: 0
   - PoolObject: {fileID: 0}
