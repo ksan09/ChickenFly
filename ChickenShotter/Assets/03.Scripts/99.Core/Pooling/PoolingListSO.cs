@@ -16,6 +16,13 @@ public class PoolingData
 public class PoolingListSO : ScriptableObject
 {
 
+    [Header("Pooling Object")]
     public List<PoolingData> PoolingList;
+
+    [Header("Pooling Sound")]
+    public List<PoolingData> PoolingSoundList;
+
+    [Header("Pooling Effect")]
+    public List<PoolingData> PoolingEffectList;
 
 }

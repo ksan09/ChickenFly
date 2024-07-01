@@ -26,6 +26,20 @@ public class PoolManager : MonoSingleton<PoolManager>
 
         }
 
+        foreach (var pool in _poolingList.PoolingEffectList)
+        {
+
+            CreatePool(pool.PoolObject, pool.Count);
+
+        }
+
+        foreach (var pool in _poolingList.PoolingSoundList)
+        {
+
+            CreatePool(pool.PoolObject, pool.Count);
+
+        }
+
     }
 
     public void CreatePool(PoolableMono prefab, int cnt = 10)
