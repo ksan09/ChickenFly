@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6ececeb836630e4093187c77e44a04e, type: 3}
+  m_Name: CardGridUI_SpriteContainerSO
+  m_EditorClassIdentifier: 
+  DefaultCardGrid: {fileID: 415241562, guid: 822058f1ea8d0444bb775bd8ac605dbe, type: 3}
+  DefaultCardImageGrid: {fileID: -1790387648, guid: 822058f1ea8d0444bb775bd8ac605dbe, type: 3}
+  DefaultCardGridMaterial: {fileID: 2100000, guid: fa69b47a42fdf5043a454fcf001c8982, type: 2}
+  RareCardGrid: {fileID: 1892013923, guid: 822058f1ea8d0444bb775bd8ac605dbe, type: 3}
+  RareCardImageGrid: {fileID: -430765689, guid: 822058f1ea8d0444bb775bd8ac605dbe, type: 3}
+  RareCardGridMaterial: {fileID: 2100000, guid: 356444e2459630c418723e3f17b2d1f3, type: 2}
+  CursedCardGrid: {fileID: -2010818739, guid: 822058f1ea8d0444bb775bd8ac605dbe, type: 3}
+  CursedCardImageGrid: {fileID: -1708729160, guid: 822058f1ea8d0444bb775bd8ac605dbe, type: 3}
+  CursedCardGridMaterial: {fileID: 2100000, guid: fad548a419b425d48b8a2a2bc6293380, type: 2}

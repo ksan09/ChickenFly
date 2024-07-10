@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public class PoolManager : MonoSingleton<PoolManager>
 {
@@ -57,7 +58,7 @@ public class PoolManager : MonoSingleton<PoolManager>
         }
 
         PoolableMono item = _pools[prefabName].Pop();
-        item.transform.SetParent(null);
+
         item.Reset();
         return item;
     }
@@ -83,7 +84,6 @@ public class PoolManager : MonoSingleton<PoolManager>
         }
 
         PoolableMono item = _pools[prefabName].Pop();
-        item.transform.SetParent(null);
         item.transform.position = position;
         item.transform.rotation = rotation;
 
@@ -99,7 +99,6 @@ public class PoolManager : MonoSingleton<PoolManager>
         }
 
         PoolableMono item = _pools[prefabName].Pop();
-        item.transform.SetParent(null);
         item.transform.position = position;
         item.transform.eulerAngles = eulerAngles;
 
@@ -110,7 +109,9 @@ public class PoolManager : MonoSingleton<PoolManager>
     public void Push(PoolableMono obj)
     {
 
-        obj.transform.SetParent(_trmParent);
+        if (obj.transform.parent != _trmParent)
+            obj.transform.SetParent(_trmParent);
+
         _pools[obj.name].Push(obj);
 
     }
