@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dd5671023655bd34db3caa0f70989e31, type: 3}
-  m_Name: Small2_CardInfoSO
+  m_Name: 19_Speed+
   m_EditorClassIdentifier: 
-  CardName: "\uC18C\uD615\uD654"
+  CardName: "\uC18D\uB3C4+"
+  CardMaxLevel: 5
   CardType: 0
-  CardImage: {fileID: 1637759114, guid: a97f91b48bc8829488c48c1751e4f2b2, type: 3}
-  CardExplain: "\uD06C\uAE30\uAC00 \uC791\uC544\uC9D1\uB2C8\uB2E4"
+  CardImage: {fileID: -46846838, guid: e293f7789a274724da81b9b00b5c2238, type: 3}
+  CardExplain: "\uC774\uB3D9 \uC18D\uB3C4\uAC00 \uC99D\uAC00\uD569\uB2C8\uB2E4"

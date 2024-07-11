@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd5671023655bd34db3caa0f70989e31, type: 3}
+  m_Name: 3_Explosive_Egg
+  m_EditorClassIdentifier: 
+  CardName: "\uD3ED\uBC1C \uB2EC\uAC40"
+  CardMaxLevel: 5
+  CardType: 0
+  CardImage: {fileID: -821590660, guid: e293f7789a274724da81b9b00b5c2238, type: 3}
+  CardExplain: "\uB2EC\uAC40\uC774 \uC801\uC911 \uC2DC \uD3ED\uBC1C\uD569\uB2C8\uB2E4"

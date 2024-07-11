@@ -1,12 +1,40 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class CardManager : MonoSingleton<CardManager>
 {
 
     [SerializeField]
+    private CardListSO _cardListSO;
+    [SerializeField]
     private CardGridUI_SpriteContainerSO _cardGridUI_SpriteContainerSO;
+
+    private List<CardInfoSO> _cards;
+
+    public override void Init()
+    {
+
+        _cards = _cardListSO.CardList.ToList<CardInfoSO>();
+
+    }
+
+    public List<CardInfoSO> GetCardList()
+    {
+        return _cards.ToList();
+    }
+    public CardInfoSO GetCard(int num)
+    {
+
+        if(_cards.Count <= num)
+        {
+            return null;
+        }
+
+        return _cards[num];
+
+    }
 
     public Sprite GetCardGrid(CardType type)
     {

@@ -8,6 +8,7 @@ public class CardInfoSO : ScriptableObject
 
     [Header("Card Info")]
     public string   CardName;
+    public int      CardMaxLevel;
     public CardType CardType;
     public Sprite   CardImage;
     public string   CardExplain;

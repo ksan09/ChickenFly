@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dd5671023655bd34db3caa0f70989e31, type: 3}
-  m_Name: Small_CardInfoSO
+  m_Name: 5_Hard_Body
   m_EditorClassIdentifier: 
-  CardName: "\uC791\uC544\uC9C0\uB2E4"
-  CardType: 2
-  CardImage: {fileID: 1637759114, guid: a97f91b48bc8829488c48c1751e4f2b2, type: 3}
-  CardExplain: "\uD06C\uAE30\uAC00 \uC791\uC544\uC9C0\uACE0,<br>\uCCB4\uB825\uC774
-    \uAC10\uC18C\uD569\uB2C8\uB2E4"
+  CardName: "\uAC15\uCCB4"
+  CardMaxLevel: 5
+  CardType: 0
+  CardImage: {fileID: 1610476780, guid: e293f7789a274724da81b9b00b5c2238, type: 3}
+  CardExplain: "\uBC29\uC5B4\uB825\uC774 \uC18C\uD3ED \uC99D\uAC00\uD569\uB2C8\uB2E4"

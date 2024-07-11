@@ -17,11 +17,7 @@ public class MonoSingleton<T> : MonoBehaviour where T : MonoSingleton<T>
             {
                 instance = FindObjectOfType<T>();
 
-                if (instance == null)
-                {
-                    Debug.LogError($"! - {typeof(T).Name} is null");
-                }
-                else if (FindObjectsOfType<T>().Length > 1)
+                if (FindObjectsOfType<T>().Length > 1)
                 {
                     Debug.LogError($"! - {typeof(T).Name} is Too Many");
                 }
@@ -34,7 +30,6 @@ public class MonoSingleton<T> : MonoBehaviour where T : MonoSingleton<T>
                 return instance;
             }
 
-            Debug.LogError($"{typeof(T).Name} is null");
             return null;
         }
     }
