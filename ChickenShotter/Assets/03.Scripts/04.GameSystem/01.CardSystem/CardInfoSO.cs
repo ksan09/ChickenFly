@@ -13,4 +13,7 @@ public class CardInfoSO : ScriptableObject
     public Sprite   CardImage;
     public string   CardExplain;
 
+    [Header("Card Effect")]
+    public CardAbilityData CardEffect;
+
 }

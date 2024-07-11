@@ -17,3 +17,21 @@ MonoBehaviour:
   CardType: 1
   CardImage: {fileID: -26927712, guid: e293f7789a274724da81b9b00b5c2238, type: 3}
   CardExplain: "\uBC1C\uC0AC\uB418\uB294 \uB2EC\uAC40 \uC218 +2"
+  CardEffect:
+    CardStatInfo:
+      Health: 0
+      Strength: 0
+      AttackSpeed: 0
+      Defense: 0
+      Speed: 0
+      Luck: 0
+      Digestion: 0
+      JumpPower: 0
+      FallSpeed: 0
+      Magnet: 0
+      StrengthPer: 0
+      SkillCoolDownPer: 0
+      LifeDrainPer: 0
+      ShotGunEgg: 1
+      Through: 0
+    CardEffectList: []

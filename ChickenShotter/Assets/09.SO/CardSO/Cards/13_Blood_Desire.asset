@@ -19,3 +19,22 @@ MonoBehaviour:
   CardExplain: "\uC785\uD78C \uB370\uBBF8\uC9C0\uC758 50%\uB9CC\uD07C \uCCB4\uB825\uC744
     \uD68C\uBCF5\uD569\uB2C8\uB2E4. \uC774\uB3D9\uD558\uBA74\uC11C \uAC10\uC18C\uB418\uB294
     \uCCB4\uB825\uC774 2\uBC30\uAC00 \uB429\uB2C8\uB2E4"
+  CardEffect:
+    CardStatInfo:
+      Health: 0
+      Strength: 0
+      AttackSpeed: 0
+      Defense: 0
+      Speed: 0
+      Luck: 0
+      Digestion: 0
+      JumpPower: 0
+      FallSpeed: 0
+      Magnet: 0
+      FeverDuration: 0
+      StrengthPer: 0
+      SkillCoolDownPer: 0
+      LifeDrainPer: 0.5
+      ShotGunEgg: 0
+      Through: 0
+    CardEffectList: []
