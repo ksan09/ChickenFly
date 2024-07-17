@@ -70,11 +70,16 @@ public class SelectCardPanel : IngamePanel
 
                 cardUI.SetColor(Color.white);
 
+                Sequence seq = DOTween.Sequence();
                 Transform trm = cardUI.transform;
                 trm.DOKill();
 
                 trm.localScale = Vector3.one;
-                trm.DOScale(Vector3.one * 1.3f, 0.2f).SetEase(Ease.OutBounce);
+                trm.localEulerAngles = Vector3.zero;
+                seq.Append(trm.DOScale(Vector3.one * 1.3f, 0.2f).SetEase(Ease.OutBounce))
+                    .Join(trm.DORotate(new Vector3(0, 0, -5f), 0.1f).SetEase(Ease.InBack))
+                    .Append(trm.DORotate(new Vector3(0, 0, 5f), 0.1f).SetEase(Ease.OutBack))
+                    .Append(trm.DORotate(new Vector3(0, 0, 0), 0.1f).SetEase(Ease.OutBounce));
 
             }
             else
@@ -97,6 +102,8 @@ public class SelectCardPanel : IngamePanel
 
         Transform trm = cardUI.transform;
         trm.DOKill();
+
+        trm.localEulerAngles = Vector3.zero;
 
         if (_selectedCard != null || cardUI == _selectedCard)
             trm.localScale = Vector3.one * 1.2f;
