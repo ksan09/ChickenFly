@@ -2,10 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class CardUI : MonoBehaviour
+public class CardUI : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler
 {
 
     [Header("CardInfo")]
@@ -18,6 +20,9 @@ public class CardUI : MonoBehaviour
     private TextMeshProUGUI     _cardNameText;
     private Image               _cardImage;
     private TextMeshProUGUI     _cardExplainText;
+
+    public event Action<CardUI> OnCardClick;
+    public event Action<CardUI> OnCardEnter;
 
     private void Awake()
     {
@@ -51,6 +56,16 @@ public class CardUI : MonoBehaviour
 
 
     }
+    public void SetColor(Color color)
+    {
+        _cardGrid.color         = color;
+        _cardImageGrid.color    = color;
+
+        _cardImage.color        = color;
+
+        _cardNameText.color     = color;
+        _cardExplainText.color  = color;
+    }
 
     private void OnValidate()
     {
@@ -63,4 +78,17 @@ public class CardUI : MonoBehaviour
 
     }
 
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+
+        OnCardEnter?.Invoke(this);
+        
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+
+        OnCardClick?.Invoke(this);
+
+    }
 }

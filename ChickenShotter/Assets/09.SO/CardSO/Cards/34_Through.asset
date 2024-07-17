@@ -18,3 +18,27 @@ MonoBehaviour:
   CardImage: {fileID: 254132106, guid: e293f7789a274724da81b9b00b5c2238, type: 3}
   CardExplain: "\uCD1D\uC54C\uC774 \uC801\uC744 \uAD00\uD1B5\uD569\uB2C8\uB2E4<br>\uAD00\uD1B5\uD560
     \uB584\uB9C8\uB2E4 \uD0C4\uD658\uC758 \uD53C\uD574\uB7C9\uC740 50% \uAC10\uC18C\uD569\uB2C8\uB2E4."
+  CardEffect:
+    CardStatInfo:
+      Health: 0
+      Strength: 0
+      AttackSpeed: 0
+      Defense: 0
+      Speed: 0
+      Luck: 0
+      CurseLuck: 0
+      Digestion: 0
+      JumpPower: 0
+      Magnet: 0
+      FeverDuration: 0
+      StrengthPer: 0
+      HitDamageAmountPer: 0
+      SkillCoolDownPer: 0
+      LifeDrainPer: 0
+      ExpPer: 0
+      GoldPer: 0
+      FallSpeedPer: 0
+      ShotGunEgg: 0
+      Through: 1
+      Life: 0
+    CardEffectList: []

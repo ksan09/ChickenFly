@@ -8,7 +8,12 @@ public class CardEffect_GetCardSO : CardEffectSO
 
     public List<CardType> GetCardList;
 
-    public override void UseCardEffect()
+    public override void UseCardEffect(CardInfoSO cardInfoSO)
+    {
+
+    }
+
+    public override void RemoveCardEffect(CardInfoSO cardInfoSO)
     {
 
     }

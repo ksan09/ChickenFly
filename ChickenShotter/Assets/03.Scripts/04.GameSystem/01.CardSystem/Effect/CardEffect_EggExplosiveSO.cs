@@ -6,9 +6,14 @@ using UnityEngine;
 public class CardEffect_EggExplosiveSO : CardEffectSO
 {
 
-    public override void UseCardEffect()
+    public override void UseCardEffect(CardInfoSO cardInfoSO)
     {
         
+    }
+
+    public override void RemoveCardEffect(CardInfoSO cardInfoSO)
+    {
+
     }
 
 }

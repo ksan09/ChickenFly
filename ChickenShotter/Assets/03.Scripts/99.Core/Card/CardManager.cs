@@ -12,11 +12,28 @@ public class CardManager : MonoSingleton<CardManager>
     private CardGridUI_SpriteContainerSO _cardGridUI_SpriteContainerSO;
 
     private List<CardInfoSO> _cards;
+    private Dictionary<CardType, List<CardInfoSO>> _cardListByType;
+
+    public List<CardInfoSO> CardList { get { return _cards.ToList(); } }
 
     public override void Init()
     {
 
         _cards = _cardListSO.CardList.ToList<CardInfoSO>();
+        _cardListByType = new Dictionary<CardType, List<CardInfoSO>>()
+        {
+            { CardType.Normal,  new List<CardInfoSO>() },
+            { CardType.Rare,    new List<CardInfoSO>() },
+            { CardType.Cursed,  new List<CardInfoSO>() },
+        };
+
+        // Info Setting
+        foreach(CardInfoSO card in _cards)
+        {
+
+            _cardListByType[card.CardType].Add(card);
+
+        }
 
     }
 
@@ -92,6 +109,25 @@ public class CardManager : MonoSingleton<CardManager>
 
         return null;
 
+    }
+
+    public void ChangeCardType(CardType targetType, CardType changeType)
+    {
+
+
+
+    }
+
+    public void ChangeAllCard()
+    {
+
+        // 플레이어 카드 리스트를
+
+    }
+
+    public void ResetCardList()
+    {
+        _cards = _cardListSO.CardList.ToList();
     }
 
 }
