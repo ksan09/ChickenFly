@@ -3,9 +3,17 @@ using UnityEngine;
 
 public class TextAutoSizeController : MonoBehaviour
 {
+
     public TMP_Text[] TextObjects;
+    public int FontMaxSize = 28;
+    public int FontMinSize = 4;
 
     private void Awake()
+    {
+        SetAutoFontSize();
+    }
+
+    public void SetAutoFontSize()
     {
         if (TextObjects == null || TextObjects.Length == 0)
             return;
@@ -36,6 +44,7 @@ public class TextAutoSizeController : MonoBehaviour
 
         // Iterate over all other text objects to set the point size
         for (int i = 0; i < TextObjects.Length; i++)
-            TextObjects[i].fontSize = optimumPointSize;
+            TextObjects[i].fontSize = Mathf.Clamp(optimumPointSize, FontMinSize, FontMaxSize);
     }
+
 }

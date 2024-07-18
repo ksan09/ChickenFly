@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC18C\uD654+"
+  m_text: "\uC545\uB9C8\uC758 \uD798"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ff2c7a4411680494d8fa9afe51ba5853, type: 2}
   m_sharedMaterial: {fileID: -7717036916500552226, guid: ff2c7a4411680494d8fa9afe51ba5853, type: 2}
@@ -146,6 +146,7 @@ GameObject:
   - component: {fileID: 233928006}
   - component: {fileID: 233928008}
   - component: {fileID: 233928007}
+  - component: {fileID: 567279243720399600}
   m_Layer: 5
   m_Name: CardExplain
   m_TagString: Untagged
@@ -201,8 +202,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC801 \uCC98\uCE58 \uC2DC \uD68C\uBCF5\uB418\uB294 \uCCB4\uB825\uC774
-    \uC99D\uAC00\uD569\uB2C8\uB2E4"
+  m_text: "\uACF5\uACA9\uB825\uC774 1.5\uBC30\uAC00 \uB429\uB2C8\uB2E4<br><br>\uBC1B\uB294
+    \uB370\uBBF8\uC9C0\uAC00 2\uBC30\uAC00 \uB429\uB2C8\uB2E4"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 50937662aaa4a8a4ca0b340b52b1a771, type: 2}
   m_sharedMaterial: {fileID: -1360809625389958005, guid: 50937662aaa4a8a4ca0b340b52b1a771, type: 2}
@@ -229,7 +230,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 28
+  m_fontSize: 21.95
   m_fontSizeBase: 28
   m_fontWeight: 400
   m_enableAutoSizing: 0
@@ -271,6 +272,22 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &567279243720399600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 233928005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d3953f322ced7a4f805bc46cdae85fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TextObjects:
+  - {fileID: 233928007}
+  FontMaxSize: 28
+  FontMinSize: 4
 --- !u!1 &325967438
 GameObject:
   m_ObjectHideFlags: 0
@@ -337,7 +354,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1304174269, guid: e293f7789a274724da81b9b00b5c2238, type: 3}
+  m_Sprite: {fileID: -1602007959, guid: e293f7789a274724da81b9b00b5c2238, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -414,7 +431,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1790387648, guid: 822058f1ea8d0444bb775bd8ac605dbe, type: 3}
+  m_Sprite: {fileID: -1708729160, guid: 822058f1ea8d0444bb775bd8ac605dbe, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -486,7 +503,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 2100000, guid: fa69b47a42fdf5043a454fcf001c8982, type: 2}
+  m_Material: {fileID: 2100000, guid: fad548a419b425d48b8a2a2bc6293380, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -494,7 +511,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 415241562, guid: 822058f1ea8d0444bb775bd8ac605dbe, type: 3}
+  m_Sprite: {fileID: -2010818739, guid: 822058f1ea8d0444bb775bd8ac605dbe, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -516,4 +533,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3c67aa1710ef9543af9b55aad107788, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cardInfoSO: {fileID: 11400000, guid: 1cb4cbd0651fb3543892215b2ad1022c, type: 2}
+  _cardInfoSO: {fileID: 11400000, guid: 0deb392a3c3ee4b4392e9fbc9717a681, type: 2}
+  _textAutoSizeController: {fileID: 567279243720399600}

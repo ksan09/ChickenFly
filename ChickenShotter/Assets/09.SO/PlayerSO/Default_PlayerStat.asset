@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ede89d744140e134ba04f7aabd998915, type: 3}
+  m_Name: Default_PlayerStat
+  m_EditorClassIdentifier: 
+  StatData:
+    MaxHealth: 200
+    Strength: 20
+    AttackSpeed: 4
+    Defense: 0
+    Speed: 5
+    Luck: 0
+    CurseLuck: 0
+    Digestion: 10
+    JumpPower: 8
+    Magnet: 0
+    FeverDuration: 2
+    StrengthPer: 0
+    HitDamageAmountPer: 0
+    SkillCoolDownPer: 0
+    LifeDrainPer: 0
+    ExpPer: 0
+    GoldPer: 0
+    FallSpeedPer: 0
+    ShotGunEgg: 0
+    Through: 0
+    Life: 0

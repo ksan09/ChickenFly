@@ -14,6 +14,16 @@ public class CardUI : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler
     [SerializeField] private CardInfoSO _cardInfoSO;
     public CardInfoSO CardInfoSO => _cardInfoSO;
 
+    private RectTransform _rectTransform;
+    public RectTransform CardRectTransform
+    {
+        get { return _rectTransform; }
+        set { _rectTransform = value; }
+    }
+
+    [Header("Font Contorl")]
+    [SerializeField] private TextAutoSizeController _textAutoSizeController;
+
     private Image _cardGrid;
     private Image _cardImageGrid;
 
@@ -32,12 +42,19 @@ public class CardUI : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler
     private void InitCard()
     {
         
+        _rectTransform = GetComponent<RectTransform>();
+
         _cardGrid = GetComponent<Image>();
         _cardImageGrid = transform.Find("CardImage").GetComponent<Image>();
 
         _cardNameText = transform.Find("CardName").GetComponent<TextMeshProUGUI>();
         _cardImage = transform.Find("CardImage/Image").GetComponent<Image>();
         _cardExplainText = transform.Find("CardExplain").GetComponent<TextMeshProUGUI>();
+
+        if (_textAutoSizeController == null)
+        {
+            _textAutoSizeController = _cardExplainText.transform.GetComponent<TextAutoSizeController>();
+        }
 
     }
 
@@ -54,6 +71,7 @@ public class CardUI : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler
         _cardImage.sprite       = cardInfoSO.CardImage;
         _cardExplainText.text   = cardInfoSO.CardExplain;
 
+        _textAutoSizeController.SetAutoFontSize();
 
     }
     public void SetColor(Color color)

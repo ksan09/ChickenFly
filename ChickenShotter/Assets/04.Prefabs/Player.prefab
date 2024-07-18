@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 4834278141289972606}
   - component: {fileID: 4834278141289972605}
   - component: {fileID: 4834278141289972604}
+  - component: {fileID: 5344910843288297424}
+  - component: {fileID: 1519615643217878581}
   - component: {fileID: 4834278141289972601}
   - component: {fileID: 4834278141289972600}
   - component: {fileID: 7002576698147266973}
@@ -114,6 +116,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _jumpPower: 10
+--- !u!114 &5344910843288297424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4834278141289972595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b71480c17c77874ca6abf0c097b7c5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerStatDataSO: {fileID: 11400000, guid: 2d1024bc9cce8594c927aae6a26a4b94, type: 2}
+--- !u!114 &1519615643217878581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4834278141289972595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e573cc7fe2da3f45a25c1565452d5b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealth: 10
+  _currentHealth: 10
 --- !u!58 &4834278141289972601
 CircleCollider2D:
   m_ObjectHideFlags: 0

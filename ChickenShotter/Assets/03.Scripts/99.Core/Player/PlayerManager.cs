@@ -21,6 +21,9 @@ public class PlayerManager : MonoSingleton<PlayerManager>
     private Dictionary<CardInfoSO, int> _playerCardCount;   // Player Card's Count
     private int _playerCurrentCardCount = 0;                // Player Card Count
 
+    [Header("Player")]
+    [SerializeField]
+    private Transform _playerTrm;
     private PlayerStat _playerStat;                         // Player Stat
 
     public event OnPlayerAttackEventDelegate            OnPlayerAttackEvent;            // Player Attack Effect
@@ -33,6 +36,12 @@ public class PlayerManager : MonoSingleton<PlayerManager>
 
     public override void Init()
     {
+
+        if (_playerTrm == null)
+            _playerTrm = GameObject.Find("Player").transform;
+
+        if (_playerTrm != null)
+            _playerStat = _playerTrm.GetComponent<PlayerStat>();
 
         SetCardData(CardManager.Instance.CardList);
         _playerCurrentCardCount = 0;
