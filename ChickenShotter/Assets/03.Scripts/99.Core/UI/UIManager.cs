@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -43,6 +44,8 @@ public class UIManager : MonoSingleton<UIManager>
             PanelDictionary[type].OnOpenTransition();
             PanelDictionary[type].OnOpenEvent();
 
+            GameManager.Instance.ChangeGameMode(Chf_GameMode.OnlyUI);
+
         }
 
     }
@@ -55,6 +58,8 @@ public class UIManager : MonoSingleton<UIManager>
 
             PanelDictionary[type].OnCloseTransition();
             PanelDictionary[type].OnCloseEvent();
+
+            GameManager.Instance.ChangeGameMode(Chf_GameMode.OnlyPlay);
 
         }
 

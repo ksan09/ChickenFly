@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 
 // Player Delegate
@@ -10,10 +11,10 @@ public delegate void OnPlayerAttackEventDelegate(Transform hitObj);             
 public delegate void OnPlayerHitEventDelegate(Transform attackObj);                 // Player Hit Effect
                                                                                     // ex: Reflect Damage
                                                                                                                                                        //
-public delegate float OnCalculatePlayerAttackDamageDelegate(PlayerStatData stat);   // Calc Add Player Damage
-                                                                                    // ex: Add Damage Player's Defense 50%
-                                                                                    //
-public delegate float OnCalculatePlayerHitDamageDelegate(PlayerStatData stat);      // Calc Player Hit Damage
+public delegate float OnCalculateAddPlayerAttackDamageDelegate(PlayerStatData stat);    // Calc Add Player Damage
+                                                                                        // ex: Add Damage Player's Defense 50%
+                                                                                        //
+public delegate float OnCalculateAddPlayerHitDamageDelegate(PlayerStatData stat);       // Calc Player Hit Damage
 
 public class PlayerManager : MonoSingleton<PlayerManager>
 {
@@ -28,8 +29,8 @@ public class PlayerManager : MonoSingleton<PlayerManager>
 
     public event OnPlayerAttackEventDelegate            OnPlayerAttackEvent;            // Player Attack Effect
     public event OnPlayerHitEventDelegate               OnPlayerHitEvent;               // Player Hit Effect
-    public event OnCalculatePlayerAttackDamageDelegate  OnCalculatePlayerAttackDamage;  // Calc Add Player Damage
-    public event OnCalculatePlayerHitDamageDelegate     OnCalculatePlayerHitDamage;     // Calc Player Hit Damage
+    public event OnCalculateAddPlayerAttackDamageDelegate  OnCalculatePlayerAttackDamage;  // Calc Add Player Damage
+    public event OnCalculateAddPlayerHitDamageDelegate     OnCalculatePlayerHitDamage;     // Calc Player Hit Damage
 
     public event Action<CardInfoSO> OnObtainCardEvent;
     public event Action<CardInfoSO> OnRemoveCardEvent;
@@ -45,6 +46,9 @@ public class PlayerManager : MonoSingleton<PlayerManager>
 
         SetCardData(CardManager.Instance.CardList);
         _playerCurrentCardCount = 0;
+
+        // 디버깅
+        UpdatePlayerStatUI();
 
     }
 
@@ -78,6 +82,7 @@ public class PlayerManager : MonoSingleton<PlayerManager>
         _playerCardCount[card]++;
         OnObtainCardEvent?.Invoke(card);
 
+        // 카드가 최고 레벨에 도달했다면
         if (_playerCardCount[card] == card.CardMaxLevel)
         {
 
@@ -85,6 +90,44 @@ public class PlayerManager : MonoSingleton<PlayerManager>
 
 
         }
+
+        UpdatePlayerStatUI();
+
+    }
+
+    // Editor 디버깅용
+    [Header("디버깅")]
+    public TextMeshProUGUI PlayerStatUI;
+
+    private void UpdatePlayerStatUI()
+    {
+
+        PlayerStatData playerStatData = _playerStat.GetPlayerStatData();
+
+        PlayerStatUI.text = $"<size=48>플레이어 스탯</size>"
+                    + $"\n체력: {playerStatData.MaxHealth}"     
+                    + $"\n공격력: {playerStatData.Strength}" 
+                    + $"\n초당 공격속도: {playerStatData.AttackSpeed}"      
+                    + $"\n방어력: {playerStatData.Defense}"      
+                    + $"\n속도: {playerStatData.Speed}"     
+                    + $"\n행운: {playerStatData.Luck}"      
+                    + $"\n저주_행운: {playerStatData.CurseLuck}"     
+                    + $"\n적 처치 시 회복량: {playerStatData.Digestion}"      
+                    + $"\n점프 파워: {playerStatData.JumpPower}"      
+                    + $"\n자석: {playerStatData.Magnet}"      
+                    + $"\n피버 지속시간: {playerStatData.FeverDuration}"      
+                    + $"\n공격력 증가: {playerStatData.StrengthPer * 100}%"      
+                    + $"\n추가 피격 데미지: {playerStatData.HitDamageAmountPer * 100}%"      
+                    + $"\n스킬 쿨다운: {playerStatData.SkillCoolDownPer * 100}%"      
+                    + $"\n생명력 흡수: {playerStatData.LifeDrainPer * 100}%"      
+                    + $"\n경험치 획득량: {playerStatData.ExpPer * 100}%"      
+                    + $"\n골드 획득량: {playerStatData.GoldPer*100}%"                    
+                    + $"\n떨어지는 속도 증가: {playerStatData.FallSpeedPer*100}%"             
+                    + $"\n샷건: {playerStatData.ShotGunEgg}"                  
+                    + $"\n관통: {playerStatData.Through}"                     
+                    + $"\n부활: {playerStatData.Life}";
+
+
 
     }
 
@@ -136,9 +179,9 @@ public class PlayerManager : MonoSingleton<PlayerManager>
     {
 
         PlayerStatData data = _playerStat.GetPlayerStatData();
-        float damage = data.Strength;
+        float damage = data.Strength * data.StrengthPer;
 
-        foreach(OnCalculatePlayerAttackDamageDelegate calcPlayerAttackDamageDelegate 
+        foreach(OnCalculateAddPlayerAttackDamageDelegate calcPlayerAttackDamageDelegate 
             in OnCalculatePlayerAttackDamage.GetInvocationList())
         {
 
@@ -157,7 +200,7 @@ public class PlayerManager : MonoSingleton<PlayerManager>
 
         PlayerStatData data = _playerStat.GetPlayerStatData();
 
-        foreach (OnCalculatePlayerHitDamageDelegate calcPlayerHitDamageDelegate
+        foreach (OnCalculateAddPlayerHitDamageDelegate calcPlayerHitDamageDelegate
             in OnCalculatePlayerHitDamage.GetInvocationList())
         {
 

@@ -13,17 +13,9 @@ MonoBehaviour:
   m_Name: PoolingListSO
   m_EditorClassIdentifier: 
   PoolingList:
-  - PoolObject: {fileID: 0}
+  - PoolObject: {fileID: 681096524309078310, guid: b536d10416c0e584198f96a9072078d3, type: 3}
     Count: 20
-  - PoolObject: {fileID: 0}
-    Count: 10
-  PoolingSoundList:
-  - PoolObject: {fileID: 0}
-    Count: 0
-  - PoolObject: {fileID: 0}
-    Count: 0
+  PoolingSoundList: []
   PoolingEffectList:
-  - PoolObject: {fileID: 0}
-    Count: 0
-  - PoolObject: {fileID: 0}
-    Count: 0
+  - PoolObject: {fileID: 4532062395938574170, guid: 2aadbb855ea3f444680a1f4aa79a2b0f, type: 3}
+    Count: 10

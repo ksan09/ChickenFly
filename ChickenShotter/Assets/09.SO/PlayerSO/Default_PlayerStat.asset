@@ -28,8 +28,8 @@ MonoBehaviour:
     HitDamageAmountPer: 0
     SkillCoolDownPer: 0
     LifeDrainPer: 0
-    ExpPer: 0
-    GoldPer: 0
+    ExpPer: 1
+    GoldPer: 1
     FallSpeedPer: 0
     ShotGunEgg: 0
     Through: 0

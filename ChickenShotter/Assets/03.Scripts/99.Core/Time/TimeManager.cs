@@ -7,7 +7,6 @@ public class TimeManager : MonoSingleton<TimeManager>
 
     Coroutine _setTimeShortTimeCoroutine = null;
 
-
     public void SetTime(float timeScale)
     {
 
