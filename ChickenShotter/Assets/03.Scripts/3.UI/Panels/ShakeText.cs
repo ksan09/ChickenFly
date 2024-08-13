@@ -15,7 +15,7 @@ public class ShakeText : MonoBehaviour
     [SerializeField] private float _strength = 5f;
     [SerializeField] private float _interval = 0.1f;
 
-    WaitForSeconds _wfsWaitInterval;
+    WaitForSecondsRealtime _wfsWaitInterval;
 
     private void Awake()
     {
@@ -23,7 +23,7 @@ public class ShakeText : MonoBehaviour
         _text = GetComponent<TMP_Text>();
         _textInfo = _text.textInfo;
 
-        _wfsWaitInterval = new WaitForSeconds(_interval);
+        _wfsWaitInterval = new WaitForSecondsRealtime(_interval);
 
     }
 

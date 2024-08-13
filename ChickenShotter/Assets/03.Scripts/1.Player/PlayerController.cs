@@ -19,8 +19,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _speed = 4f;
 
     private float _attackSpeed = 2f;
+    private WaitForSeconds _wfsAttackDelay;
 
-    private void Awake()
+    private void Start()
     {
 
         _input              = GetComponent<PlayerInputController>();
@@ -30,6 +31,9 @@ public class PlayerController : MonoBehaviour
 
         RegisterInput();    // 플레이어 입력 이벤트 등록
         RegisterEvent();    // 매니저에 이벤트 등록
+
+        PlayerStatData data = PlayerManager.Instance.GetPlayerStat().GetPlayerStatData();
+        HandleUpdatePlayerContorllerWhenUpdatePlayerStat(data, data);
 
         StartCoroutine(ShotBulletCo());
 
@@ -47,37 +51,17 @@ public class PlayerController : MonoBehaviour
     private void RegisterEvent()
     {
 
-        GameManager.Instance.OnChangeGameModeEvent                  += HandleUpdatePlayerControllerByGameMode;
         PlayerManager.Instance.GetPlayerStat().OnUpdatePlayerStat   += HandleUpdatePlayerContorllerWhenUpdatePlayerStat;
 
     }
 
-    private void HandleUpdatePlayerControllerByGameMode(Chf_GameMode gameMode)
-    {
-
-        if (_playerRigidbody != null)
-        {
-
-            switch (gameMode)
-            {
-                case Chf_GameMode.OnlyPlay:
-                    _playerRigidbody.simulated = true;
-                    _animator.speed = 1;
-                    break;
-                case Chf_GameMode.OnlyUI:
-                    _playerRigidbody.simulated = false;
-                    _animator.speed = 0;
-                    break;
-            }
-
-
-        }
-
-    }
     private void HandleUpdatePlayerContorllerWhenUpdatePlayerStat(PlayerStatData lastData, PlayerStatData currentData)
     {
 
         _jumpPower = currentData.JumpPower;
+        _attackSpeed = currentData.AttackSpeed;
+
+        _wfsAttackDelay = new WaitForSeconds(1 / _attackSpeed);
 
     }
 
@@ -103,6 +87,8 @@ public class PlayerController : MonoBehaviour
 
         _playerRigidbody.velocity = velocity;
 
+        transform.position = new Vector3(Mathf.Clamp(transform.position.x, -13f, 12f), transform.position.y, 0);
+
     }
 
     IEnumerator ShotBulletCo()
@@ -113,7 +99,7 @@ public class PlayerController : MonoBehaviour
 
             _weapon.Attack();
 
-            yield return new WaitForSeconds(1 / _attackSpeed);
+            yield return _wfsAttackDelay;
         
         }
 

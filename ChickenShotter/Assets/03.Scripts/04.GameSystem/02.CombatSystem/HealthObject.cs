@@ -10,10 +10,14 @@ public class HealthObject : MonoBehaviour, IHitAble
 
     public event OnChangedHealthDelegate OnChangedHealthEvent;
     public event Action OnHitEvent;
+    public event Action OnDieEvent;
 
     [Header("Health Info")]
     [SerializeField] private float _maxHealth;
     [SerializeField] private float _currentHealth;
+
+    public float MaxHealth => _maxHealth;
+    public float CurrentHealth => _currentHealth;
 
     public void Init(float maxHealth)
     {
@@ -31,6 +35,13 @@ public class HealthObject : MonoBehaviour, IHitAble
 
         AddHealth(-damage); // 데미지 적용
         OnHitEvent?.Invoke();
+
+        if(_currentHealth <= 0)
+        {
+
+            OnDieEvent?.Invoke();
+
+        }
 
     }
 

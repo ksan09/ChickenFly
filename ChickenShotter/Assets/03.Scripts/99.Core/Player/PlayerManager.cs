@@ -26,6 +26,7 @@ public class PlayerManager : MonoSingleton<PlayerManager>
     [SerializeField]
     private Transform _playerTrm;
     private PlayerStat _playerStat;                         // Player Stat
+    private HealthObject _playerHealth;                     // Player Health
 
     public event OnPlayerAttackEventDelegate            OnPlayerAttackEvent;            // Player Attack Effect
     public event OnPlayerHitEventDelegate               OnPlayerHitEvent;               // Player Hit Effect
@@ -42,7 +43,12 @@ public class PlayerManager : MonoSingleton<PlayerManager>
             _playerTrm = GameObject.Find("Player").transform;
 
         if (_playerTrm != null)
+        {
+
             _playerStat = _playerTrm.GetComponent<PlayerStat>();
+            _playerHealth = _playerTrm.GetComponent<HealthObject>();
+
+        }
 
         SetCardData(CardManager.Instance.CardList);
         _playerCurrentCardCount = 0;
@@ -99,7 +105,7 @@ public class PlayerManager : MonoSingleton<PlayerManager>
     [Header("µð¹ö±ë")]
     public TextMeshProUGUI PlayerStatUI;
 
-    private void UpdatePlayerStatUI()
+    public void UpdatePlayerStatUI()
     {
 
         PlayerStatData playerStatData = _playerStat.GetPlayerStatData();
@@ -174,12 +180,24 @@ public class PlayerManager : MonoSingleton<PlayerManager>
     public int GetCurrentCardCount(CardInfoSO card)                         => _playerCardCount[card];
     public Dictionary<CardInfoSO, int> GetPlayerCardCountDictionary()       => _playerCardCount;
     public PlayerStat GetPlayerStat()                                       => _playerStat;
+    public HealthObject GetPlayerHealth()                                   => _playerHealth;
+
+    public void KillEnemy()
+    {
+
+        float digestion = _playerStat.GetPlayerStatData().Digestion;
+        _playerHealth.AddHealth(digestion);
+
+    }
 
     public float CalcPlayerDamage()
     {
 
         PlayerStatData data = _playerStat.GetPlayerStatData();
         float damage = data.Strength * data.StrengthPer;
+
+        if (OnCalculatePlayerAttackDamage == null)
+            return damage;
 
         foreach(OnCalculateAddPlayerAttackDamageDelegate calcPlayerAttackDamageDelegate 
             in OnCalculatePlayerAttackDamage.GetInvocationList())

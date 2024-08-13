@@ -12,6 +12,9 @@ public class GameTester : MonoBehaviour
     [SerializeField]
     private TMP_InputField _inputCommandField;
 
+    [SerializeField]
+    private GameObject _statPanel;
+
     private bool _isEditMode = false;
     private float _lastTimeScale = 1f;
 
@@ -38,6 +41,16 @@ public class GameTester : MonoBehaviour
 
     }
 
+    private void Update()
+    {
+        
+        if(Input.GetKeyDown(KeyCode.P))
+        {
+            _statPanel.SetActive(!_statPanel.activeInHierarchy);
+            PlayerManager.Instance.UpdatePlayerStatUI();
+        }
+
+    }
 
     private void SetTestMode(string text)
     {
@@ -49,6 +62,9 @@ public class GameTester : MonoBehaviour
     }
     private void UnsetTestMode(string text)
     {
+
+        GameObject myEventSystem = GameObject.Find("EventSystem");
+        myEventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(null);
 
         TimeManager.Instance.SetTime(_lastTimeScale);
         _isEditMode = false;

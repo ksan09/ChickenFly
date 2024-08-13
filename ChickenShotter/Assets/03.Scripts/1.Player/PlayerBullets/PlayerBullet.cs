@@ -6,7 +6,7 @@ public class PlayerBullet : PoolableMono
 {
 
     private Rigidbody2D _rigidbody2D;
-    private LayerMask _targetLayer;
+    private int _targetLayer;
 
     private int _throughLevel;
 
@@ -20,7 +20,7 @@ public class PlayerBullet : PoolableMono
     {
 
         _rigidbody2D = GetComponent<Rigidbody2D>();
-        _targetLayer = LayerMask.GetMask("Enemy");
+        _targetLayer = LayerMask.NameToLayer("Enemy");
 
     }
 
@@ -34,9 +34,8 @@ public class PlayerBullet : PoolableMono
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
-        if (true) // 레이어 체크 기능 넣기
+        if (collision.gameObject.layer != _targetLayer) // 레이어 체크 기능 넣기
         {
-            Debug.Log($"1-{collision.gameObject.layer}, 2-{_targetLayer.value}");
             return;
         }
 
@@ -50,7 +49,7 @@ public class PlayerBullet : PoolableMono
             if(_hitEffect != null)
             {
 
-                PoolingParticle hitEffect = PoolManager.Instance.Pop(_hitEffect.name) as PoolingParticle;
+                PoolingParticle hitEffect = PoolManager.Instance.Pop(_hitEffect.name, transform.position, Quaternion.identity) as PoolingParticle;
                 hitEffect.PlayParticle();
 
             }

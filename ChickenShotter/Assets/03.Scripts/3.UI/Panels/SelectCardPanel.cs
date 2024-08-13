@@ -46,6 +46,8 @@ public class SelectCardPanel : IngamePanel
         List<CardInfoSO> cardData = CardManager.Instance.GetCardList();
         List<CardInfoSO> shuffleCardData = UtillSystem.ShuffleList<CardInfoSO>(cardData, 3);
 
+        CameraManager.Instance.DizzyVolumeEffect(true);
+
         for(int i = 0; i < 3; ++i)
         {
             SetCard(i, shuffleCardData[i]);
@@ -116,6 +118,8 @@ public class SelectCardPanel : IngamePanel
         // 가운데로 이동 후 확대 텍스트 한 번 더 강조하고
         // 페이드하면서 크기 올라가며 사라짐
         Sequence seq = DOTween.Sequence();
+        seq.SetUpdate(true);
+
         seq.Append(cardTrm.DOScale(Vector3.one * 0.9f, 0.2f).SetEase(Ease.OutBack))
             .Append(cardTrm.DOScale(Vector3.one, 0.1f).SetEase(Ease.OutElastic));
 
@@ -155,6 +159,8 @@ public class SelectCardPanel : IngamePanel
                 cardUI.SetColor(Color.white);
 
                 Sequence seq = DOTween.Sequence();
+                seq.SetUpdate(true);
+
                 Transform trm = cardUI.transform;
                 trm.DOKill();
 
@@ -194,7 +200,7 @@ public class SelectCardPanel : IngamePanel
         else
             trm.localScale = Vector3.one;
 
-        trm.DOScale(Vector3.one * 0.9f, 0.2f).SetEase(Ease.OutBack);
+        trm.DOScale(Vector3.one * 0.9f, 0.2f).SetEase(Ease.OutBack).SetUpdate(true);
 
     }
 

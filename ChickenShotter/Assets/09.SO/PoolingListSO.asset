@@ -15,6 +15,8 @@ MonoBehaviour:
   PoolingList:
   - PoolObject: {fileID: 681096524309078310, guid: b536d10416c0e584198f96a9072078d3, type: 3}
     Count: 20
+  - PoolObject: {fileID: 982131754397642393, guid: 9913b962f504a8841a2052e5a56d80a2, type: 3}
+    Count: 20
   PoolingSoundList: []
   PoolingEffectList:
   - PoolObject: {fileID: 4532062395938574170, guid: 2aadbb855ea3f444680a1f4aa79a2b0f, type: 3}

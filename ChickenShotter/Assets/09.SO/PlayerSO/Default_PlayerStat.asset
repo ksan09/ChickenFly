@@ -24,13 +24,13 @@ MonoBehaviour:
     JumpPower: 8
     Magnet: 0
     FeverDuration: 2
-    StrengthPer: 0
-    HitDamageAmountPer: 0
+    StrengthPer: 1
+    HitDamageAmountPer: 1
     SkillCoolDownPer: 0
     LifeDrainPer: 0
     ExpPer: 1
     GoldPer: 1
-    FallSpeedPer: 0
+    FallSpeedPer: 1
     ShotGunEgg: 0
     Through: 0
     Life: 0
