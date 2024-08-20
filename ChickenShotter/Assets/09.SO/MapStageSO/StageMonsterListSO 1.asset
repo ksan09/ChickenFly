@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StageMonsterList:
   - {fileID: 982131754397642393, guid: 9913b962f504a8841a2052e5a56d80a2, type: 3}
+  StageDangerObjectList:
+  - {fileID: 5867503878778802957, guid: 6e5113b019aa5784c82cf23ab5da53b1, type: 3}
   MinSpawnCount: 1
   MaxSpawnCount: 3

@@ -17,7 +17,13 @@ MonoBehaviour:
     Count: 20
   - PoolObject: {fileID: 982131754397642393, guid: 9913b962f504a8841a2052e5a56d80a2, type: 3}
     Count: 20
+  - PoolObject: {fileID: 5867503878778802957, guid: 6e5113b019aa5784c82cf23ab5da53b1, type: 3}
+    Count: 5
+  - PoolObject: {fileID: 8166674982766560153, guid: fc7a0caa778d79e429454ef6bfbb8f16, type: 3}
+    Count: 5
   PoolingSoundList: []
   PoolingEffectList:
   - PoolObject: {fileID: 4532062395938574170, guid: 2aadbb855ea3f444680a1f4aa79a2b0f, type: 3}
+    Count: 10
+  - PoolObject: {fileID: 3773735129875134296, guid: b47f2901b77954f43b36df234d8a5cf2, type: 3}
     Count: 10

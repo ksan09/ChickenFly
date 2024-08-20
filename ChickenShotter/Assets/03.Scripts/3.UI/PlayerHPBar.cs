@@ -32,8 +32,8 @@ public class PlayerHPBar : MonoBehaviour
 
         }
 
-        _hpText.text = $"{maxHealth} / {currentHealth}";
-        _feelImage.fillAmount = maxHealth / currentHealth;
+        _hpText.text = $"{currentHealth} / {maxHealth}";
+        _feelImage.fillAmount = currentHealth / maxHealth;
 
     }
 }

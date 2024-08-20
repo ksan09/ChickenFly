@@ -14,6 +14,14 @@ public class PlayerStat : MonoBehaviour
 
     private HealthObject _healthObject;
 
+    // umm.. this part is bad code
+    private Coroutine _hitEffectCoroutine;
+    private WaitForSecondsRealtime _wfsrHitTime;
+
+    private Material _playerMaterial;
+    private readonly int HASH_BLINK = Shader.PropertyToID("_StrongTintFade");
+    private readonly int HASH_SHAKE = Shader.PropertyToID("_VibrateFade");
+
     public event OnUpdatePlayerStatDataDelegate OnUpdatePlayerStat;
 
     private void Awake()
@@ -24,9 +32,18 @@ public class PlayerStat : MonoBehaviour
         _healthObject = GetComponent<HealthObject>();
         _healthObject.Init(_playerStatData.MaxHealth);
 
+        SpriteRenderer sprite = GetComponent<SpriteRenderer>();
+        if(sprite != null)
+            _playerMaterial = sprite.material;
+
+        _wfsrHitTime = new WaitForSecondsRealtime(0.1f);
+
+        _healthObject.OnHitEvent += HandleHitEffect;
+
         OnUpdatePlayerStat += HandleUpdatePlayerStat;
 
     }
+
 
     public void AddPlayerStat(CardAddStatInfo info)
     {
@@ -105,6 +122,46 @@ public class PlayerStat : MonoBehaviour
     {
 
         _healthObject.ChangeMaxHealth(currentData.MaxHealth);
+
+    }
+
+    private void HandleHitEffect()
+    {
+
+        CameraManager.Instance.ShakeCam(4f, 2f);
+
+        PoolingParticle poolingParticle = 
+            PoolManager.Instance.Pop("PlayerHitParticle", transform.position, Quaternion.identity) as PoolingParticle;
+
+        if (poolingParticle != null)
+        {
+
+            poolingParticle.PlayParticle();
+
+        }
+
+        //
+
+        if (_hitEffectCoroutine != null)
+            StopCoroutine(_hitEffectCoroutine);
+
+        _hitEffectCoroutine = StartCoroutine(HitEffectCo());
+
+    }
+
+    IEnumerator HitEffectCo()
+    {
+
+        _playerMaterial.SetFloat(HASH_BLINK, 1f);
+        _playerMaterial.SetFloat(HASH_SHAKE, 1f);
+        TimeManager.Instance.SetTime(0.1f);
+
+        yield return _wfsrHitTime;
+
+        _playerMaterial.SetFloat(HASH_BLINK, 0f);
+        _playerMaterial.SetFloat(HASH_SHAKE, 0f);
+        _hitEffectCoroutine = null;
+        TimeManager.Instance.SetTime(1f);
 
     }
 
