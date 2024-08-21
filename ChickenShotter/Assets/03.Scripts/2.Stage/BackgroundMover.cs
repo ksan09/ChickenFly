@@ -25,11 +25,11 @@ public class BackgroundMover : MonoBehaviour
     [SerializeField]
     private float _layer3MoveSpeed = 0.04f;
 
-    [Header("CloudLayer1")]
-    [SerializeField]
-    private Transform _backgroundCloudLayer1;
-    [SerializeField]
-    private float _cloudLayer1MoveSpeed = 0.3f;
+    //[Header("CloudLayer1")]
+    //[SerializeField]
+    //private Transform _backgroundCloudLayer1;
+    //[SerializeField]
+    //private float _cloudLayer1MoveSpeed = 0.3f;
 
     [Header("CloudLayer2")]
     [SerializeField]
@@ -50,7 +50,7 @@ public class BackgroundMover : MonoBehaviour
         MoveBackground(_backgroundLayer2, _layer2MoveSpeed, -14.6f, 21.6f);
         MoveBackground(_backgroundLayer3, _layer3MoveSpeed, -14.6f, 21.6f);
 
-        MoveBackground(_backgroundCloudLayer1, _cloudLayer1MoveSpeed, -48f, 48f);
+        //MoveBackground(_backgroundCloudLayer1, _cloudLayer1MoveSpeed, -48f, 48f);
         MoveBackground(_backgroundCloudLayer2, _cloudLayer2MoveSpeed, -48f, 48f);
         MoveBackground(_backgroundCloudLayer3, _cloudLayer3MoveSpeed, -48f, 48f);
 

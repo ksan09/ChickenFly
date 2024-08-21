@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
 
     private PlayerInputController _input;
     private PlayerWeapon _weapon;
+    private HealthObject _healthObject;
 
     private Rigidbody2D _playerRigidbody;
     private Animator _animator;
@@ -26,6 +27,8 @@ public class PlayerController : MonoBehaviour
 
         _input              = GetComponent<PlayerInputController>();
         _weapon             = GetComponent<PlayerWeapon>();
+        _healthObject       = GetComponent<HealthObject>();
+
         _playerRigidbody    = GetComponent<Rigidbody2D>();
         _animator           = GetComponent<Animator>();
 
@@ -39,6 +42,40 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    private void Update()
+    {
+        
+        //
+        if(transform.position.y > 6)
+        {
+
+            Vector3 pos = transform.position;
+            pos.y = 5.9f;
+            transform.position = pos;
+
+            Vector2 velo = _playerRigidbody.velocity;
+            velo.y = -5f;
+            _playerRigidbody.velocity = velo;
+
+            _healthObject.OnHit(10f);
+
+        }
+        else if(transform.position.y < -6)
+        {
+
+            Vector3 pos = transform.position;
+            pos.y = -5.9f;
+            transform.position = pos;
+
+            Vector2 velo = _playerRigidbody.velocity;
+            velo.y = 15f;
+            _playerRigidbody.velocity = velo;
+
+            _healthObject.OnHit(10f);
+
+        }
+
+    }
 
     private void RegisterInput()
     {

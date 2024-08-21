@@ -46,7 +46,7 @@ public class MapGenerator : MonoBehaviour
         {
 
             // Create
-            List<int> spawnPosYList = new List<int>() { -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7 };
+            List<int> spawnPosYList = new List<int>() { -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5 };
 
             int randomSpawnYIndex = Random.Range(0, spawnPosYList.Count);
             int spawnPosY = spawnPosYList[randomSpawnYIndex];
@@ -77,7 +77,7 @@ public class MapGenerator : MonoBehaviour
         List<PoolableMono> stageMonsterList = spawnMobList.StageMonsterList.ToList<PoolableMono>();
         int spawnCount = Random.Range(spawnMobList.MinSpawnCount, spawnMobList.MaxSpawnCount + 1);
 
-        List<int> spawnPosYList = new List<int>() { -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7 };
+        List<int> spawnPosYList = new List<int>() { -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5 };
         for (int i = 0; i < spawnCount; i++)
         {
 
