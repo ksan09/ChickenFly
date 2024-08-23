@@ -78,8 +78,8 @@ public class SelectCardPanel : IngamePanel
 
         RectTransform rectTrm = _cards[num].CardRectTransform;
         Vector3 localPos = rectTrm.anchoredPosition;
-        localPos.x = 460f + num * 500f; 
-        localPos.y = -540f;
+        localPos.x = -500f + num * 500f; 
+        localPos.y = 0f;
         rectTrm.anchoredPosition = localPos;
 
         _cards[num].SetColor(Color.white);
@@ -123,7 +123,7 @@ public class SelectCardPanel : IngamePanel
         seq.Append(cardTrm.DOScale(Vector3.one * 0.9f, 0.2f).SetEase(Ease.OutBack))
             .Append(cardTrm.DOScale(Vector3.one, 0.1f).SetEase(Ease.OutElastic));
 
-        seq.Append(cardTrm.DOAnchorPos(new Vector2(960f, -540f), 0.2f).SetEase(Ease.OutBack))
+        seq.Append(cardTrm.DOAnchorPos(new Vector2(0f, 0f), 0.2f).SetEase(Ease.OutBack))
             .Join(cardTrm.DOScale(Vector3.one * 1.1f, 0.2f).SetEase(Ease.OutBack))
             .Join(cardTrm.DOScale(Vector3.one, 0.2f).SetEase(Ease.OutElastic));
 
@@ -131,7 +131,7 @@ public class SelectCardPanel : IngamePanel
             .AppendInterval(1f);
 
         seq.Append(cardTrm.DOScale(Vector3.one * 1f, 0.5f).SetEase(Ease.OutCirc));
-        seq.Join(cardTrm.DOAnchorPosY(-400f, 0.5f).SetEase(Ease.OutCirc))
+        seq.Join(cardTrm.DOAnchorPosY(140f, 0.5f).SetEase(Ease.OutCirc))
             .Join(DOTween.To(() => startColor, color => cardUI.SetColor(color), endColor, 0.5f).SetEase(Ease.Linear).SetDelay(0.1f))
             .OnComplete(() =>
             {

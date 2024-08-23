@@ -18,6 +18,9 @@ public class UIManager : MonoSingleton<UIManager>
     [SerializeField] private IngamePanel _settingCardPanel;
     [SerializeField] private IngamePanel _selectCardPanel;
 
+    [Header("Game Object")]
+    [SerializeField] private GameObject _ingameController;
+
     private Dictionary<PanelType, IngamePanel> PanelDictionary;
 
     public override void Init()
@@ -45,6 +48,7 @@ public class UIManager : MonoSingleton<UIManager>
             PanelDictionary[type].OnOpenEvent();
 
             GameManager.Instance.ChangeGameMode(Chf_GameMode.OnlyUI);
+            _ingameController.SetActive(false);
 
         }
 
@@ -60,6 +64,7 @@ public class UIManager : MonoSingleton<UIManager>
             PanelDictionary[type].OnCloseEvent();
 
             GameManager.Instance.ChangeGameMode(Chf_GameMode.OnlyPlay);
+            _ingameController.SetActive(true);
 
         }
 

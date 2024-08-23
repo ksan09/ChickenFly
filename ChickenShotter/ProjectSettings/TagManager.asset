@@ -14,13 +14,13 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - NotPPUI
   - Player
   - Enemy
   - Item
   - 
   - 
-  - 
+  - WorldGrid
   - 
   - 
   - 
@@ -58,4 +58,7 @@ TagManager:
     locked: 0
   - name: UI
     uniqueID: 2298807295
+    locked: 0
+  - name: NotPPUI
+    uniqueID: 3558743133
     locked: 0

@@ -18,6 +18,9 @@ public class PlayerController : MonoBehaviour
     [Header("Player Info")]
     [SerializeField] private float _jumpPower = 10f;
     [SerializeField] private float _speed = 4f;
+    private float _magnet = 0f;
+
+    private LayerMask _itemLayer;
 
     private float _attackSpeed = 2f;
     private WaitForSeconds _wfsAttackDelay;
@@ -32,6 +35,8 @@ public class PlayerController : MonoBehaviour
         _playerRigidbody    = GetComponent<Rigidbody2D>();
         _animator           = GetComponent<Animator>();
 
+        _itemLayer          = LayerMask.GetMask("Item");
+
         RegisterInput();    // 플레이어 입력 이벤트 등록
         RegisterEvent();    // 매니저에 이벤트 등록
 
@@ -42,11 +47,39 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    private void Update()
+    private void LateUpdate()
     {
-        
-        //
-        if(transform.position.y > 6)
+
+        CatchPickItemByMagnet();
+        ClampPlayerPos();
+
+    }
+
+    private void CatchPickItemByMagnet()
+    {
+
+        if (_magnet <= 0f)
+            return;
+
+        Collider2D[] cols = Physics2D.OverlapCircleAll(transform.position, _magnet, _itemLayer);
+        for(int i = 0; i < cols.Length; ++i)
+        {
+
+            if (cols[i].TryGetComponent(out PickItem pickItem))
+            {
+                pickItem.Catch(transform);
+            }
+
+        }
+
+    }
+    private void ClampPlayerPos()
+    {
+
+        // Clamping
+        transform.position = new Vector3(Mathf.Clamp(transform.position.x, -13f, 12f), transform.position.y, 0);
+
+        if (transform.position.y > 6)
         {
 
             Vector3 pos = transform.position;
@@ -60,7 +93,7 @@ public class PlayerController : MonoBehaviour
             _healthObject.OnHit(10f);
 
         }
-        else if(transform.position.y < -6)
+        else if (transform.position.y < -6)
         {
 
             Vector3 pos = transform.position;
@@ -77,6 +110,7 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    // Event
     private void RegisterInput()
     {
 
@@ -94,6 +128,8 @@ public class PlayerController : MonoBehaviour
 
     private void HandleUpdatePlayerContorllerWhenUpdatePlayerStat(PlayerStatData lastData, PlayerStatData currentData)
     {
+
+        _magnet = currentData.Magnet;
 
         _jumpPower = currentData.JumpPower;
         _attackSpeed = currentData.AttackSpeed;
@@ -123,8 +159,6 @@ public class PlayerController : MonoBehaviour
         velocity.x = dir * _speed;
 
         _playerRigidbody.velocity = velocity;
-
-        transform.position = new Vector3(Mathf.Clamp(transform.position.x, -13f, 12f), transform.position.y, 0);
 
     }
 

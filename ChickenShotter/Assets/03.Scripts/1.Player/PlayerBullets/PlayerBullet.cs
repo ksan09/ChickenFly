@@ -2,42 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerBullet : PoolableMono
+public class PlayerBullet : Bullet
 {
-
-    private Rigidbody2D _rigidbody2D;
-    private int _targetLayer;
 
     private int _throughLevel;
 
-    // 총알 맞았을 때 이펙트
-    [Header("Info")]
-    [SerializeField] private PoolingParticle _hitEffect;
-
-    [SerializeField] private float _bulletSpeed;
-
-    private void Awake()
+    protected override void Awake()
     {
 
-        _rigidbody2D = GetComponent<Rigidbody2D>();
+        base.Awake();
+
         _targetLayer = LayerMask.NameToLayer("Enemy");
 
     }
 
-    public void Shoot(Vector2 dir)
+    protected override void OnTriggerEnter2D(Collider2D collision)
     {
 
-        _rigidbody2D.velocity = dir * _bulletSpeed;
+        if (collision.gameObject.layer == _worldGridLayer)
+            PoolManager.Instance.Push(this);
 
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-
-        if (collision.gameObject.layer != _targetLayer) // 레이어 체크 기능 넣기
-        {
+        if (collision.gameObject.layer != _targetLayer)
             return;
-        }
 
         if(collision.TryGetComponent<HealthObject>(out HealthObject healthObject))
         {
@@ -70,6 +56,7 @@ public class PlayerBullet : PoolableMono
     {
 
         _throughLevel = 0;
+        _bulletDamage = PlayerManager.Instance.CalcPlayerDamage();
 
         PlayerStat stat = PlayerManager.Instance.GetPlayerStat();
         if(stat != null)

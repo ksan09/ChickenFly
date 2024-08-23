@@ -31,11 +31,11 @@ public class MapGenerator : MonoBehaviour
     {
 
         int currentScore = GameManager.Instance.GetScore();
+        int index = currentScore / 10;
+        if (index >= _spawnMobList.Count)
+            index = _spawnMobList.Count - 1;
 
-        if (_spawnMobList.Count <= currentScore / 10) // 혹시 모를 예외처리
-            return;
-
-        StageMonsterListSO spawnMobList = _spawnMobList[currentScore / 10];
+        StageMonsterListSO spawnMobList = _spawnMobList[index];
         List<PoolableMono> stageDangerObjectList = spawnMobList.StageDangerObjectList.ToList<PoolableMono>();
 
         if (stageDangerObjectList.Count <= 0)   // 소환할 위험 오브젝트가 없는 구간이면 X
@@ -46,13 +46,13 @@ public class MapGenerator : MonoBehaviour
         {
 
             // Create
-            List<int> spawnPosYList = new List<int>() { -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5 };
+            List<float> spawnPosYList = new List<float>() { -5.75f, -4.25f, -2.75f, -1.25f, -0.75f, 1.25f, 2.75f, 4.25f, 5.75f };
 
             int randomSpawnYIndex = Random.Range(0, spawnPosYList.Count);
-            int spawnPosY = spawnPosYList[randomSpawnYIndex];
+            float spawnPosY = spawnPosYList[randomSpawnYIndex];
 
             string spawnDangerObjectName = stageDangerObjectList[Random.Range(0, stageDangerObjectList.Count)].name;
-            DangerObject dangerObject = PoolManager.Instance.Pop("Danger", new Vector3(17, spawnPosY), Quaternion.identity) as DangerObject;
+            DangerObject dangerObject = PoolManager.Instance.Pop("Danger", new Vector3(16.5f, spawnPosY), Quaternion.identity) as DangerObject;
 
             if (dangerObject != null)
             {
@@ -67,27 +67,39 @@ public class MapGenerator : MonoBehaviour
 
     }
 
-    // 적 생성
+    // 적 생성 패턴 중 하나로 생성
     private void EnemyGenerate()
     {
 
         int currentScore = GameManager.Instance.GetScore();
+        int index = currentScore / 10;
+        if(index >= _spawnMobList.Count)
+            index = _spawnMobList.Count - 1;
 
-        StageMonsterListSO spawnMobList = _spawnMobList[currentScore / 10];
-        List<PoolableMono> stageMonsterList = spawnMobList.StageMonsterList.ToList<PoolableMono>();
-        int spawnCount = Random.Range(spawnMobList.MinSpawnCount, spawnMobList.MaxSpawnCount + 1);
+        StageMonsterListSO spawnMobList = _spawnMobList[index];
+        List<SpawnMonsterData> stageMonsterList = spawnMobList.StageMonsterList[Random.Range(0, spawnMobList.StageMonsterList.Count)].Data.ToList<SpawnMonsterData>();
 
-        List<int> spawnPosYList = new List<int>() { -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5 };
-        for (int i = 0; i < spawnCount; i++)
+        List<float> spawnPosYList = new List<float>() { -5.75f, -4.25f, -2.75f, -1.25f, -0.75f, 1.25f, 2.75f, 4.25f, 5.75f };
+        int spawnCount = 0;
+
+        for (int i = 0; i < stageMonsterList.Count; i++)
         {
 
-            int randomSpawnYIndex = Random.Range(i, spawnPosYList.Count);
-            int spawnPosY = spawnPosYList[randomSpawnYIndex];
+            SpawnMonsterData data = stageMonsterList[i];
+            for(int j = 0; j < data.Count; ++j)
+            {
 
-            string spawnMobName = stageMonsterList[Random.Range(0, stageMonsterList.Count)].name;
-            PoolableMono spawnMob = PoolManager.Instance.Pop(spawnMobName, new Vector3(20, spawnPosY), Quaternion.identity);
+                int randomSpawnYIndex = Random.Range(spawnCount, spawnPosYList.Count);
+                float spawnPosX = Random.Range(19.5f, 20.5f);
+                float spawnPosY = spawnPosYList[randomSpawnYIndex];
 
-            spawnPosYList[randomSpawnYIndex] = spawnPosYList[i];    // 중복 제거
+                string spawnMobName = data.Monster.name;
+                PoolableMono spawnMob = PoolManager.Instance.Pop(spawnMobName, new Vector3(spawnPosX, spawnPosY), Quaternion.identity);
+
+                spawnPosYList[randomSpawnYIndex] = spawnPosYList[spawnCount];    // 중복 제거
+                spawnCount++;
+
+            }
 
         }
 

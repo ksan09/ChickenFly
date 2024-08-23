@@ -26,12 +26,15 @@ public class PlayerManager : MonoSingleton<PlayerManager>
     [SerializeField]
     private Transform _playerTrm;
     private PlayerStat _playerStat;                         // Player Stat
+    private PlayerLevel _playerLevel;                       // Player Level
     private HealthObject _playerHealth;                     // Player Health
 
     public event OnPlayerAttackEventDelegate            OnPlayerAttackEvent;            // Player Attack Effect
     public event OnPlayerHitEventDelegate               OnPlayerHitEvent;               // Player Hit Effect
     public event OnCalculateAddPlayerAttackDamageDelegate  OnCalculatePlayerAttackDamage;  // Calc Add Player Damage
     public event OnCalculateAddPlayerHitDamageDelegate     OnCalculatePlayerHitDamage;     // Calc Player Hit Damage
+
+    public event Action<Transform> OnKillEnemyEvent;
 
     public event Action<CardInfoSO> OnObtainCardEvent;
     public event Action<CardInfoSO> OnRemoveCardEvent;
@@ -47,6 +50,7 @@ public class PlayerManager : MonoSingleton<PlayerManager>
 
             _playerStat = _playerTrm.GetComponent<PlayerStat>();
             _playerHealth = _playerTrm.GetComponent<HealthObject>();
+            _playerLevel = _playerTrm.GetComponent<PlayerLevel>();
 
         }
 
@@ -118,7 +122,7 @@ public class PlayerManager : MonoSingleton<PlayerManager>
                     + $"\n속도: {playerStatData.Speed}"     
                     + $"\n행운: {playerStatData.Luck}"      
                     + $"\n저주_행운: {playerStatData.CurseLuck}"     
-                    + $"\n적 처치 시 회복량: {playerStatData.Digestion}"      
+                    + $"\n적 처치 시 회복량: {playerStatData.HealValue}"      
                     + $"\n점프 파워: {playerStatData.JumpPower}"      
                     + $"\n자석: {playerStatData.Magnet}"      
                     + $"\n피버 지속시간: {playerStatData.FeverDuration}"      
@@ -180,13 +184,13 @@ public class PlayerManager : MonoSingleton<PlayerManager>
     public int GetCurrentCardCount(CardInfoSO card)                         => _playerCardCount[card];
     public Dictionary<CardInfoSO, int> GetPlayerCardCountDictionary()       => _playerCardCount;
     public PlayerStat GetPlayerStat()                                       => _playerStat;
+    public PlayerLevel GetPlayerLevel()                                     => _playerLevel;
     public HealthObject GetPlayerHealth()                                   => _playerHealth;
 
-    public void KillEnemy()
+    public void KillEnemy(Transform deathEnemyTrm)
     {
 
-        float digestion = _playerStat.GetPlayerStatData().Digestion;
-        _playerHealth.AddHealth(digestion);
+        OnKillEnemyEvent?.Invoke(deathEnemyTrm);
 
     }
 
@@ -217,6 +221,10 @@ public class PlayerManager : MonoSingleton<PlayerManager>
     {
 
         PlayerStatData data = _playerStat.GetPlayerStatData();
+        damage = data.HitDamageAmountPer * damage;
+
+        if (OnCalculatePlayerHitDamage == null)
+            return damage;
 
         foreach (OnCalculateAddPlayerHitDamageDelegate calcPlayerHitDamageDelegate
             in OnCalculatePlayerHitDamage.GetInvocationList())

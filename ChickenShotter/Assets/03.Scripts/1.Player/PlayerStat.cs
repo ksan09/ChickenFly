@@ -14,6 +14,11 @@ public class PlayerStat : MonoBehaviour
 
     private HealthObject _healthObject;
 
+    // Exp
+    private PlayerLevelData _playerLevelData;   // 각 레벨마다 필요한 경험치 값이 들어가 있다.
+    private int _currentLevel = 0;
+    private float _exp;
+
     // umm.. this part is bad code
     private Coroutine _hitEffectCoroutine;
     private WaitForSecondsRealtime _wfsrHitTime;
@@ -58,7 +63,7 @@ public class PlayerStat : MonoBehaviour
         _playerStatData.Speed               += info.Speed;
         _playerStatData.Luck                += info.Luck;
         _playerStatData.CurseLuck           += info.CurseLuck;
-        _playerStatData.Digestion           += info.Digestion;
+        _playerStatData.HealValue           += info.HealValue;
         _playerStatData.JumpPower           += info.JumpPower;
         _playerStatData.Magnet              += info.Magnet;
         _playerStatData.FeverDuration       += info.FeverDuration;
@@ -93,7 +98,7 @@ public class PlayerStat : MonoBehaviour
         _playerStatData.Speed               -= info.Speed;
         _playerStatData.Luck                -= info.Luck;
         _playerStatData.CurseLuck           -= info.CurseLuck;
-        _playerStatData.Digestion           -= info.Digestion;
+        _playerStatData.HealValue           -= info.HealValue;
         _playerStatData.JumpPower           -= info.JumpPower;
         _playerStatData.Magnet              -= info.Magnet;
         _playerStatData.FeverDuration       -= info.FeverDuration;

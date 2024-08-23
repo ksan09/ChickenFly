@@ -26,15 +26,18 @@ MonoBehaviour:
       Speed: 0
       Luck: 0
       CurseLuck: 0
-      Digestion: 0
+      HealValue: 0
       JumpPower: 0
-      FallSpeed: 0
-      Magnet: 1
+      Magnet: 3
       FeverDuration: 0
       StrengthPer: 0
       HitDamageAmountPer: 0
       SkillCoolDownPer: 0
       LifeDrainPer: 0
+      ExpPer: 0
+      GoldPer: 0
+      FallSpeedPer: 0
       ShotGunEgg: 0
       Through: 0
+      Life: 0
     CardEffectList: []

@@ -2,13 +2,25 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class EnemyBase : PoolableMono
 {
 
     [Header("Stat")]
-    [SerializeField] private float _speed       = 6;
+    [SerializeField] private float _strength    = 10f;
+    [SerializeField] private float _speed       = 6f;
     [SerializeField] private float _maxHealth   = 50;
+
+    [Header("Drop Heart Value")]
+    [SerializeField] private int _minDropHeart = 1;
+    [SerializeField] private int _maxDropHeart = 2;
+
+    [Header("Drop Exp Value")]
+    [SerializeField] private float _expValue = 0.5f;
+
+    [SerializeField] private int _minDropExp = 2;
+    [SerializeField] private int _maxDropExp = 5;
 
     private Rigidbody2D _rigidbody2D;
 
@@ -47,6 +59,22 @@ public class EnemyBase : PoolableMono
 
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        
+        if(collision.CompareTag("Player"))
+        {
+
+            float damage = PlayerManager.Instance.CalcPlayerHitDamage(_strength);
+            PlayerManager.Instance.GetPlayerHealth().OnHit(damage);
+
+            _healthObject.OnHit(1f);
+            _rigidbody2D.velocity = _rigidbody2D.velocity * 1.5f;
+
+        }
+
+    }
+
     private void HandleHitEffect()
     {
 
@@ -74,15 +102,43 @@ public class EnemyBase : PoolableMono
     private void HandleDie()
     {
 
+        int randomDropCount = Random.Range(_minDropHeart, _maxDropHeart + 1);
+        for(int i = 0; i < randomDropCount; ++i)
+        {
+
+            Heart heartObj = PoolManager.Instance.Pop("Heart", transform.position, Quaternion.identity) as Heart;
+            if (heartObj != null)
+            {
+                heartObj.Drop(2f);
+            }
+
+        }
+
+        randomDropCount = Random.Range(_minDropExp, _maxDropExp + 1);
+        for (int i = 0; i < randomDropCount; ++i)
+        {
+
+            ExpBlock expBlock = PoolManager.Instance.Pop("ExpBlock", transform.position, Quaternion.identity) as ExpBlock;
+            if (expBlock != null)
+            {
+
+                expBlock.Drop(1.5f);
+                expBlock.SetExpBlockValue(_expValue);
+
+            }
+
+        }
+
+
         PoolManager.Instance.Push(this);
-        PlayerManager.Instance.KillEnemy();
+        PlayerManager.Instance.KillEnemy(transform);
 
     }
 
     public override void Reset()
     {
 
-        _rigidbody2D.velocity = new Vector3(-_speed, 0);
+        _rigidbody2D.velocity = new Vector3(-UnityEngine.Random.Range(_speed - 0.5f, _speed + 0.5f), 0);
         _healthObject.Init(_maxHealth);
 
         _material.SetFloat(HASH_BLINK, 0f);

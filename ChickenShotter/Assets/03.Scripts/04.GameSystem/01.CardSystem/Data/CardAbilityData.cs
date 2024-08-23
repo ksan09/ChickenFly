@@ -15,7 +15,7 @@ public struct CardAddStatInfo
     public float Speed;             // 속도
     public float Luck;              // 행운
     public float CurseLuck;         // 저주_행운
-    public float Digestion;         // 적 처치 시 회복량
+    public float HealValue;         // 적 처치 시 회복량
     public float JumpPower;         // 점프 파워
     public float Magnet;            // 자석
     public float FeverDuration;     // 피버 지속시간
@@ -47,7 +47,7 @@ public struct CardAddStatInfo
             Speed = cardAddStatInfo.Speed * num,
             Luck = cardAddStatInfo.Luck * num,
             CurseLuck = cardAddStatInfo.CurseLuck * num,
-            Digestion = cardAddStatInfo.Digestion * num,
+            HealValue = cardAddStatInfo.HealValue * num,
             JumpPower = cardAddStatInfo.JumpPower * num,
             Magnet = cardAddStatInfo.Magnet * num,
             FeverDuration = cardAddStatInfo.FeverDuration * num,

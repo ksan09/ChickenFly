@@ -20,7 +20,7 @@ MonoBehaviour:
     Speed: 5
     Luck: 0
     CurseLuck: 0
-    Digestion: 10
+    HealValue: 10
     JumpPower: 10
     Magnet: 0
     FeverDuration: 2
