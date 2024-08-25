@@ -104,5 +104,9 @@ public class GameManager : MonoSingleton<GameManager>
         _mapGenerator.Generate();
 
     }
+    public void AddScore(int value)
+    {
+        _score += value;
+    }
 
 }

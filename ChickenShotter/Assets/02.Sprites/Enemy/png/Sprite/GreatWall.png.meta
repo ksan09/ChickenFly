@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a71f05dc3d2bb1a4ab555124ff66a294
+guid: 2f68e5177702a1b4aa52f70e1b20ec8e
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -128,13 +128,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BossWall_Sheet4_0
+      name: GreatWall_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 64
-        width: 48
-        height: 64
+        x: 20
+        y: 130
+        width: 9
+        height: 11
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -142,20 +142,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 75edf1601b9d70f4085193b8556e3520
-      internalID: -399378753
+      spriteID: f83136f6511445842b00848df8980dbf
+      internalID: -1927062797
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BossWall_Sheet4_1
+      name: GreatWall_1
       rect:
         serializedVersion: 2
-        x: 48
-        y: 64
-        width: 48
-        height: 64
+        x: 50
+        y: 11
+        width: 46
+        height: 177
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -163,20 +163,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f987203b23f43ef42aa9d82fa2693f4f
-      internalID: 228021609
+      spriteID: daca46c0ea6fd4546b64f532d6927f9e
+      internalID: -519490108
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BossWall_Sheet4_2
+      name: GreatWall_2
       rect:
         serializedVersion: 2
-        x: 96
-        y: 64
-        width: 48
-        height: 64
+        x: 20
+        y: 98
+        width: 9
+        height: 11
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -184,20 +184,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c672c88f5862b4a4bb332fd88cfc6307
-      internalID: -1069483570
+      spriteID: c59a6bdd7d098954d873a4513687b1b8
+      internalID: 1128316905
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BossWall_Sheet4_3
+      name: GreatWall_3
       rect:
         serializedVersion: 2
-        x: 16
-        y: 48
-        width: 16
-        height: 16
+        x: 20
+        y: 67
+        width: 10
+        height: 10
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -205,8 +205,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cbbadea9cc38f8b4b89bd1008a434e12
-      internalID: 407284583
+      spriteID: dab5764fe33febb4eaaaa040dd8e0c36
+      internalID: 888693692
       vertices: []
       indices: 
       edges: []
@@ -222,10 +222,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      BossWall_Sheet4_0: -399378753
-      BossWall_Sheet4_1: 228021609
-      BossWall_Sheet4_3: 407284583
-      BossWall_Sheet4_2: -1069483570
+      GreatWall_2: 1128316905
+      GreatWall_1: -519490108
+      GreatWall_0: -1927062797
+      GreatWall_3: 888693692
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

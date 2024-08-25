@@ -21,8 +21,12 @@ MonoBehaviour:
     Count: 15
   - PoolObject: {fileID: 982131754397642393, guid: d8fd258fb9f347d49b7daa75d5f266e8, type: 3}
     Count: 15
+  - PoolObject: {fileID: 8182254535131801496, guid: 8e840ba5d7f9dfe43882ff54cebd9c10, type: 3}
+    Count: 10
   - PoolObject: {fileID: 5867503878778802957, guid: 6e5113b019aa5784c82cf23ab5da53b1, type: 3}
     Count: 5
+  - PoolObject: {fileID: 4341989200438566390, guid: d4379c3a32ca92247afea306f97d8a90, type: 3}
+    Count: 30
   - PoolObject: {fileID: 8166674982766560153, guid: fc7a0caa778d79e429454ef6bfbb8f16, type: 3}
     Count: 5
   - PoolObject: {fileID: 596945645335129018, guid: 8117207c97e5f504da7c8f0286ca4c0f, type: 3}
@@ -34,4 +38,6 @@ MonoBehaviour:
   - PoolObject: {fileID: 4532062395938574170, guid: 2aadbb855ea3f444680a1f4aa79a2b0f, type: 3}
     Count: 10
   - PoolObject: {fileID: 3773735129875134296, guid: b47f2901b77954f43b36df234d8a5cf2, type: 3}
+    Count: 10
+  - PoolObject: {fileID: 5372783553224354145, guid: f249520d9d4d6a4418fd1f5e7d0e0c24, type: 3}
     Count: 10

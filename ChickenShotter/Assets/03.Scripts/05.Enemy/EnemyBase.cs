@@ -8,9 +8,9 @@ public class EnemyBase : PoolableMono
 {
 
     [Header("Stat")]
-    [SerializeField] private float _strength    = 10f;
-    [SerializeField] private float _speed       = 6f;
-    [SerializeField] private float _maxHealth   = 50;
+    [SerializeField] protected float _strength    = 10f;
+    [SerializeField] protected float _speed       = 6f;
+    [SerializeField] protected float _maxHealth   = 50;
 
     [Header("Drop Heart Value")]
     [SerializeField] private int _minDropHeart = 1;
@@ -22,7 +22,7 @@ public class EnemyBase : PoolableMono
     [SerializeField] private int _minDropExp = 2;
     [SerializeField] private int _maxDropExp = 5;
 
-    private Rigidbody2D _rigidbody2D;
+    protected Rigidbody2D _rigidbody2D;
 
     private SpriteRenderer _spriteRenderer;
     private Material _material;
@@ -46,12 +46,14 @@ public class EnemyBase : PoolableMono
         _healthObject = GetComponent<HealthObject>();
         _healthObject.OnDieEvent += HandleDie;
 
+        _healthObject.Init(_maxHealth);
+
         _wfsHitEffectTime = new WaitForSeconds(0.05f);
         _healthObject.OnHitEvent += HandleHitEffect;
 
     }
 
-    private void Update()
+    protected virtual void Update()
     {
 
         if (transform.position.x < -20f)

@@ -18,6 +18,8 @@ MonoBehaviour:
       Count: 3
     - Monster: {fileID: 982131754397642393, guid: 05112d4151f54ca41b2202874a0272b5, type: 3}
       Count: 1
+    - Monster: {fileID: 8182254535131801496, guid: 8e840ba5d7f9dfe43882ff54cebd9c10, type: 3}
+      Count: 1
   - Data:
     - Monster: {fileID: 982131754397642393, guid: d8fd258fb9f347d49b7daa75d5f266e8, type: 3}
       Count: 1
@@ -26,5 +28,7 @@ MonoBehaviour:
   - Data:
     - Monster: {fileID: 982131754397642393, guid: 05112d4151f54ca41b2202874a0272b5, type: 3}
       Count: 3
+    - Monster: {fileID: 8182254535131801496, guid: 8e840ba5d7f9dfe43882ff54cebd9c10, type: 3}
+      Count: 1
   StageDangerObjectList:
   - {fileID: 5867503878778802957, guid: 6e5113b019aa5784c82cf23ab5da53b1, type: 3}

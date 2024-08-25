@@ -183,6 +183,7 @@ public class PlayerManager : MonoSingleton<PlayerManager>
     public int GetCurrentPlayerCardCount()                                  => _playerCurrentCardCount;
     public int GetCurrentCardCount(CardInfoSO card)                         => _playerCardCount[card];
     public Dictionary<CardInfoSO, int> GetPlayerCardCountDictionary()       => _playerCardCount;
+    public Transform GetPlayerTransform()                                   => _playerTrm;
     public PlayerStat GetPlayerStat()                                       => _playerStat;
     public PlayerLevel GetPlayerLevel()                                     => _playerLevel;
     public HealthObject GetPlayerHealth()                                   => _playerHealth;

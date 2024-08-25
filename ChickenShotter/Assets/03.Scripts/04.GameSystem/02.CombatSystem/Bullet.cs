@@ -15,6 +15,8 @@ public class Bullet : PoolableMono
     [SerializeField] protected float                _bulletSpeed;
     [SerializeField] protected float                _bulletDamage;
 
+    private float _currentBulletDamage;
+
     protected virtual void Awake()
     {
 
@@ -37,7 +39,9 @@ public class Bullet : PoolableMono
         if (collision.TryGetComponent<HealthObject>(out HealthObject healthObject))
         {
 
-            float damage = _bulletDamage;
+            float damage = _currentBulletDamage;
+            if (collision.CompareTag("Player"))
+                damage = PlayerManager.Instance.CalcPlayerHitDamage(_currentBulletDamage);
 
             healthObject.OnHit(damage);
 
@@ -62,9 +66,18 @@ public class Bullet : PoolableMono
 
     }
 
+    public void Shoot(Vector2 dir, float damage, float speed)
+    {
+
+        _currentBulletDamage = damage;
+        _rigidbody2D.velocity = dir * speed;
+
+    }
+
     public override void Reset()
     {
 
+        _currentBulletDamage = _bulletDamage;
 
     }
 

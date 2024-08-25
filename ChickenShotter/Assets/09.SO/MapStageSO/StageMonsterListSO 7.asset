@@ -16,6 +16,8 @@ MonoBehaviour:
   - Data:
     - Monster: {fileID: 982131754397642393, guid: 9913b962f504a8841a2052e5a56d80a2, type: 3}
       Count: 2
+    - Monster: {fileID: 8182254535131801496, guid: 8e840ba5d7f9dfe43882ff54cebd9c10, type: 3}
+      Count: 2
   - Data:
     - Monster: {fileID: 982131754397642393, guid: 9913b962f504a8841a2052e5a56d80a2, type: 3}
       Count: 1

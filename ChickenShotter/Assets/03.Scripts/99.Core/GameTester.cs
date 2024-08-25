@@ -30,7 +30,8 @@ public class GameTester : MonoBehaviour
         _setValueCommandList = new Dictionary<string, Action<int>>()
         {
             { "set time", SetTime },
-            { "set card", SetCard }
+            { "set card", SetCard },
+            { "add score", GameManager.Instance.AddScore }
         };
 
         _invokeCommandList = new Dictionary<string, Action>
