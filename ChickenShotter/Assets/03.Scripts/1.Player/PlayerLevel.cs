@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,6 +17,8 @@ public class PlayerLevel : MonoBehaviour
     private float _currentExp = 0;
     private float _needExp;
 
+    private float _getExpPer = 1f;
+
     private void Awake()
     {
         
@@ -23,13 +26,21 @@ public class PlayerLevel : MonoBehaviour
 
     }
 
+    private void Start()
+    {
+
+        PlayerManager.Instance.GetPlayerStat().OnUpdatePlayerStat += HandleUpdatePlayerStat;
+
+    }
+
+
     public void AddExp(float value)
     {
 
         if (_currentLevel >= _playerLevelData._needExpByLevelList.Count)
             return;
 
-        _currentExp += value;
+        _currentExp += value * _getExpPer;
 
         if(_currentExp >= _needExp)
         {
@@ -50,5 +61,11 @@ public class PlayerLevel : MonoBehaviour
 
     }
 
+    private void HandleUpdatePlayerStat(PlayerStatData lastData, PlayerStatData currentData)
+    {
+
+        _getExpPer = currentData.ExpPer;
+
+    }
 
 }

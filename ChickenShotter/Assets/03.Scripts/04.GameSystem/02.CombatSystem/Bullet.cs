@@ -66,6 +66,14 @@ public class Bullet : PoolableMono
 
     }
 
+    public void Shoot(Vector2 dir, float eulerAngleZ)
+    {
+
+        _rigidbody2D.velocity = dir * _bulletSpeed;
+        transform.eulerAngles = new Vector3(0, 0, eulerAngleZ);
+
+    }
+
     public void Shoot(Vector2 dir, float damage, float speed)
     {
 
@@ -78,6 +86,7 @@ public class Bullet : PoolableMono
     {
 
         _currentBulletDamage = _bulletDamage;
+        transform.rotation = Quaternion.identity;
 
     }
 

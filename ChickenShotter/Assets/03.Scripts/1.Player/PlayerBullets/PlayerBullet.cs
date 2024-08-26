@@ -31,12 +31,14 @@ public class PlayerBullet : Bullet
             float damage = PlayerManager.Instance.CalcPlayerDamage();
 
             healthObject.OnHit(damage);
+            PlayerManager.Instance.CallPlayerAttackEvent(collision.transform);
 
             if(_hitEffect != null)
             {
 
                 PoolingParticle hitEffect = PoolManager.Instance.Pop(_hitEffect.name, transform.position, Quaternion.identity) as PoolingParticle;
                 hitEffect.PlayParticle();
+
 
             }
 

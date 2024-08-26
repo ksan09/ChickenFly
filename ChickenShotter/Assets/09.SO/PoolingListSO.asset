@@ -36,8 +36,12 @@ MonoBehaviour:
   PoolingSoundList: []
   PoolingEffectList:
   - PoolObject: {fileID: 4532062395938574170, guid: 2aadbb855ea3f444680a1f4aa79a2b0f, type: 3}
-    Count: 10
+    Count: 100
   - PoolObject: {fileID: 3773735129875134296, guid: b47f2901b77954f43b36df234d8a5cf2, type: 3}
     Count: 10
   - PoolObject: {fileID: 5372783553224354145, guid: f249520d9d4d6a4418fd1f5e7d0e0c24, type: 3}
     Count: 10
+  - PoolObject: {fileID: 452517229855872282, guid: 271a2125702d5a44ca95b38f74e83491, type: 3}
+    Count: 20
+  - PoolObject: {fileID: 1029256597766284018, guid: 06406c28e8ea1184594211dc3cf30f37, type: 3}
+    Count: 20

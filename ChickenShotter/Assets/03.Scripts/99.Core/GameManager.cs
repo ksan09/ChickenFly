@@ -98,10 +98,8 @@ public class GameManager : MonoSingleton<GameManager>
         _score++; // 점수 추가
         OnUpdateScoreEvent?.Invoke(_score);
 
-        
-
         // 맵 생성
-        _mapGenerator.Generate();
+        _mapGenerator.Generate(_score);
 
     }
     public void AddScore(int value)

@@ -32,7 +32,7 @@ public class PlayerHPBar : MonoBehaviour
 
         }
 
-        _hpText.text = $"{currentHealth} / {maxHealth}";
+        _hpText.text = $"{Mathf.Ceil(currentHealth)} / {Mathf.Ceil(maxHealth)}";
         _feelImage.fillAmount = currentHealth / maxHealth;
 
     }

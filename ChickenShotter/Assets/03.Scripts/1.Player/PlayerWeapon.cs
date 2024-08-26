@@ -6,9 +6,9 @@ public abstract class PlayerWeapon : MonoBehaviour
 {
 
     // 총알 발사
-    private float _attackSpeed;       // 초당 공격속도
-    private int _shotGunEgg;          // 샷건
-    private int _through;             // 관통
+    protected float _attackSpeed;       // 초당 공격속도
+    protected int _shotGunEgg;          // 샷건
+    protected int _through;             // 관통
 
     protected virtual void Awake()
     {

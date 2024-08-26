@@ -7,7 +7,8 @@ public enum PanelType
 {
 
     Setting,
-    SelectCard
+    SelectCard,
+    GetCard
 
 }
 
@@ -17,6 +18,7 @@ public class UIManager : MonoSingleton<UIManager>
     [Header("Panel")]
     [SerializeField] private IngamePanel _settingCardPanel;
     [SerializeField] private IngamePanel _selectCardPanel;
+    [SerializeField] private IngamePanel _getCardPanel;
 
     [Header("Game Object")]
     [SerializeField] private GameObject _ingameController;
@@ -32,6 +34,7 @@ public class UIManager : MonoSingleton<UIManager>
 
             { PanelType.Setting,        _settingCardPanel   },
             { PanelType.SelectCard,     _selectCardPanel    },
+            { PanelType.GetCard,        _getCardPanel       },
 
 
         };

@@ -12,7 +12,7 @@ public class CardManager : MonoSingleton<CardManager>
     private CardGridUI_SpriteContainerSO _cardGridUI_SpriteContainerSO;
 
     private List<CardInfoSO> _cards;
-    private Dictionary<CardType, List<CardInfoSO>> _cardListByType;
+    private Dictionary<CardType, List<CardInfoSO>> _cardListByType; // Ä«µå È¹µæ¿ë
 
     public List<CardInfoSO> CardList { get { return _cards.ToList(); } }
 
@@ -31,6 +31,31 @@ public class CardManager : MonoSingleton<CardManager>
         foreach(CardInfoSO card in _cards)
         {
 
+            List<CardEffectSO> effects = card.CardEffect.CardEffectList;
+            if (effects.Count > 0)
+            {
+
+                bool effectCheck = false;
+                for(int i = 0; i < effects.Count; ++i)
+                {
+
+                    if (effects[i] is CardEffect_GetCardSO
+                        || effects[i] is CardEffect_ShuffleSO
+                        || effects[i] is CardEffect_ChangeCardTypeSO)
+                    {
+
+                        effectCheck = true;
+                        break;
+
+                    }
+
+                }
+
+                if (effectCheck)
+                    continue;
+
+            }
+
             _cardListByType[card.CardType].Add(card);
 
         }
@@ -40,6 +65,10 @@ public class CardManager : MonoSingleton<CardManager>
     public List<CardInfoSO> GetCardList()
     {
         return _cards.ToList();
+    }
+    public List<CardInfoSO> GetCardList(CardType type)
+    {
+        return _cardListByType[type].ToList();
     }
     public CardInfoSO GetCard(int num)
     {

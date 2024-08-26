@@ -22,6 +22,8 @@ public class PlayerManager : MonoSingleton<PlayerManager>
     private Dictionary<CardInfoSO, int> _playerCardCount;   // Player Card's Count
     private int _playerCurrentCardCount = 0;                // Player Card Count
 
+    public PlayerCardSkillData CardSkillData { get; set; }
+
     [Header("Player")]
     [SerializeField]
     private Transform _playerTrm;
@@ -41,6 +43,8 @@ public class PlayerManager : MonoSingleton<PlayerManager>
 
     public override void Init()
     {
+
+        CardSkillData = new PlayerCardSkillData();
 
         if (_playerTrm == null)
             _playerTrm = GameObject.Find("Player").transform;
@@ -194,6 +198,10 @@ public class PlayerManager : MonoSingleton<PlayerManager>
         OnKillEnemyEvent?.Invoke(deathEnemyTrm);
 
     }
+    public void CallPlayerAttackEvent(Transform enemyTrm)
+    {
+        OnPlayerAttackEvent?.Invoke(enemyTrm);
+    }
 
     public float CalcPlayerDamage()
     {
@@ -202,7 +210,12 @@ public class PlayerManager : MonoSingleton<PlayerManager>
         float damage = data.Strength * data.StrengthPer;
 
         if (OnCalculatePlayerAttackDamage == null)
+        {
+
+            _playerHealth.AddHealth(damage * _playerStat.GetPlayerStatData().LifeDrainPer);
             return damage;
+
+        }
 
         foreach(OnCalculateAddPlayerAttackDamageDelegate calcPlayerAttackDamageDelegate 
             in OnCalculatePlayerAttackDamage.GetInvocationList())
@@ -215,6 +228,7 @@ public class PlayerManager : MonoSingleton<PlayerManager>
 
         }
 
+        _playerHealth.AddHealth(damage * _playerStat.GetPlayerStatData().LifeDrainPer);
         return damage;
 
     }

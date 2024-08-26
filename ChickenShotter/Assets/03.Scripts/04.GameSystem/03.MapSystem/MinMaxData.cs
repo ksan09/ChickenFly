@@ -1,12 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 [System.Serializable]
-public class SpawnMonsterDataList
+public class MinMaxData<T> where T : IComparable<T>
 {
 
-    public List<SpawnMonsterData> Data;
+    public T Min;
+    public T Max;
 
 }

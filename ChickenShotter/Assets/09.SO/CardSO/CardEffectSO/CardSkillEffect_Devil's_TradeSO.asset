@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9f507a09a82f91478a1d3b454d2d972, type: 3}
   m_Name: CardSkillEffect_Devil's_TradeSO
   m_EditorClassIdentifier: 
-  GetCardList: 01000000010000000200000002000000
+  GetCardList: 0200000002000000

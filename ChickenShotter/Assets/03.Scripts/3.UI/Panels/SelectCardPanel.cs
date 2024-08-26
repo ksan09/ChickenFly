@@ -94,7 +94,6 @@ public class SelectCardPanel : IngamePanel
             return;
 
         _isSelectCard = true;
-        PlayerManager.Instance.ObtainCard(cardUI.CardInfoSO);
 
         // 현재 카드 외에는 전부 안 보이도록 처리
         _titleText.color = Color.clear;
@@ -137,6 +136,7 @@ public class SelectCardPanel : IngamePanel
             {
 
                 UIManager.Instance.ClosePanel(PanelType.SelectCard);
+                PlayerManager.Instance.ObtainCard(cardUI.CardInfoSO);
 
             });
         

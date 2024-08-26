@@ -80,6 +80,9 @@ public class EnemyBase : PoolableMono
     private void HandleHitEffect()
     {
 
+        if (gameObject.activeInHierarchy == false)
+            return;
+
         if(_coroutine != null)
             StopCoroutine(_coroutine);
 

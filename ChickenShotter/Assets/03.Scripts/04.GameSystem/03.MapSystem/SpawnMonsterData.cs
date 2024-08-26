@@ -7,6 +7,10 @@ public class SpawnMonsterData
 {
 
     public PoolableMono Monster;
-    public int Count;
+
+    public int SpawnStart;
+    public int SpawnEnd;
+
+    public int Weight;
 
 }
