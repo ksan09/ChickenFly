@@ -16,5 +16,33 @@ MonoBehaviour:
   CardMaxLevel: 1
   CardType: 2
   CardImage: {fileID: -1536164343, guid: e293f7789a274724da81b9b00b5c2238, type: 3}
-  CardExplain: "\uC810\uD504\uB97C \uD560 \uB54C\uB9C8\uB2E4 \uACE8\uB4DC\uB97C 1\uC6D0\uC529
-    \uD68D\uB4DD\uD569\uB2C8\uB2E4<br>\uC810\uD504\uB7C9\uC774 \uC99D\uAC00\uD569\uB2C8\uB2E4"
+  CardExplain: "\uD589\uC6B4\uC774 \uC99D\uAC00\uD569\uB2C8\uB2E4<br>\uACE8\uB4DC
+    \uD68D\uB4DD\uB7C9\uC774 100% \uC99D\uAC00\uD569\uB2C8\uB2E4<br><br>\uD604\uC7AC
+    \uC18C\uC720\uC911\uC778 \uC77C\uBC18 \uB4F1\uAE09 \uCE74\uB4DC\uB97C \uBAA8\uB450
+    \uC81C\uAC70\uD569\uB2C8\uB2E4"
+  NoCounting: 1
+  CardEffect:
+    CardStatInfo:
+      Health: 0
+      Strength: 0
+      AttackSpeed: 0
+      Defense: 0
+      Speed: 0
+      Luck: 10
+      CurseLuck: 0
+      HealValue: 0
+      JumpPower: 0
+      Magnet: 0
+      FeverDuration: 0
+      StrengthPer: 0
+      HitDamageAmountPer: 0
+      SkillCoolDownPer: 0
+      LifeDrainPer: 0
+      ExpPer: 0
+      GoldPer: 1
+      FallSpeedPer: 0
+      ShotGunEgg: 0
+      Through: 0
+      Life: 0
+    CardEffectList:
+    - {fileID: 11400000, guid: b3f98cac657b2934699cc9951b01036e, type: 2}

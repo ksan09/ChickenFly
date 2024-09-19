@@ -40,11 +40,12 @@ public class SelectCardPanel : IngamePanel
 
         base.OnOpenEvent();
         _isSelectCard = false;
+        _selectedCard = null;
+
         _panelImage.color = new Color(0, 0, 0, 0.4f);
         _titleText.color = Color.white;
 
-        List<CardInfoSO> cardData = CardManager.Instance.GetCardList();
-        List<CardInfoSO> shuffleCardData = UtillSystem.ShuffleList<CardInfoSO>(cardData, 3);
+        List<CardInfoSO> shuffleCardData = CardManager.Instance.GetRandomCardByPlayerLuck(3);
 
         CameraManager.Instance.DizzyVolumeEffect(true);
 

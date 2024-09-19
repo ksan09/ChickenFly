@@ -12,7 +12,8 @@ public class CardManager : MonoSingleton<CardManager>
     private CardGridUI_SpriteContainerSO _cardGridUI_SpriteContainerSO;
 
     private List<CardInfoSO> _cards;
-    private Dictionary<CardType, List<CardInfoSO>> _cardListByType; // Ä«µå È¹µæ¿ë
+    private Dictionary<CardType, List<CardInfoSO>> _cardListByType; // 
+    private Dictionary<CardType, List<CardInfoSO>> _noObtainEffectCardListByType; // Ä«µå È¹µæ¿ë
 
     public List<CardInfoSO> CardList { get { return _cards.ToList(); } }
 
@@ -26,13 +27,22 @@ public class CardManager : MonoSingleton<CardManager>
             { CardType.Rare,    new List<CardInfoSO>() },
             { CardType.Cursed,  new List<CardInfoSO>() },
         };
+        
+        _noObtainEffectCardListByType = new Dictionary<CardType, List<CardInfoSO>>()
+        {
+            { CardType.Normal,  new List<CardInfoSO>() },
+            { CardType.Rare,    new List<CardInfoSO>() },
+            { CardType.Cursed,  new List<CardInfoSO>() },
+        };
 
         // Info Setting
         foreach(CardInfoSO card in _cards)
         {
 
+            _cardListByType[card.CardType].Add(card);
+
             List<CardEffectSO> effects = card.CardEffect.CardEffectList;
-            if (effects.Count > 0)
+            if (effects != null && effects.Count > 0)
             {
 
                 bool effectCheck = false;
@@ -41,7 +51,7 @@ public class CardManager : MonoSingleton<CardManager>
 
                     if (effects[i] is CardEffect_GetCardSO
                         || effects[i] is CardEffect_ShuffleSO
-                        || effects[i] is CardEffect_ChangeCardTypeSO)
+                        || effects[i] is CardEffect_BlessingSO)
                     {
 
                         effectCheck = true;
@@ -56,20 +66,15 @@ public class CardManager : MonoSingleton<CardManager>
 
             }
 
-            _cardListByType[card.CardType].Add(card);
+            _noObtainEffectCardListByType[card.CardType].Add(card);
 
         }
 
     }
 
-    public List<CardInfoSO> GetCardList()
-    {
-        return _cards.ToList();
-    }
-    public List<CardInfoSO> GetCardList(CardType type)
-    {
-        return _cardListByType[type].ToList();
-    }
+    public List<CardInfoSO> GetCardList() => _cards.ToList();
+    public List<CardInfoSO> GetCardList(CardType type) => _cardListByType[type].ToList();
+    public List<CardInfoSO> GetNoObtainEffectCardList(CardType type) => _noObtainEffectCardListByType[type].ToList();
     public CardInfoSO GetCard(int num)
     {
 
@@ -79,6 +84,81 @@ public class CardManager : MonoSingleton<CardManager>
         }
 
         return _cards[num];
+
+    }
+
+    public List<CardInfoSO> GetRandomCardByPlayerLuck(int count, bool noDuplication = true, bool isGetCard = false)
+    {
+        // Return List
+        List<CardInfoSO> cards = new List<CardInfoSO>();
+
+        // Player Stat
+        PlayerStatData data = PlayerManager.Instance.GetPlayerStat().GetPlayerStatData();
+        float luck = data.Luck;
+        float curseLuck = data.CurseLuck;
+
+        // Card Probability
+        // NormalProb = 1.0f - (rareProb+curseProb)
+        float rareProb = 0.22f + 0.01f * luck;          // 22%
+        float curseProb = 0.18f + 0.01f * curseLuck;    // 18%
+
+        // Calc Card Probability
+        List<CardInfoSO> normalCards = isGetCard ? GetNoObtainEffectCardList(CardType.Normal) : GetCardList(CardType.Normal);
+        List<CardInfoSO> rareCards = isGetCard ? GetNoObtainEffectCardList(CardType.Rare) : GetCardList(CardType.Rare);
+        List<CardInfoSO> cursedCards = isGetCard ? GetNoObtainEffectCardList(CardType.Cursed) : GetCardList(CardType.Cursed);
+        
+        for (int i = 0; i < count; ++i)
+        {
+
+            //Draw Card
+            float randomValue = Random.Range(0f, 1f);
+            int randomIndex = 0;
+            CardInfoSO card = null;
+
+            if(rareCards.Count > 0 && randomValue <= rareProb)
+            {
+
+                randomIndex = Random.Range(0, rareCards.Count);
+                card = rareCards[randomIndex];
+
+                if (noDuplication)
+                    rareCards.RemoveAt(randomIndex);
+
+
+            }
+            else if(cursedCards.Count > 0 && randomValue <= rareProb + curseProb)
+            {
+
+                randomIndex = Random.Range(0, cursedCards.Count);
+                card = cursedCards[randomIndex];
+
+                if (noDuplication)
+                    cursedCards.RemoveAt(randomIndex);
+
+            }
+            else if(normalCards.Count > 0)
+            {
+
+                randomIndex = Random.Range(0, normalCards.Count);
+                card = normalCards[randomIndex];
+
+                if (noDuplication)
+                    normalCards.RemoveAt(randomIndex);
+
+            }
+            else
+            {
+
+                return cards;
+
+            }
+
+            cards.Add(card);
+
+        }
+
+
+        return cards;
 
     }
 

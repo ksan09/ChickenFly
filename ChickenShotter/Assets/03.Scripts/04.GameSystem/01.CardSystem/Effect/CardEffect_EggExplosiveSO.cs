@@ -12,7 +12,7 @@ public class CardEffect_EggExplosiveSO : CardEffectSO
     public override void UseCardEffect(CardInfoSO cardInfoSO)
     {
 
-        if(PlayerManager.Instance.GetCurrentCardCount(cardInfoSO) == 0)
+        if(PlayerManager.Instance.GetCurrentCardCount(cardInfoSO) == 1)
         {
 
             _enemyLayer = LayerMask.GetMask("Enemy");

@@ -14,6 +14,7 @@ public class CardInfoSO : ScriptableObject
     public string   CardExplain;
 
     [Header("Card Effect")]
+    public bool NoCounting = false;
     public CardAbilityData CardEffect;
 
 }

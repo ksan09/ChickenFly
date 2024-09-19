@@ -18,6 +18,7 @@ MonoBehaviour:
   CardImage: {fileID: -1536164343, guid: e293f7789a274724da81b9b00b5c2238, type: 3}
   CardExplain: "\uC800\uC8FC \uCE74\uB4DC 2\uC7A5 \uD68D\uB4DD\uD569\uB2C8\uB2E4<br>\uCD5C\uB300
     \uCCB4\uB825\uC774 50 \uAC10\uC18C\uD569\uB2C8\uB2E4"
+  NoCounting: 1
   CardEffect:
     CardStatInfo:
       Health: -50

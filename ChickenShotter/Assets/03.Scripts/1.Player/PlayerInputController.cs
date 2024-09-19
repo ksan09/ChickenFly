@@ -10,6 +10,7 @@ public class PlayerInputController : MonoBehaviour
     private GameManager _gameManager;
     public event Action OnTouchJumpFunc;
     public event Action<float> OnTouchMoveXFunc;
+    public event Action<float> OnTouchStopXFunc;
 
     private IngameButton _leftMoveButton;
     private IngameButton _rightMoveButton;
@@ -35,8 +36,8 @@ public class PlayerInputController : MonoBehaviour
                 _leftMoveButton.OnIB_PointerDownEvent   += HandleMoveLeft;
                 _rightMoveButton.OnIB_PointerDownEvent  += HandleMoveRight;
 
-                _leftMoveButton.OnIB_PointerUpEvent     += HandleMoveStop;
-                _rightMoveButton.OnIB_PointerUpEvent    += HandleMoveStop;
+                _leftMoveButton.OnIB_PointerUpEvent     += HandleMoveStopLeft;
+                _rightMoveButton.OnIB_PointerUpEvent    += HandleMoveStopRight;
 
                 _jumpButton.OnIB_PointerDownEvent       += HandleJump;
 
@@ -62,19 +63,21 @@ public class PlayerInputController : MonoBehaviour
 
         }
 
-        if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D))
-            OnTouchMoveXFunc?.Invoke(0);
+        if (Input.GetKeyUp(KeyCode.A))
+            HandleMoveStopLeft();
+        if (Input.GetKeyUp(KeyCode.D))
+            HandleMoveStopRight();
 
         if (Input.GetKeyDown(KeyCode.A))
         {
 
-            OnTouchMoveXFunc?.Invoke(-1f);
+            HandleMoveLeft();
 
         }
         if (Input.GetKeyDown(KeyCode.D))
         {
 
-            OnTouchMoveXFunc?.Invoke(1);
+            HandleMoveRight();
 
         }
 
@@ -82,7 +85,8 @@ public class PlayerInputController : MonoBehaviour
 
     private void HandleMoveLeft() => OnTouchMoveXFunc?.Invoke(-1f);
     private void HandleMoveRight() => OnTouchMoveXFunc?.Invoke(1f);
-    private void HandleMoveStop() => OnTouchMoveXFunc?.Invoke(0f);
+    private void HandleMoveStopLeft() => OnTouchStopXFunc?.Invoke(-1f);
+    private void HandleMoveStopRight() => OnTouchStopXFunc?.Invoke(1f);
     private void HandleJump() => OnTouchJumpFunc?.Invoke();
 
     private IngameButton FindButton(Transform root, string name)

@@ -46,19 +46,25 @@ public class GetCardPanel : IngamePanel
 
         }
 
+        Debug.Log(_cards[_currentCardIndex]);
         PlayerManager.Instance.ObtainCard(_cards[_currentCardIndex]);
         _cardUI.SetCardUI(_cards[_currentCardIndex++]);
         BouncingTween();
 
     }
 
+    Sequence seq;
     private void BouncingTween()
     {
 
         RectTransform rectTrm = _cardUI.CardRectTransform;
+        rectTrm.DOKill();
         rectTrm.localScale = Vector3.one * 1.2f;
 
-        Sequence seq = DOTween.Sequence();
+        if (seq != null)
+            seq.Kill();
+
+        seq = DOTween.Sequence();
         seq.SetUpdate(true);
 
         seq.Append(rectTrm.DOScale(1.4f, 1f).SetEase(Ease.OutElastic));

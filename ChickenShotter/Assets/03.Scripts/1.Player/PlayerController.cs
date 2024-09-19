@@ -116,6 +116,7 @@ public class PlayerController : MonoBehaviour
 
         _input.OnTouchJumpFunc  += HandleJump;
         _input.OnTouchMoveXFunc += HandleMoveX;
+        _input.OnTouchStopXFunc += HandleStopMoveX;
 
     }
 
@@ -131,6 +132,7 @@ public class PlayerController : MonoBehaviour
 
         _magnet = currentData.Magnet;
 
+        _speed = currentData.Speed;
         _jumpPower = currentData.JumpPower;
         _attackSpeed = currentData.AttackSpeed;
 
@@ -159,6 +161,19 @@ public class PlayerController : MonoBehaviour
         velocity.x = dir * _speed;
 
         _playerRigidbody.velocity = velocity;
+
+    }
+
+    private void HandleStopMoveX(float dirX)
+    {
+
+        if(dirX * _playerRigidbody.velocity.x > 0)
+        {
+
+            Vector3 velocity = _playerRigidbody.velocity;
+            velocity.x = 0;
+            _playerRigidbody.velocity = velocity;
+        }
 
     }
 

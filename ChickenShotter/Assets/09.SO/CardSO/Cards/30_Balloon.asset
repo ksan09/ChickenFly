@@ -16,18 +16,21 @@ MonoBehaviour:
   CardMaxLevel: 2
   CardType: 0
   CardImage: {fileID: 925129140, guid: e293f7789a274724da81b9b00b5c2238, type: 3}
-  CardExplain: "\uC810\uD504\uB7C9\uC774 \uC99D\uAC00\uD569\uB2C8\uB2E4"
+  CardExplain: "\uACF5\uACA9 \uC18D\uB3C4\uAC00 \uC18C\uD3ED \uC0C1\uC2B9\uD569\uB2C8\uB2E4<br>\uCCB4\uB825\uC774
+    \uC18C\uD3ED \uC0C1\uC2B9\uD569\uB2C8\uB2E4<br>\uC810\uD504\uB7C9\uC774 \uC18C\uD3ED
+    \uC99D\uAC00\uD569\uB2C8\uB2E4"
+  NoCounting: 0
   CardEffect:
     CardStatInfo:
-      Health: 0
+      Health: 30
       Strength: 0
-      AttackSpeed: 0
+      AttackSpeed: 0.5
       Defense: 0
       Speed: 0
       Luck: 0
       CurseLuck: 0
-      Digestion: 0
-      JumpPower: 2
+      HealValue: 0
+      JumpPower: 1
       Magnet: 0
       FeverDuration: 0
       StrengthPer: 0

@@ -16,7 +16,7 @@ public class CardEffect_GetCardSO : CardEffectSO
         for(int i = 0; i < GetCardList.Count; i++)
         {
 
-            List<CardInfoSO> cards = CardManager.Instance.GetCardList(GetCardList[i]);
+            List<CardInfoSO> cards = CardManager.Instance.GetNoObtainEffectCardList(GetCardList[i]);
             CardInfoSO card = cards[Random.Range(0, cards.Count)];
 
             getCardList.Add(card);

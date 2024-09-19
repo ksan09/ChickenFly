@@ -84,6 +84,12 @@ public class PlayerManager : MonoSingleton<PlayerManager>
         // 카드 스탯 적용
         _playerStat.AddPlayerStat(card.CardEffect.CardStatInfo);
 
+        // Counting
+        if(card.NoCounting == false)
+            _playerCardCount[card]++;
+        // Event
+        OnObtainCardEvent?.Invoke(card);
+
         // card effect
         foreach (var cardEffect in card.CardEffect.CardEffectList)
         {
@@ -92,12 +98,8 @@ public class PlayerManager : MonoSingleton<PlayerManager>
 
         }
 
-        // Counting
-        _playerCardCount[card]++;
-        OnObtainCardEvent?.Invoke(card);
-
         // 카드가 최고 레벨에 도달했다면
-        if (_playerCardCount[card] == card.CardMaxLevel)
+        if (_playerCardCount[card] != 0 && _playerCardCount[card] == card.CardMaxLevel)
         {
 
             // 더 이상 해당 카드가 나오지 않도록 처리
@@ -154,31 +156,46 @@ public class PlayerManager : MonoSingleton<PlayerManager>
 
         _playerStat.RemovePlayerStat(card.CardEffect.CardStatInfo);
 
-        foreach (var cardEffect in card.CardEffect.CardEffectList)
+        if (card.CardEffect.CardEffectList != null &&
+            card.CardEffect.CardEffectList.Count > 0)
         {
+            foreach (var cardEffect in card.CardEffect.CardEffectList)
+            {
 
-            cardEffect.RemoveCardEffect(card);
+                cardEffect.RemoveCardEffect(card);
 
+            }
         }
 
         // Counting
         _playerCardCount[card]--;
         OnRemoveCardEvent?.Invoke(card);
 
+        UpdatePlayerStatUI();
 
     }
     public void RemoveAllCard()
     {
 
+        List<CardInfoSO> list = new List<CardInfoSO>();
+
         foreach (var playerCardCount in _playerCardCount)
         {
 
-            while(playerCardCount.Value > 0)
+            int count = playerCardCount.Value;
+            for(int i = 0; i < count; ++i)
             {
 
-                RemoveCard(playerCardCount.Key);
+                list.Add(playerCardCount.Key);
 
             }
+
+        }
+
+        for(int i = 0; i < list.Count; ++i)
+        {
+
+            RemoveCard(list[i]);
 
         }
 
